@@ -1,3 +1,4 @@
 rootProject.name = "tooni-tooni-android"
 include ':presentation'
 include ':remote'
+include ':core'

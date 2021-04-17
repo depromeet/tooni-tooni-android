@@ -43,7 +43,7 @@ ext {
                     "cardView"             : "androidx.cardview:cardview:${versions.cardView}",
                     "annotations"          : "androidx.annotation:annotation:${versions.annotations}",
                     "constraintLayout"     : "androidx.constraintlayout:constraintlayout:2.0.4",
-                    "ktx"                  : "androidx.core:core-ktx:${versions.ktx}",
+                    "coreKtx"              : "androidx.core:core-ktx:${versions.ktx}",
                     "design"               : "com.google.android.material:material:1.3.0",
                     "viewpager2"           : "androidx.viewpager2:viewpager2:${versions.viewpager2}",
                     "lifecycle"            : [
@@ -69,7 +69,7 @@ ext {
             "retrofit"                 : [
                     "core"      : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
                     "gson"      : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
-                    "rx"        : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+                    "rxjava"        : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
             ],
             "glide"                    : [
                     "core"           : "com.github.bumptech.glide:glide:${versions.glide}",

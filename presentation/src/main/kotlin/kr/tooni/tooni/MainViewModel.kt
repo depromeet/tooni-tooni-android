@@ -3,6 +3,6 @@
  */
 package kr.tooni.tooni
 
-import androidx.lifecycle.ViewModel
+import kr.tooni.tooni.core.base.BaseViewModel
 
-class MainViewModel : ViewModel()
+class MainViewModel : BaseViewModel()

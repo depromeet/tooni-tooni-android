@@ -8,11 +8,6 @@ android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildToolVersion
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        test.java.srcDirs += 'src/test/kotlin'
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -21,28 +16,37 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     implementation deps.kotlin.stdlib
-    implementation deps.jetpack.appCompat
-    implementation deps.jetpack.annotations
-    implementation deps.jetpack.coreKtx
 
-    // lifecycle
+    implementation deps.jetpack.appCompat
+    implementation deps.jetpack.coreKtx
+    implementation deps.jetpack.design
+    implementation deps.jetpack.annotations
     implementation deps.jetpack.lifecycle.liveData
     implementation deps.jetpack.lifecycle.viewModel
     implementation deps.jetpack.lifecycle.savedState
+    kapt deps.jetpack.lifecycle.compiler
 
-    // androidx
     implementation deps.androidx.activityKtx
     implementation deps.androidx.fragmentKtx
 
-    // retrofit
-    implementation deps.gson
-    implementation deps.retrofit.core
-    implementation deps.retrofit.gson
-    implementation deps.retrofit.rxjava
-    implementation deps.okhttp.logging
+    implementation deps.rx.core
+    implementation deps.rx.android
+    implementation deps.rx.kotlin
+    implementation deps.rx.relay
+
+    api deps.glide.core
+    api deps.glide.okhttp
+    api deps.glide.transformations
+    kapt deps.glide.compiler
+
+    testImplementation deps.test.junit
 }

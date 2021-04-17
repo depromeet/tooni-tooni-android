@@ -1,20 +1,14 @@
 package kr.tooni.tooni
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
+import kr.tooni.tooni.core.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
-    private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.lifecycleOwner = this
+    override fun initView() {
         binding.viewModel = viewModel
     }
 }

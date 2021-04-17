@@ -79,15 +79,16 @@ android {
 dependencies {
 
     implementation project(':remote')
+    implementation project(':core')
     implementation deps.kotlin.stdlib
 
     implementation deps.jetpack.appCompat
+    implementation deps.jetpack.coreKtx
     implementation deps.jetpack.recyclerView
     implementation deps.jetpack.design
     implementation deps.jetpack.cardView
     implementation deps.jetpack.annotations
     implementation deps.jetpack.constraintLayout
-    implementation deps.jetpack.ktx
     implementation deps.jetpack.lifecycle.liveData
     implementation deps.jetpack.lifecycle.viewModel
     implementation deps.jetpack.lifecycle.savedState
@@ -96,19 +97,12 @@ dependencies {
     implementation deps.androidx.activityKtx
     implementation deps.androidx.fragmentKtx
 
-    implementation deps.firebase.crashlytics
-
-    implementation deps.glide.core
-    implementation deps.glide.okhttp
-    implementation deps.glide.transformations
-    kapt deps.glide.compiler
-
     implementation deps.rx.core
     implementation deps.rx.android
     implementation deps.rx.kotlin
     implementation deps.rx.relay
 
-    implementation deps.gson
+    implementation deps.firebase.crashlytics
     implementation deps.timber
 
     releaseImplementation deps.chuckNoOp
