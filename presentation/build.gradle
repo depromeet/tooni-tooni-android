@@ -14,28 +14,36 @@ android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildToolVersion
 
+    def versionMajor = 1
+    def versionMinor = 0
+    def versionPatch = 0
+    def versionBuild = 0
+
     defaultConfig {
         applicationId "kr.tooni.tooni"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 1
-        versionName "1.0.0"
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
+        project.archivesBaseName = "android-" + defaultConfig.versionCode
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         debug {
+            resValue "string", "app_name", "Tooni Tooni_디버그"
+            applicationIdSuffix ".debug"
             debuggable true
             minifyEnabled false
             ext.enableCrashlytics = false
             firebaseCrashlytics {
                 mappingFileUploadEnabled false
             }
-
         }
         release {
+            resValue "string", "app_name", "Tooni Tooni"
             debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -51,8 +59,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
 
     bundle {
@@ -64,6 +78,7 @@ android {
 
 dependencies {
 
+    implementation project(':remote')
     implementation deps.kotlin.stdlib
 
     implementation deps.jetpack.appCompat
@@ -75,12 +90,11 @@ dependencies {
     implementation deps.jetpack.ktx
     implementation deps.jetpack.lifecycle.liveData
     implementation deps.jetpack.lifecycle.viewModel
-    implementation deps.jetpack.lifecycle.extension
     implementation deps.jetpack.lifecycle.savedState
     kapt deps.jetpack.lifecycle.compiler
 
-    implementation deps.androidx.activity
     implementation deps.androidx.activityKtx
+    implementation deps.androidx.fragmentKtx
 
     implementation deps.firebase.crashlytics
 

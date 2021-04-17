@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolVersion
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation deps.kotlin.stdlib
+    implementation deps.jetpack.appCompat
+    implementation deps.jetpack.annotations
+    implementation deps.jetpack.ktx
+
+    // lifecycle
+    implementation deps.jetpack.lifecycle.liveData
+    implementation deps.jetpack.lifecycle.viewModel
+    implementation deps.jetpack.lifecycle.savedState
+
+    implementation deps.androidx.activityKtx
+    implementation deps.androidx.fragmentKtx
+}
