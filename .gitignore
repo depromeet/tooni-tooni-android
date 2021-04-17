@@ -9,6 +9,7 @@
 
 # Java class files
 *.class
+classes/
 
 # Generated files
 bin/
@@ -83,3 +84,28 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+*.hprof
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+*/.classpath
+*/.project
+*/.settings/
+
+
+# Intellij project files
+*.ipr
+*.iws
+.idea/
+# Apple
+
+.DS_Store
+
+# Vim/Emacs
+*~
+
+# Maven
+target/
