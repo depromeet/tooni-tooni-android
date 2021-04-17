@@ -1,28 +1,52 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'com.google.firebase.crashlytics'
+}
+
+kapt {
+    useBuildCache = true
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolVersion
 
     defaultConfig {
         applicationId "kr.tooni.tooni"
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            ext.enableCrashlytics = false
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
+
+        }
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -30,16 +54,61 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    bundle {
+        abi.enableSplit = true
+        density.enableSplit = true
+        language.enableSplit = false
+    }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation deps.kotlin.stdlib
+
+    implementation deps.jetpack.appCompat
+    implementation deps.jetpack.recyclerView
+    implementation deps.jetpack.design
+    implementation deps.jetpack.cardView
+    implementation deps.jetpack.annotations
+    implementation deps.jetpack.constraintLayout
+    implementation deps.jetpack.ktx
+    implementation deps.jetpack.lifecycle.liveData
+    implementation deps.jetpack.lifecycle.viewModel
+    implementation deps.jetpack.lifecycle.extension
+    implementation deps.jetpack.lifecycle.savedState
+    kapt deps.jetpack.lifecycle.compiler
+
+    implementation deps.androidx.activity
+    implementation deps.androidx.activityKtx
+
+    implementation deps.firebase.crashlytics
+
+    implementation deps.glide.core
+    implementation deps.glide.okhttp
+    implementation deps.glide.transformations
+    kapt deps.glide.compiler
+
+    implementation deps.rx.core
+    implementation deps.rx.android
+    implementation deps.rx.kotlin
+    implementation deps.rx.relay
+
+    implementation deps.gson
+    implementation deps.timber
+
+    releaseImplementation deps.chuckNoOp
+    debugImplementation deps.chuck
+    debugImplementation deps.leakCanary
+
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.rules
+    androidTestImplementation deps.test.junitext
+    testImplementation deps.test.junit
+    testImplementation deps.test.kotlin
+    testImplementation deps.test.kotlinJunit
+    testImplementation deps.test.kotlinMockito
+    testImplementation deps.test.core
+    testImplementation deps.test.archCore
+    testImplementation deps.test.robolectric
 }
