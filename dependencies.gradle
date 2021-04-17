@@ -17,11 +17,10 @@ ext {
             "crashlyticsGradle"        : "2.5.2",
             "okhttp"                   : "3.12.0",
             "retrofit"                 : "2.5.0",
-            "rxJava"                   : "2.2.20",
-            "rxAndroid"                : "2.1.1",
-            "rxKotlin"                 : "2.4.0",
-            "rxRelay"                  : "2.0.0",
-            "rxBinding"                : "2.2.0",
+            "rxJava3"                  : "3.0.12",
+            "rxAndroid"                : "3.0.0",
+            "rxKotlin"                 : "3.0.1",
+            "rxRelay"                  : "3.0.0",
             "leakCanary"               : "2.7",
             "glide"                    : "4.12.0",
             "espresso"                 : "3.3.0",
@@ -59,11 +58,10 @@ ext {
                     "crashlyticsGradle": "com.google.firebase:firebase-crashlytics-gradle:${versions.crashlyticsGradle}"
             ],
             "rx"                       : [
-                    "core"   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
-                    "android": "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
-                    "kotlin" : "io.reactivex.rxjava2:rxkotlin:${versions.rxKotlin}",
-                    "relay"  : "com.jakewharton.rxrelay2:rxrelay:${versions.rxRelay}",
-                    "binding": "com.jakewharton.rxbinding2:rxbinding:${versions.rxBinding}",
+                    "core"   : "io.reactivex.rxjava3:rxjava:${versions.rxJava3}",
+                    "android": "io.reactivex.rxjava3:rxandroid:${versions.rxAndroid}",
+                    "kotlin" : "io.reactivex.rxjava3:rxkotlin:${versions.rxKotlin}",
+                    "relay"  : "com.jakewharton.rxrelay3:rxrelay:${versions.rxRelay}"
             ],
             "okhttp"                   : [
                     "logging": "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
