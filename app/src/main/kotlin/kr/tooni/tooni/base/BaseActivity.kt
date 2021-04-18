@@ -11,23 +11,13 @@ import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<T: ViewDataBinding>(
     @LayoutRes private val resId: Int
-) : AppCompatActivity(resId), BaseView {
+) : AppCompatActivity(resId) {
 
     protected lateinit var binding: T
-
-    override fun initView() {
-        /* explicitly empty */
-    }
-
-    override fun subscribe() {
-        /* explicitly empty */
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, resId)
         binding.lifecycleOwner = this
-        initView()
-        subscribe()
     }
 }
