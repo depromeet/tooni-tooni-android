@@ -12,6 +12,6 @@ interface MortyApi : Api {
     
     @GET("api/character/")
     fun getAllCharacters(
-        @Query("page") page: Int? = 0
+        @Query("page") page: Int? = null
     ): Single<CharactersResponse>
 }
