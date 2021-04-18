@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
@@ -16,5 +17,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private fun initView() {
         binding.viewModel = viewModel
+    }
+    
+    private fun subscribe() {
+        viewModel.characters.observe(this) { characters ->
+            Timber.e("--- characters: $characters")
+        }
     }
 }
