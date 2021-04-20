@@ -19,10 +19,10 @@ class MainViewModel(
         get() = _characters
     
     init {
-        mainRepository.getAllCharacters()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(_characters::setValue)
-            .addDisposable()
+//        mainRepository.getAllCharacters()
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(_characters::setValue)
+//            .addDisposable()
     }
 }
