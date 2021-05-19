@@ -1,9 +1,13 @@
 <resources>
 
     <string name="common_home">홈</string>
+
     <!-- top app bar -->
     <string name="bar_search">Search</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="ic_favorites_direction">Direction</string>
+
+    <string name="common_search_title">무엇을 찾으시나요?</string>
+    <string name="common_search_hint">작가, 작품 검색어 입력하기</string>
 
 </resources>
