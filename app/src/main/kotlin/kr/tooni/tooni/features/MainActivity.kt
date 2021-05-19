@@ -8,6 +8,7 @@ import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
 import kr.tooni.tooni.features.day.DayWebtoonFragment
+import kr.tooni.tooni.watch.WatchFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 R.id.home_1 -> showPhotoFragment()
                 R.id.home_2 -> showPhotoFragment()
                 R.id.home_3 -> showPhotoFragment()
-                R.id.home_4 -> showPhotoFragment()
+                R.id.home_4 -> showWatchFragment()
                 else -> throw IllegalArgumentException("${menuItem.itemId} is invalid itemId")
             }
         
@@ -52,6 +53,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
             ?: addFragment(
                 fragment = DayWebtoonFragment.newInstance(),
+                tag = tag
+            )
+    }
+
+    private fun showWatchFragment() {
+        val tag = WatchFragment::class.java.name
+
+        supportFragmentManager.findFragmentByTag(tag)
+            ?.let { fragment ->
+                showFragment(fragment)
+            }
+            ?: addFragment(
+                fragment = WatchFragment.newInstance(),
                 tag = tag
             )
     }

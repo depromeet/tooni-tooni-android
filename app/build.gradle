@@ -90,6 +90,7 @@ dependencies {
     implementation deps.jetpack.lifecycle.liveData
     implementation deps.jetpack.lifecycle.viewModel
     implementation deps.jetpack.lifecycle.savedState
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt deps.jetpack.lifecycle.compiler
 
     implementation deps.androidx.activityKtx

@@ -1,4 +1,9 @@
 <resources>
 
     <string name="common_home">홈</string>
+    <!-- top app bar -->
+    <string name="bar_search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="ic_favorites_direction">Direction</string>
+
 </resources>
