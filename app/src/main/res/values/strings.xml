@@ -1,4 +1,7 @@
 <resources>
 
     <string name="common_home">홈</string>
+
+    <string name="common_search_title">무엇을 찾으시나요?</string>
+    <string name="common_search_hint">작가, 작품 검색어 입력하기</string>
 </resources>
