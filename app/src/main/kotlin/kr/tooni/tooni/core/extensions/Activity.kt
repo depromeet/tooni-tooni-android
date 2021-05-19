@@ -1,7 +1,7 @@
 /*
  * Created by Leo on 2021. 05. 19 ..
  */
-package kr.tooni.tooni.extensions
+package kr.tooni.tooni.core.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData

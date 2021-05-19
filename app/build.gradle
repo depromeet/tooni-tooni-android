@@ -26,7 +26,7 @@ android {
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
-        buildConfigField "String", "BASE_URL", "\"\""
+        buildConfigField "String", "BASE_URL", getBaseUrl("BASE_URL")
         project.archivesBaseName = "android-" + defaultConfig.versionCode
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -128,4 +128,16 @@ dependencies {
     testImplementation deps.test.core
     testImplementation deps.test.archCore
     testImplementation deps.test.robolectric
+}
+
+String getBaseUrl(String name) {
+    try {
+        def properties = new Properties()
+        properties.load(new FileInputStream(rootProject.file("./local.properties")))
+        def baseUrl = properties.getProperty(name)
+        if(baseUrl != null) baseUrl else "\"https://fake.api.com\""
+    } catch(FileNotFoundException e) {
+        e.printStackTrace()
+        "\"https://fake.api.com\""
+    }
 }
