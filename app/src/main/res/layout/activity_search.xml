@@ -42,28 +42,28 @@
             android:background="@color/transparent"
             android:hint="@string/common_search_hint"
             android:textColor="@color/gray_50"
-            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintBottom_toTopOf="@+id/search_line"
             app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/search_title" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/search_img"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintBottom_toTopOf="@id/search_line"
             app:layout_constraintStart_toEndOf="@id/search_hint"
             app:layout_constraintTop_toTopOf="@id/search_hint"
             app:srcCompat="@drawable/ic_search" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/search_line"
             android:layout_width="335dp"
             android:layout_height="3dp"
             android:background="#000000"
             android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/search_img"
             app:layout_constraintStart_toStartOf="@+id/search_hint"
             app:layout_constraintTop_toBottomOf="@+id/search_hint"
             tools:layout_editor_absoluteY="246dp" />
