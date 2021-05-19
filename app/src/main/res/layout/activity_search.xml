@@ -43,7 +43,7 @@
             android:hint="@string/common_search_hint"
             android:textColor="@color/gray_50"
             app:layout_constraintBottom_toTopOf="@+id/search_line"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/search_line"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/search_title" />
 
@@ -52,6 +52,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="11dp"
             app:layout_constraintBottom_toTopOf="@id/search_line"
             app:layout_constraintStart_toEndOf="@id/search_hint"
             app:layout_constraintTop_toTopOf="@id/search_hint"
