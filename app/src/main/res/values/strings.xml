@@ -3,5 +3,5 @@
     <!-- top app bar -->
     <string name="bar_search">Search</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ic_favorites_direction">Direction</string>
 </resources>
