@@ -18,11 +18,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private fun initView() {
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
     
     private fun subscribe() {
-        viewModel.characters.observe(this) { characters ->
-            Timber.e("--- characters: $characters")
-        }
     }
 }
