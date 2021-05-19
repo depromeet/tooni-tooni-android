@@ -1,10 +1,10 @@
-package kr.tooni.tooni
+package kr.tooni.tooni.features
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
-import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     

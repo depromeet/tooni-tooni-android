@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="kr.tooni.tooni.MainViewModel" />
+            type="kr.tooni.tooni.features.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
