@@ -14,6 +14,7 @@ import kr.tooni.tooni.core.model.WeekDay
 import timber.log.Timber
 
 class WebtoonByDayViewModel constructor(
+    day: String, // inject from savedStateHandle
     private val webtoonByDayRepository: WebtoonByDayRepository = WebtoonByDayRepositoryImpl()
 ) : BaseViewModel() {
     
@@ -21,7 +22,7 @@ class WebtoonByDayViewModel constructor(
     val webtoons: LiveData<List<Webtoon>>
         get() = _webtoons
     
-    fun getWebtoon(day: String) {
+    init {
         webtoonByDayRepository.getWebtoonsByDay(day)
             .doOnError { throwable -> showSnackBar(throwable.message) }
             .subscribeOn(Schedulers.io())

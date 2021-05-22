@@ -34,7 +34,7 @@ class WebtoonWeekDayFragment :
     
     private fun initViewPager() {
         binding.viewPager.adapter =
-            WebtoonFragmentStateAdapter(childFragmentManager, requireContext())
+            WebtoonFragmentPagerAdapter(childFragmentManager, requireContext())
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
     

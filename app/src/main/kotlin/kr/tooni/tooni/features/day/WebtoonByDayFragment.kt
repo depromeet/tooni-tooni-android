@@ -12,16 +12,16 @@ import androidx.fragment.app.viewModels
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.core.StringKeySet
-import kr.tooni.tooni.core.extensions.EMPTY
+import kr.tooni.tooni.core.extensions.observeEvent
+import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.FragmentWebtoonByDayBinding
+import timber.log.Timber
 
 class WebtoonByDayFragment :
     BaseFragment<FragmentWebtoonByDayBinding>(R.layout.fragment_webtoon_by_day) {
     
-    private val viewModel by viewModels<WebtoonByDayViewModel>()
-    
-    private val day: String by lazy {
-        arguments?.getString(StringKeySet.DAY) ?: String.EMPTY
+    private val viewModel by viewModels<WebtoonByDayViewModel> {
+        WebtoonByDayViewModelFactory(this, arguments)
     }
     
     override fun onCreateView(
@@ -30,8 +30,20 @@ class WebtoonByDayFragment :
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        viewModel.getWebtoon(day)
         return binding.root
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        viewModel.webtoons.observe(viewLifecycleOwner) {
+            Timber.e("--- webtoons: $it")
+        }
+        
+        viewModel.snackBarMessage.observeEvent(viewLifecycleOwner) { message ->
+            val anchor = requireActivity().findViewById<View>(R.id.anchor)
+            showSnackbar(anchor, message)
+        }
     }
     
     companion object {

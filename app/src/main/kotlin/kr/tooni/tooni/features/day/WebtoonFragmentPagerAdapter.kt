@@ -12,7 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import kr.tooni.tooni.R
 import kr.tooni.tooni.core.model.WeekDay
 
-class WebtoonFragmentStateAdapter(
+class WebtoonFragmentPagerAdapter(
     fragmentManager: FragmentManager,
     private val context: Context
 ) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

@@ -10,26 +10,12 @@
             android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="3" />
-
-        <TextView
-            android:id="@+id/text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="요일별 웹툰 리스트 (자식뷰)"
-            android:textColor="@color/blue_100"
-            android:textSize="@dimen/font_size_24"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
