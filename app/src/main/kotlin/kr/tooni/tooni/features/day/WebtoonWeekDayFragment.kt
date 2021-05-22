@@ -3,9 +3,13 @@
  */
 package kr.tooni.tooni.features.day
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.forEach
+import com.google.android.material.tabs.TabLayout
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWebtoonWeekDayBinding
@@ -36,6 +40,23 @@ class WebtoonWeekDayFragment :
         binding.viewPager.adapter =
             WebtoonFragmentPagerAdapter(childFragmentManager, requireContext())
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                tab.view.forEach { childView ->
+                    if (childView is TextView) {
+                        childView.setTypeface(null, Typeface.BOLD)
+                    }
+                }
+            }
+            
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                /* explicitly empty */
+            }
+            
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                /* explicitly empty */
+            }
+        })
     }
     
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

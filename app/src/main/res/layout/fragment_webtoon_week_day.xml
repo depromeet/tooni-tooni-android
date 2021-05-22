@@ -19,18 +19,19 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="24dp"
             android:layout_marginStart="@dimen/space_20"
             android:layout_marginEnd="@dimen/space_20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:tabGravity="start"
+            app:tabGravity="fill"
             app:tabIndicatorColor="@color/blue_100"
+            app:tabIndicatorFullWidth="false"
             app:tabIndicatorGravity="bottom"
             app:tabIndicatorHeight="@dimen/space_7"
-            app:tabMode="scrollable"
-            app:tabPaddingBottom="-32dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/gray_90"
             app:tabTextAppearance="@style/appearance_tab_text" />
 

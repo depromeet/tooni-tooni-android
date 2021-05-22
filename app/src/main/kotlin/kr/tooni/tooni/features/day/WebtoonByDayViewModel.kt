@@ -8,9 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.tooni.tooni.base.BaseViewModel
-import kr.tooni.tooni.core.WebtoonByDay
 import kr.tooni.tooni.core.model.Webtoon
-import kr.tooni.tooni.core.model.WeekDay
 import timber.log.Timber
 
 class WebtoonByDayViewModel constructor(

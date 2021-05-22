@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import kr.tooni.tooni.core.StringKeySet
 import kr.tooni.tooni.core.extensions.EMPTY
-import java.lang.IllegalStateException
 
 class WebtoonByDayViewModelFactory(
     owner: SavedStateRegistryOwner,

@@ -47,7 +47,7 @@ class WebtoonByDayFragment :
     }
     
     companion object {
-    
+        
         fun newInstance(day: String): WebtoonByDayFragment {
             return WebtoonByDayFragment().apply {
                 arguments = bundleOf(
