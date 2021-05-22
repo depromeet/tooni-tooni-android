@@ -23,7 +23,7 @@ class WebtoonByDayViewModelFactory(
         handle: SavedStateHandle
     ): T {
         if (modelClass.isAssignableFrom(WebtoonByDayViewModel::class.java)) {
-            val day = handle.get<String>(StringKeySet.DAY) ?: String.EMPTY
+            val day = handle.get<String>(StringKeySet.DAY) ?: String.EMPTY // same as assistedInject
             return WebtoonByDayViewModel(day = day) as T
         } else {
             throw IllegalStateException("$modelClass is Unknown ViewModel class")

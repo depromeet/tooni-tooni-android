@@ -6,4 +6,7 @@ object StringKeySet {
     const val RED = "RED"
     const val BLUE = "BLUE"
     const val NONE = "NONE"
+    const val NAVER = "NAVER"
+    const val DAUM = "DAUM"
+    const val KAKAO = "KAKAO"
 }

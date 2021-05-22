@@ -6,7 +6,7 @@ package kr.tooni.tooni.core.model
 import com.google.gson.annotations.SerializedName
 import kr.tooni.tooni.core.StringKeySet
 
-enum class WebtoonBackgroundColor {
+enum class BackgroundColor {
     @SerializedName(StringKeySet.RED)
     RED,
     @SerializedName(StringKeySet.BLUE)

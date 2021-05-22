@@ -18,6 +18,8 @@ import kr.tooni.tooni.features.search.SearchActivity
 class WebtoonWeekDayFragment :
     BaseFragment<FragmentWebtoonWeekDayBinding>(R.layout.fragment_webtoon_week_day) {
     
+    private val pagerAdapter by lazy { WebtoonWeekDayFragmentPagerAdapter(this) }
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,8 +39,7 @@ class WebtoonWeekDayFragment :
     }
     
     private fun initViewPager() {
-        binding.viewPager.adapter =
-            WebtoonFragmentPagerAdapter(childFragmentManager, requireContext())
+        binding.viewPager.adapter = pagerAdapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {

@@ -5,27 +5,30 @@ package kr.tooni.tooni.core.model
 
 data class Webtoon(
     val id: Long,
-    val site: String,
+    val site: Site,
     val title: String,
     val authors: List<Author>,
     val thumbnail: String,
     val score: Double,
     val genres: List<String>,
-    val backgroundColor: WebtoonBackgroundColor,
+    val backgroundColor: BackgroundColor,
     val isComplete: Boolean
 ) {
+    
+    val authorFullName: String
+        get() = authors.joinToString(" / ") { it.name }
     
     companion object {
         
         val EMPTY = Webtoon(
             id = 0,
             authors = listOf(),
-            site = "",
+            site = Site.NONE,
             thumbnail = "",
             title = "",
             score = 0.0,
             genres = listOf(),
-            backgroundColor = WebtoonBackgroundColor.NONE,
+            backgroundColor = BackgroundColor.NONE,
             isComplete = false
         )
     }
