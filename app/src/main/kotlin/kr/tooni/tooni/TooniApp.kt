@@ -4,12 +4,17 @@
 package kr.tooni.tooni
 
 import android.app.Application
+import timber.log.Timber
 
 class TooniApp : Application() {
     
     override fun onCreate() {
         super.onCreate()
         app = this
+        
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
     
     companion object {
