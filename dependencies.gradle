@@ -24,7 +24,7 @@ ext {
             "leakCanary"               : "2.7",
             "glide"                    : "4.12.0",
             "espresso"                 : "3.3.0",
-            "viewpager2"               : "1.0.0",
+            "viewpager2"               : "1.1.0-alpha01",
             "mockito"                  : "3.7.7",
             "ktlintGradlePlugin"       : "9.4.1"
     ]

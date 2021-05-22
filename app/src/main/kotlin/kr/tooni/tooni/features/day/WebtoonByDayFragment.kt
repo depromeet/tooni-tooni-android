@@ -1,21 +1,28 @@
 /*
- * Created by Leo on 2021. 05. 19 ..
+ * Created by Leo on 2021. 05. 22 ..
  */
 package kr.tooni.tooni.features.day
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import com.google.android.material.tabs.TabLayoutMediator
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
+import kr.tooni.tooni.core.StringKeySet
+import kr.tooni.tooni.core.extensions.EMPTY
 import kr.tooni.tooni.databinding.FragmentWebtoonByDayBinding
-import kr.tooni.tooni.features.search.SearchActivity
 
 class WebtoonByDayFragment :
     BaseFragment<FragmentWebtoonByDayBinding>(R.layout.fragment_webtoon_by_day) {
     
     private val viewModel by viewModels<WebtoonByDayViewModel>()
+    
+    private val day: String by lazy {
+        arguments?.getString(StringKeySet.DAY) ?: String.EMPTY
+    }
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,32 +30,18 @@ class WebtoonByDayFragment :
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        initViewPager()
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-        
+        //binding.textView.text = "요일별 웹툰 리스트 : $day"
+        viewModel.getWebtoon(day)
         return binding.root
-    }
-    
-    private fun initViewPager() {
-        val weekDay = resources.getStringArray(R.array.week_day)
-        TabLayoutMediator(binding.tabLayout, binding.vpWebtoon) { tab, position ->
-            tab.text = weekDay[position]
-        }.attach()
-    }
-    
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_search -> SearchActivity.start(requireContext())
-        }
-        return super.onOptionsItemSelected(item)
     }
     
     companion object {
     
-        fun newInstance(): WebtoonByDayFragment {
+        fun newInstance(day: String): WebtoonByDayFragment {
             return WebtoonByDayFragment().apply {
-                arguments = Bundle()
+                arguments = bundleOf(
+                    StringKeySet.DAY to day
+                )
             }
         }
     }

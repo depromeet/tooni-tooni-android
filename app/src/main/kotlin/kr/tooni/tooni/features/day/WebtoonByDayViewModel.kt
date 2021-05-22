@@ -3,22 +3,30 @@
  */
 package kr.tooni.tooni.features.day
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.tooni.tooni.base.BaseViewModel
-import kr.tooni.tooni.data.ApiProvider
-import kr.tooni.tooni.data.api.ListApi
+import kr.tooni.tooni.core.WebtoonByDay
+import kr.tooni.tooni.core.model.Webtoon
+import kr.tooni.tooni.core.model.WeekDay
 import timber.log.Timber
 
-class WebtoonByDayViewModel : BaseViewModel() {
+class WebtoonByDayViewModel constructor(
+    private val webtoonByDayRepository: WebtoonByDayRepository = WebtoonByDayRepositoryImpl()
+) : BaseViewModel() {
     
-    init {
-        ApiProvider.create(ListApi::class.java).getWebtoonsByDay("조석")
+    private val _webtoons = MutableLiveData<List<Webtoon>>()
+    val webtoons: LiveData<List<Webtoon>>
+        get() = _webtoons
+    
+    fun getWebtoon(day: String) {
+        webtoonByDayRepository.getWebtoonsByDay(day)
+            .doOnError { throwable -> showSnackBar(throwable.message) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-               // do something
-            }, Timber::e)
+            .subscribe(_webtoons::setValue, Timber::e)
             .addDisposable()
     }
 }
