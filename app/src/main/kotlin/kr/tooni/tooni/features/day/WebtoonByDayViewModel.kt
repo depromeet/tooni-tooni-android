@@ -10,7 +10,7 @@ import kr.tooni.tooni.data.ApiProvider
 import kr.tooni.tooni.data.api.ListApi
 import timber.log.Timber
 
-class DayWebtoonViewModel : BaseViewModel() {
+class WebtoonByDayViewModel : BaseViewModel() {
     
     init {
         ApiProvider.create(ListApi::class.java).search("조석")

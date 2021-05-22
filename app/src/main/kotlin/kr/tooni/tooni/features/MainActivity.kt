@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentTransaction
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
-import kr.tooni.tooni.features.day.DayWebtoonFragment
-import kr.tooni.tooni.watch.WatchFragment
+import kr.tooni.tooni.features.day.WebtoonByDayFragment
+import kr.tooni.tooni.features.watch.WatchFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
@@ -45,14 +45,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
     
     private fun showPhotoFragment() {
-        val tag = DayWebtoonFragment::class.java.name
+        val tag = WebtoonByDayFragment::class.java.name
         
         supportFragmentManager.findFragmentByTag(tag)
             ?.let { fragment ->
                 showFragment(fragment)
             }
             ?: addFragment(
-                fragment = DayWebtoonFragment.newInstance(),
+                fragment = WebtoonByDayFragment.newInstance(),
                 tag = tag
             )
     }

@@ -1,4 +1,4 @@
-package kr.tooni.tooni.watch.favorites
+package kr.tooni.tooni.features.watch.favorites
 
 data class Favorites (
     var no: Int,

@@ -1,4 +1,4 @@
-package kr.tooni.tooni.watch
+package kr.tooni.tooni.features.watch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWatchBinding
-import kr.tooni.tooni.watch.adapter.WatchFragmentAdapter
-import kr.tooni.tooni.watch.favorites.FavoritesFragment
-import kr.tooni.tooni.watch.recent.RecentFragment
+import kr.tooni.tooni.features.watch.adapter.WatchFragmentAdapter
+import kr.tooni.tooni.features.watch.favorites.FavoritesFragment
+import kr.tooni.tooni.features.watch.recent.RecentFragment
 
 class WatchFragment : BaseFragment<FragmentWatchBinding>(R.layout.fragment_watch) {
 
     companion object{
-        fun newInstance(): WatchFragment{
+        fun newInstance(): WatchFragment {
             val args = Bundle()
 
             val fragment = WatchFragment()
