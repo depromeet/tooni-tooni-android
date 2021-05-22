@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="transparent">#00000000</color>
-    <color name="colorPrimary">#C1C7CD</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#C1C7CD</color>
     <color name="colorAccent">#FF8A3D</color>
 
@@ -18,5 +17,9 @@
     <color name="gray_50">#727475</color>
     <color name="gray_80">#242626</color>
     <color name="gray_90">#181919</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="black_10">#1A000000</color>
 
 </resources>

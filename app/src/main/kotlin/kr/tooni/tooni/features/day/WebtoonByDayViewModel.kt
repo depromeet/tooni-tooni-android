@@ -13,7 +13,7 @@ import timber.log.Timber
 class WebtoonByDayViewModel : BaseViewModel() {
     
     init {
-        ApiProvider.create(ListApi::class.java).search("조석")
+        ApiProvider.create(ListApi::class.java).getWebtoonsByDay("조석")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

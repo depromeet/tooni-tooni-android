@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/green_100</item>
@@ -9,4 +10,10 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="28">shortEdges</item>
     </style>
+
+    <style name="appearance_tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/gray_50</item>
+    </style>
+
 </resources>
