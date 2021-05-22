@@ -6,7 +6,6 @@ package kr.tooni.tooni.features.day
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.tabs.TabLayoutMediator
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWebtoonWeekDayBinding
@@ -14,8 +13,6 @@ import kr.tooni.tooni.features.search.SearchActivity
 
 class WebtoonWeekDayFragment :
     BaseFragment<FragmentWebtoonWeekDayBinding>(R.layout.fragment_webtoon_week_day) {
-    
-    private var mediator: TabLayoutMediator? = null
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,19 +33,9 @@ class WebtoonWeekDayFragment :
     }
     
     private fun initViewPager() {
-        val weekDay = resources.getStringArray(R.array.week_day)
-        binding.vpWebtoon.adapter = WebtoonFragmentStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
-        mediator = TabLayoutMediator(binding.tabLayout, binding.vpWebtoon) { tab, position ->
-            tab.text = weekDay[position]
-        }
-        mediator?.attach()
-    }
-    
-    override fun onDestroyView() {
-        mediator?.detach()
-        mediator = null
-        binding.vpWebtoon.adapter = null
-        super.onDestroyView()
+        binding.viewPager.adapter =
+            WebtoonFragmentStateAdapter(childFragmentManager, requireContext())
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
     
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -30,7 +30,6 @@ class WebtoonByDayFragment :
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        //binding.textView.text = "요일별 웹툰 리스트 : $day"
         viewModel.getWebtoon(day)
         return binding.root
     }
