@@ -9,6 +9,15 @@ class TooniApp : Application() {
     
     override fun onCreate() {
         super.onCreate()
-        /* explicitly empty */
+        app = this
+    }
+    
+    companion object {
+        private lateinit var app: TooniApp
+        
+        // must be removed when di set
+        fun get(): TooniApp {
+            return app
+        }
     }
 }
