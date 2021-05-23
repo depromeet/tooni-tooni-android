@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kr.tooni.tooni.R
 import kr.tooni.tooni.databinding.FragmentFavoritesBinding
 import kr.tooni.tooni.watch.adapter.FavoritesListAdapter
+import kr.tooni.tooni.watch.favorites.db.Favorites
 
 class FavoritesFragment : Fragment() {
 

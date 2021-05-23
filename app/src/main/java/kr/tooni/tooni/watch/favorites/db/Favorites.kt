@@ -1,5 +1,8 @@
-package kr.tooni.tooni.watch.favorites
+package kr.tooni.tooni.watch.favorites.db
 
+import androidx.room.Entity
+
+@Entity(tableName = "favorites_data_table")
 data class Favorites (
     var no: Int,
     var platform: String,
