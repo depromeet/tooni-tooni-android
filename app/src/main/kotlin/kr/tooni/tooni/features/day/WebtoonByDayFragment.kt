@@ -34,6 +34,7 @@ class WebtoonByDayFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         setupRecyclerView()
+        binding.viewModel = viewModel
         return binding.root
     }
     

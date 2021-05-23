@@ -22,7 +22,7 @@ class WebtoonByDayViewModel constructor(
     
     init {
         webtoonByDayRepository.getWebtoonsByDay(day)
-            .doOnError { throwable -> showSnackBar(throwable.message)}
+            .doOnError { throwable -> showSnackBar(throwable.message) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(_webtoons::setValue, Timber::e)
