@@ -24,6 +24,10 @@
         <activity
             android:name=".features.search.SearchActivity"
             android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name=".features.details.WebtoonDetailsActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

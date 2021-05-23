@@ -31,6 +31,7 @@
             app:tabIndicatorGravity="bottom"
             app:tabIndicatorHeight="@dimen/space_7"
             app:tabMode="fixed"
+            app:tabPaddingBottom="-2dp"
             app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/gray_90"
             app:tabTextAppearance="@style/appearance_tab_text" />
