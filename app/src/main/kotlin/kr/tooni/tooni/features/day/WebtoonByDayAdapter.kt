@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.databinding.ItemWebtoonBinding
 
-class WebtoonByDayAdapter :
-    ListAdapter<Webtoon, WebtoonByDayAdapter.WebtoonByDayViewHolder>(DIFF_CALLBACK) {
+class WebtoonByDayAdapter(
+    private val viewModel: WebtoonByDayViewModel
+) : ListAdapter<Webtoon, WebtoonByDayAdapter.WebtoonByDayViewHolder>(DIFF_CALLBACK) {
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebtoonByDayViewHolder {
-        return WebtoonByDayViewHolder.create(parent)
+        return WebtoonByDayViewHolder.create(parent, viewModel)
     }
     
     override fun onBindViewHolder(holder: WebtoonByDayViewHolder, position: Int) {
@@ -24,22 +25,28 @@ class WebtoonByDayAdapter :
     }
     
     class WebtoonByDayViewHolder(
-        private val binding: ItemWebtoonBinding
+        private val binding: ItemWebtoonBinding,
+        private val viewModel: WebtoonByDayViewModel
     ) : RecyclerView.ViewHolder(binding.root) {
         
         fun bind(webtoon: Webtoon) {
             binding.webtoon = webtoon
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
         
         companion object {
-            fun create(parent: ViewGroup): WebtoonByDayViewHolder {
+            fun create(
+                parent: ViewGroup,
+                viewModel: WebtoonByDayViewModel
+            ): WebtoonByDayViewHolder {
                 return WebtoonByDayViewHolder(
                     binding = ItemWebtoonBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ),
+                    viewModel = viewModel
                 )
             }
         }

@@ -14,7 +14,7 @@ data class WebtoonDetails(
     val url: String,
     val score: Score, // 플랫폼 평점
     val genres: List<String>,
-    val weekday: WeekDay
+    val weekday: List<WeekDay>
 ) {
     
     companion object {
@@ -34,7 +34,7 @@ data class WebtoonDetails(
                 totalScore = 0.0
             ),
             genres = listOf(),
-            weekday = WeekDay.MON
+            weekday = listOf()
         )
     }
 }

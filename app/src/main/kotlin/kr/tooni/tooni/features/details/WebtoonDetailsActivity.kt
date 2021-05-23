@@ -10,7 +10,10 @@ import androidx.activity.viewModels
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.core.StringKeySet
+import kr.tooni.tooni.core.extensions.observeEvent
+import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.ActivityWebtoonDetailsBinding
+import timber.log.Timber
 
 class WebtoonDetailsActivity :
     BaseActivity<ActivityWebtoonDetailsBinding>(R.layout.activity_webtoon_details) {
@@ -28,6 +31,11 @@ class WebtoonDetailsActivity :
     private fun observe() {
         viewModel.webtoonDetails.observe(this) { details ->
             // do update ui
+            Timber.e("--- details: $details")
+        }
+        
+        viewModel.snackBarMessage.observeEvent(this) { message ->
+            showSnackbar(binding.root, message)
         }
     }
     

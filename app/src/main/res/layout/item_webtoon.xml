@@ -10,11 +10,17 @@
         <variable
             name="webtoon"
             type="kr.tooni.tooni.core.model.Webtoon" />
+
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.day.WebtoonByDayViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{() -> viewModel.onWebtoonClicked(webtoon.id)}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_image"

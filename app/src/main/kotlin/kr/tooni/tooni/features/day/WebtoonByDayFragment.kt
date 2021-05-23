@@ -16,6 +16,8 @@ import kr.tooni.tooni.core.StringKeySet
 import kr.tooni.tooni.core.extensions.observeEvent
 import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.FragmentWebtoonByDayBinding
+import kr.tooni.tooni.features.day.WebtoonByDayViewModel.Action.WebtoonClick
+import kr.tooni.tooni.features.details.WebtoonDetailsActivity
 import kr.tooni.tooni.utils.ItemGridDecorator
 
 class WebtoonByDayFragment :
@@ -25,7 +27,7 @@ class WebtoonByDayFragment :
         WebtoonByDayViewModelFactory(this, arguments)
     }
     
-    private val adapter by lazy { WebtoonByDayAdapter() }
+    private val adapter by lazy { WebtoonByDayAdapter(viewModel) }
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +44,12 @@ class WebtoonByDayFragment :
         super.onViewCreated(view, savedInstanceState)
         
         viewModel.webtoons.observe(viewLifecycleOwner, adapter::submitList)
+        
+        viewModel.action.observeEvent(viewLifecycleOwner) { action ->
+            when (action) {
+                is WebtoonClick -> WebtoonDetailsActivity.start(requireContext(), action.id)
+            }
+        }
         
         viewModel.snackBarMessage.observeEvent(viewLifecycleOwner) { message ->
             val anchor = requireActivity().findViewById<View>(R.id.anchor)

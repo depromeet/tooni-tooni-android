@@ -30,6 +30,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.webtoonDetails == null ? View.VISIBLE : View.GONE, default=visible}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
