@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.core.StringKeySet
 import kr.tooni.tooni.core.extensions.observeEvent
 import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.FragmentWebtoonByDayBinding
+import kr.tooni.tooni.utils.ItemGridDecorator
 
 class WebtoonByDayFragment :
     BaseFragment<FragmentWebtoonByDayBinding>(R.layout.fragment_webtoon_by_day) {
@@ -47,7 +49,16 @@ class WebtoonByDayFragment :
     }
     
     private fun setupRecyclerView() {
+        val layoutManager = binding.recyclerView.layoutManager as GridLayoutManager
+        val margin = ItemGridDecorator.Margin.Template.DEFAULT
+        
+        binding.recyclerView.addItemDecoration(ItemGridDecorator(layoutManager.spanCount, margin))
         binding.recyclerView.adapter = adapter
+    }
+    
+    override fun onDestroyView() {
+        binding.recyclerView.adapter = null
+        super.onDestroyView()
     }
     
     companion object {

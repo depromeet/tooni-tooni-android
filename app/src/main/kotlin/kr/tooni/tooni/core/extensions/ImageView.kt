@@ -11,14 +11,13 @@ import kr.tooni.tooni.R
 object ImageViewBindingAdapter {
 
     @JvmStatic
-    @BindingAdapter(value = ["app:setImageFromUrl"], requireAll = true)
-    fun ImageView.setImageFromUrl(url: String?) =
+    @BindingAdapter(value = ["app:setImage"], requireAll = true)
+    fun ImageView.setImage(url: String?) =
         load(imageUrl = url) {
-            override(400, 400)
             error(R.drawable.ic_vector_warning)
         }
 
     @JvmStatic
-    @BindingAdapter(value = ["app:srcCompat"], requireAll = true)
-    fun ImageView.setSrcCompat(drawable: Drawable?) = setImageDrawable(drawable)
+    @BindingAdapter(value = ["app:setDrawable"], requireAll = true)
+    fun ImageView.setDrawable(drawable: Drawable?) = setImageDrawable(drawable)
 }

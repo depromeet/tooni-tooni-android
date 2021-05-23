@@ -135,8 +135,8 @@ String getBaseUrl(String name) {
         def properties = new Properties()
         properties.load(new FileInputStream(rootProject.file("./local.properties")))
         def baseUrl = properties.getProperty(name)
-        if(baseUrl != null) baseUrl else "\"https://fake.api.com\""
-    } catch(FileNotFoundException e) {
+        if (baseUrl != null) baseUrl else "\"https://fake.api.com\""
+    } catch (FileNotFoundException e) {
         e.printStackTrace()
         "\"https://fake.api.com\""
     }

@@ -5,13 +5,16 @@ package kr.tooni.tooni.features.day
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
+import androidx.core.view.get
 import com.google.android.material.tabs.TabLayout
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
+import kr.tooni.tooni.core.model.WeekDay
 import kr.tooni.tooni.databinding.FragmentWebtoonWeekDayBinding
 import kr.tooni.tooni.features.search.SearchActivity
 
@@ -50,14 +53,23 @@ class WebtoonWeekDayFragment :
                 }
             }
             
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                /* explicitly empty */
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                tab.view.forEach { childView ->
+                    if (childView is TextView) {
+                        childView.setTypeface(null, Typeface.NORMAL)
+                    }
+                }
             }
             
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                /* explicitly empty */
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                tab.view.forEach { childView ->
+                    if (childView is TextView) {
+                        childView.setTypeface(null, Typeface.BOLD)
+                    }
+                }
             }
         })
+        binding.tabLayout.getTabAt(0)?.select()
     }
     
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

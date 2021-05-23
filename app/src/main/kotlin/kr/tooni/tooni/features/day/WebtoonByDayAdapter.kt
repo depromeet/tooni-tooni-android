@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.databinding.ItemWebtoonBinding
-import kr.tooni.tooni.utils.SiteLogoProvider
 
 class WebtoonByDayAdapter :
     ListAdapter<Webtoon, WebtoonByDayAdapter.WebtoonByDayViewHolder>(DIFF_CALLBACK) {
@@ -30,7 +29,6 @@ class WebtoonByDayAdapter :
         
         fun bind(webtoon: Webtoon) {
             binding.webtoon = webtoon
-            binding.logoResId = SiteLogoProvider.getId(webtoon)
             binding.executePendingBindings()
         }
         
