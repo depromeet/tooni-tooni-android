@@ -18,7 +18,7 @@ import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.FragmentWebtoonByDayBinding
 import kr.tooni.tooni.features.day.WebtoonByDayViewModel.Action.WebtoonClick
 import kr.tooni.tooni.features.details.WebtoonDetailsActivity
-import kr.tooni.tooni.utils.ItemGridDecorator
+import kr.tooni.tooni.utils.GridItemDecoration
 
 class WebtoonByDayFragment :
     BaseFragment<FragmentWebtoonByDayBinding>(R.layout.fragment_webtoon_by_day) {
@@ -58,10 +58,11 @@ class WebtoonByDayFragment :
     }
     
     private fun setupRecyclerView() {
-        val layoutManager = binding.recyclerView.layoutManager as GridLayoutManager
-        val margin = ItemGridDecorator.Margin.Template.DEFAULT
-        
-        binding.recyclerView.addItemDecoration(ItemGridDecorator(layoutManager.spanCount, margin))
+        val itemDecoration = GridItemDecoration(
+            spanCount = 3,
+            spacing = resources.getDimensionPixelSize(R.dimen.space_12)
+        )
+        binding.recyclerView.addItemDecoration(itemDecoration)
         binding.recyclerView.adapter = adapter
     }
     
