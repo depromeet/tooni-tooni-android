@@ -11,8 +11,10 @@ data class WebtoonDetails(
     val authors: List<Author>,
     val comments: List<Comment>,
     val thumbnail: String,
+    val backgroundColor: BackgroundColor,
     val url: String,
-    val score: Score, // 플랫폼 평점
+    val score: Double, // 플랫폼 평점
+    val toonieScore: Score,
     val genres: List<String>,
     val weekday: List<WeekDay>
 ) {
@@ -28,13 +30,15 @@ data class WebtoonDetails(
             comments = listOf(),
             thumbnail = "",
             url = "",
-            score = Score(
-                drawingScore = 0.0,
-                storyScore = 0.0,
-                totalScore = 0.0
-            ),
             genres = listOf(),
-            weekday = listOf()
+            weekday = listOf(),
+            toonieScore = Score(
+                totalScore = 0.0,
+                storyScore = 0.0,
+                drawingScore = 0.0
+            ),
+            score = 0.0,
+            backgroundColor = BackgroundColor.NONE
         )
     }
 }

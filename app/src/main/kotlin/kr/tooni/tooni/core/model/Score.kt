@@ -4,7 +4,7 @@
 package kr.tooni.tooni.core.model
 
 data class Score(
-    val drawingScore: Double,
+    val totalScore: Double,
     val storyScore: Double,
-    val totalScore: Double
+    val drawingScore: Double
 )
