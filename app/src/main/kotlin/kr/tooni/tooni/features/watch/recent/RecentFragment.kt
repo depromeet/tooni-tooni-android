@@ -1,4 +1,4 @@
-package kr.tooni.tooni.watch.recent
+package kr.tooni.tooni.features.watch.recent
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

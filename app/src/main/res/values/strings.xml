@@ -1,13 +1,21 @@
 <resources>
 
+    <string-array name="week_day">
+        <item name="common_mon">월</item>
+        <item name="common_tue">화</item>
+        <item name="common_wed">수</item>
+        <item name="common_thu">목</item>
+        <item name="common_fri">금</item>
+        <item name="common_sat">토</item>
+        <item name="common_sun">일</item>
+    </string-array>
+
     <string name="common_home">홈</string>
 
-    <!-- top app bar -->
-    <string name="bar_search">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="ic_favorites_direction">Direction</string>
-
+    <string name="common_search">검색</string>
     <string name="common_search_title">무엇을 찾으시나요?</string>
     <string name="common_search_hint">작가, 작품 검색어 입력하기</string>
+
+    <string name="ic_favorites_direction">Direction</string>
 
 </resources>

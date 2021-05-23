@@ -1,10 +1,10 @@
-package kr.tooni.tooni.watch.adapter
+package kr.tooni.tooni.features.watch.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kr.tooni.tooni.databinding.ItemFavoritesBinding
-import kr.tooni.tooni.watch.favorites.Favorites
+import kr.tooni.tooni.features.watch.favorites.Favorites
 import java.text.DecimalFormat
 
 class FavoritesListAdapter : RecyclerView.Adapter<Holder>() {

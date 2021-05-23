@@ -16,10 +16,3 @@ fun Fragment.getDrawableCompat(@DrawableRes resourceId: Int): Drawable? {
     return requireContext().getDrawableCompat(resourceId)
 }
 fun Fragment.getColor(@ColorRes colorId: Int) = ContextCompat.getColor(requireContext(), colorId)
-
-inline fun <T> Fragment.observeEvent(
-    liveData: LiveData<Event<T>>,
-    crossinline action: (T) -> Unit
-) {
-    liveData.observe(viewLifecycleOwner, EventObserver { action(it) })
-}
