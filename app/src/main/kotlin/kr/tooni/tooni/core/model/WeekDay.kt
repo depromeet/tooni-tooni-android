@@ -11,7 +11,7 @@ enum class WeekDay(val value: String) {
     MON("mon"),
     
     @SerializedName(StringKeySet.TUE)
-    TUE("thu"),
+    TUE("tue"),
     
     @SerializedName(StringKeySet.WED)
     WED("wed"),
