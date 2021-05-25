@@ -4,11 +4,25 @@
 package kr.tooni.tooni
 
 import android.app.Application
+import timber.log.Timber
 
 class TooniApp : Application() {
     
     override fun onCreate() {
         super.onCreate()
-        /* explicitly empty */
+        app = this
+        
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
+    
+    companion object {
+        private lateinit var app: TooniApp
+        
+        // must be removed when di set
+        fun get(): TooniApp {
+            return app
+        }
     }
 }

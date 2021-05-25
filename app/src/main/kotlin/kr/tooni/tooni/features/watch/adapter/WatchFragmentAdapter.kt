@@ -1,4 +1,4 @@
-package kr.tooni.tooni.watch.adapter
+package kr.tooni.tooni.features.watch.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

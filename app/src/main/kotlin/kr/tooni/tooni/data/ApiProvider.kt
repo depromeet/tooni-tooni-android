@@ -3,9 +3,13 @@
  */
 package kr.tooni.tooni.data
 
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.chuckerteam.chucker.api.RetentionManager
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import kr.tooni.tooni.BuildConfig
+import kr.tooni.tooni.TooniApp
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -20,8 +24,18 @@ object ApiProvider {
     
     private const val baseUrl: String = BuildConfig.BASE_URL
     
+    private val chuckerInterceptor by lazy {
+        val applicationContext = TooniApp.get()
+        
+        ChuckerInterceptor.Builder(applicationContext)
+            .collector(ChuckerCollector(applicationContext))
+            .alwaysReadResponseBody(true)
+            .build()
+    }
+    
     private val okHttpClient by lazy {
         OkHttpClient.Builder()
+            .addInterceptor(chuckerInterceptor)
             .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT_CONNECT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT_WRITE, TimeUnit.SECONDS)

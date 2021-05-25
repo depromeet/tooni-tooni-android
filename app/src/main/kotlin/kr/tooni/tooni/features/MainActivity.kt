@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentTransaction
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
-import kr.tooni.tooni.features.day.DayWebtoonFragment
-import kr.tooni.tooni.watch.WatchFragment
+import kr.tooni.tooni.features.day.WebtoonWeekDayFragment
+import kr.tooni.tooni.features.watch.WatchFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
@@ -23,19 +23,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private fun initView() {
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
     }
     
     private fun setInitialTab() {
-        showPhotoFragment()
+        showWebtoonWeekDayFragment()
     }
     
     private fun setBottomNavigationItemSelectedListener() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.home_1 -> showPhotoFragment()
-                R.id.home_2 -> showPhotoFragment()
-                R.id.home_3 -> showPhotoFragment()
+                R.id.home_1 -> showWatchFragment()
+                R.id.home_2 -> showWebtoonWeekDayFragment()
+                R.id.home_3 -> showWatchFragment()
                 R.id.home_4 -> showWatchFragment()
                 else -> throw IllegalArgumentException("${menuItem.itemId} is invalid itemId")
             }
@@ -44,15 +43,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
     
-    private fun showPhotoFragment() {
-        val tag = DayWebtoonFragment::class.java.name
+    private fun showWebtoonWeekDayFragment() {
+        val tag = WebtoonWeekDayFragment::class.java.name
         
         supportFragmentManager.findFragmentByTag(tag)
             ?.let { fragment ->
                 showFragment(fragment)
             }
             ?: addFragment(
-                fragment = DayWebtoonFragment.newInstance(),
+                fragment = WebtoonWeekDayFragment.newInstance(),
                 tag = tag
             )
     }
