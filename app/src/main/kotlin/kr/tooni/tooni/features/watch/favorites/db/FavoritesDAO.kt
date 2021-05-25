@@ -1,6 +1,7 @@
 package kr.tooni.tooni.watch.favorites.db
 
 import androidx.room.*
+import kr.tooni.tooni.features.watch.favorites.Favorites
 
 @Dao
 interface FavoritesDAO {
