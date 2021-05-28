@@ -63,43 +63,53 @@
             android:layout_width="335dp"
             android:layout_height="3dp"
             android:layout_marginTop="10dp"
-            android:background="#000000"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/search_img"
             app:layout_constraintStart_toStartOf="@+id/search_hint"
             app:layout_constraintTop_toBottomOf="@+id/search_hint" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_recommend"
-            android:layout_width="327dp"
-            android:layout_height="96dp"
-            android:layout_marginTop="72dp"
-            app:layout_constraintEnd_toEndOf="@+id/search_line"
-            app:layout_constraintStart_toStartOf="@+id/search_line"
-            app:layout_constraintTop_toBottomOf="@+id/search_line">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_72"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_line"
+            app:layout_constraintVertical_bias="0.0">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_recommend"
+                android:layout_width="327dp"
+                android:layout_height="96dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="36dp"
+                tools:layout_editor_absoluteY="276dp">
 
-        <Button
-            android:layout_width="193dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="38dp"
-            app:layout_constraintEnd_toEndOf="@+id/search_recommend"
-            app:layout_constraintStart_toStartOf="@+id/search_recommend"
-            app:layout_constraintTop_toBottomOf="@+id/search_recommend"
-            android:background="@drawable/ic_search_design"
-            android:text="@string/common_search_recommend"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size_16"
-            android:paddingRight="18dp"
-            android:drawableRight="@drawable/ic_refresh" />
-<!--
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="15dp"
-            app:srcCompat="@drawable/ic_refresh"
-            tools:layout_editor_absoluteX="267dp"
-            tools:layout_editor_absoluteY="653dp" />
-            -->
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/search_refresh"
+                android:layout_width="193dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="@dimen/space_84"
+                android:background="@drawable/ic_search_design"
+                android:drawableEnd="@drawable/ic_refresh"
+                android:paddingEnd="18dp"
+                android:text="@string/common_search_recommend"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16"
+                app:layout_constraintEnd_toEndOf="@id/search_recommend"
+                app:layout_constraintStart_toStartOf="@id/search_recommend"
+                app:layout_constraintTop_toBottomOf="@id/search_recommend" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
