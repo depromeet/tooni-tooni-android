@@ -22,6 +22,7 @@ class WebtoonDetailsViewModel constructor(
     
     init {
         webtoonDetailsRepository.getWebtoonDetails(webtoonId)
+            .doOnSuccess { details -> Timber.e("--- details: $details") }
             .doOnError { throwable -> showSnackBar(throwable.message) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

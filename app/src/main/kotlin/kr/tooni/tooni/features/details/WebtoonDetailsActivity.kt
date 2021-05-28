@@ -13,7 +13,6 @@ import kr.tooni.tooni.core.StringKeySet
 import kr.tooni.tooni.core.extensions.observeEvent
 import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.ActivityWebtoonDetailsBinding
-import timber.log.Timber
 
 class WebtoonDetailsActivity :
     BaseActivity<ActivityWebtoonDetailsBinding>(R.layout.activity_webtoon_details) {
@@ -22,17 +21,21 @@ class WebtoonDetailsActivity :
         WebtoonDetailsViewModelFactory(this, intent.extras)
     }
     
+    private val adapter by lazy { WebtoonDetailsAdapter() }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initView()
         observe()
         binding.viewModel = viewModel
     }
     
+    private fun initView() {
+        binding.recyclerView.adapter
+    }
+    
     private fun observe() {
-        viewModel.webtoonDetails.observe(this) { details ->
-            // do update ui
-            Timber.e("--- details: $details")
-        }
+        viewModel.webtoonDetails.observe(this, adapter::submitList)
         
         viewModel.snackBarMessage.observeEvent(this) { message ->
             showSnackbar(binding.root, message)
