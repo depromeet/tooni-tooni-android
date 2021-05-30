@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import kr.tooni.tooni.features.watch.favorites.Favorites
 import kr.tooni.tooni.watch.favorites.db.FavoritesDAO
 
 @Database(entities = [Favorites::class], version = 1)
+@TypeConverters(FavoritesConverters::class)
 abstract class FavoritesDatabase : RoomDatabase() {
 
     abstract val favoritesDAO : FavoritesDAO
