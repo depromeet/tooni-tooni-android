@@ -7,9 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.tooni.tooni.databinding.FragmentFavoritesBinding
+import kr.tooni.tooni.features.watch.WatchFragment
 import kr.tooni.tooni.features.watch.adapter.FavoritesListAdapter
 
 class FavoritesFragment : Fragment() {
+
+    companion object {
+        fun newInstance(): FavoritesFragment {
+            val args = Bundle()
+            val fragment = FavoritesFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     private lateinit var binding : FragmentFavoritesBinding
 
@@ -29,27 +39,27 @@ class FavoritesFragment : Fragment() {
     private fun loadFavoritesData() : MutableList<Favorites>{
         val data: MutableList<Favorites> = mutableListOf()
 
-        val favorites = Favorites(0,
-            "naver",
-            "",
-            "급식아빠",
-            "김재한",
-            "액션",
-            9.9,
-            100
-        )
-        data.add(favorites)
-
-        val favorites2 = Favorites(1,
-            "naver",
-            "",
-            "랄랄라랄ㄹ라라",
-            "최현정",
-            "액션",
-            9.9,
-            100
-        )
-        data.add(favorites2)
+//        val favorites = Favorites(0,
+//            "naver",
+//            "",
+//            "급식아빠",
+//            "김재한",
+//            "액션",
+//            9.9,
+//            100
+//        )
+//        data.add(favorites)
+//
+//        val favorites2 = Favorites(1,
+//            "naver",
+//            "",
+//            "랄랄라랄ㄹ라라",
+//            "최현정",
+//            "액션",
+//            9.9,
+//            100
+//        )
+//        data.add(favorites2)
 
         return data
     }
