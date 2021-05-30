@@ -31,12 +31,12 @@ class WatchFragment : BaseFragment<FragmentWatchBinding>(R.layout.fragment_watch
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         // Fragments
-        val fragmentsList = listOf(FavoritesFragment(), RecentFragment())
+        val fragmentsList = listOf(RecentFragment.newInstance(), FavoritesFragment.newInstance())
         val adapter = WatchFragmentAdapter(this)
         adapter.fragmentList = fragmentsList
         binding.vpWatch.adapter = adapter
         
-        val tabTitles = listOf("즐겨찾기", "최근 본 작품")
+        val tabTitles = listOf("최근 본 작품", "즐겨찾기")
         TabLayoutMediator(binding.tabWatch, binding.vpWatch) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
