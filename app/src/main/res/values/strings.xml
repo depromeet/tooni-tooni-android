@@ -5,4 +5,5 @@
     <string name="common_search_title">무엇을 찾으시나요?</string>
     <string name="common_search_hint">작가, 작품 검색어 입력하기</string>
     <string name="common_search_recommend">이런 웹툰 어때요?</string>
+    <string name="recent_search">최근 검색어</string>
 </resources>
