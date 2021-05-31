@@ -24,7 +24,7 @@ data class Favorites (
     var thumbnail: String,
 
     @ColumnInfo(name = "favorites_score")
-    var score: Int,
+    var score: Double,
 
     @ColumnInfo(name = "favorites_genres")
     var genres : List<String>
