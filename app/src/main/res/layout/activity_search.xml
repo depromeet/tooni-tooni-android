@@ -5,47 +5,46 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="hideKeyboard">
 
         <ImageView
             android:id="@+id/backBtn"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="54dp"
             android:layout_marginEnd="319dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/searchTitle"
+            android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/searchHint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_back_btn" />
 
-        <TextView
-            android:id="@+id/searchTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="35dp"
-            android:text="@string/common_search_title"
-            android:textColor="@color/gray_90"
-            android:textSize="@dimen/font_size_24"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/searchHint"
-            app:layout_constraintEnd_toEndOf="@+id/backBtn"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/backBtn" />
 
         <EditText
             android:id="@+id/searchHint"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/transparent"
             android:hint="@string/common_search_hint"
+            android:onClick="showKeyboard"
             android:textColor="@color/gray_50"
             app:layout_constraintBottom_toTopOf="@+id/searchLine"
-            app:layout_constraintEnd_toStartOf="@+id/searchLine"
+            app:layout_constraintStart_toStartOf="@+id/backBtn" />
+
+        <View
+            android:id="@+id/searchLine"
+            android:layout_width="335dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/searchImg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/searchTitle" />
+            app:layout_constraintStart_toStartOf="@+id/backBtn"
+            app:layout_constraintTop_toBottomOf="@+id/searchHint" />
 
         <ImageView
             android:id="@+id/searchImg"
@@ -58,37 +57,31 @@
             app:layout_constraintTop_toTopOf="@id/searchHint"
             app:srcCompat="@drawable/ic_search" />
 
-        <View
-            android:id="@+id/searchLine"
-            android:layout_width="335dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/searchImg"
-            app:layout_constraintStart_toStartOf="@+id/searchHint"
-            app:layout_constraintTop_toBottomOf="@+id/searchHint" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/searchView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_72"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchLine"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.0"
+            android:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecommend"
                 android:layout_width="327dp"
                 android:layout_height="96dp"
+                android:layout_marginTop="@dimen/space_28"
+                android:layout_marginBottom="@dimen/space_10"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="36dp"
-                tools:layout_editor_absoluteY="276dp">
+                tools:layout_editor_absoluteY="276dp"
+                tools:listitem="@layout/item_search_recommend">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -96,7 +89,7 @@
                 android:id="@+id/searchRefresh"
                 android:layout_width="193dp"
                 android:layout_height="43dp"
-                android:layout_marginTop="@dimen/space_84"
+                android:layout_marginTop="@dimen/space_93"
                 android:background="@drawable/ic_search_design"
                 android:drawableEnd="@drawable/ic_refresh"
                 android:paddingEnd="18dp"
@@ -106,6 +99,46 @@
                 app:layout_constraintEnd_toEndOf="@id/searchRecommend"
                 app:layout_constraintStart_toStartOf="@id/searchRecommend"
                 app:layout_constraintTop_toBottomOf="@id/searchRecommend" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchLine"
+            app:layout_constraintVertical_bias="0.0"
+            android:paddingStart="@dimen/space_24"
+            android:visibility="gone">
+
+
+            <TextView
+                android:id="@+id/recentKeyword"
+                android:layout_width="299dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_28"
+                android:layout_marginBottom="@dimen/space_8"
+                android:text="@string/recent_search"
+                android:textColor="@color/gray_90"
+                app:layout_constraintStart_toStartOf="@id/searchView2"
+                app:layout_constraintTop_toTopOf="@id/searchView2" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recentKeywordItem"
+                android:layout_width="299dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="@dimen/space_4"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/recentKeyword"
+                app:layout_constraintStart_toStartOf="@id/recentKeyword"
+                app:layout_constraintTop_toBottomOf="@+id/recentKeyword"
+                tools:listitem="@layout/item_recent_keyword">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
