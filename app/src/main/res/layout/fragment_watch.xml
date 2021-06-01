@@ -27,26 +27,35 @@
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_search" />
 
-
         </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_watch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/space_20"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_watch"
+            app:tabIndicatorColor="@color/blue_100"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="@dimen/space_7"
+            app:tabMode="auto"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/gray_90"
+            app:tabTextAppearance="@style/appearance_tab_text"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/space_12"
+            android:background="@color/black_opacity10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_watch">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.tabs.TabLayout>
+            app:layout_constraintTop_toBottomOf="@id/tab_watch" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_watch"
