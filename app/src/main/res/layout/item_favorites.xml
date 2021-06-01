@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="FavoritesList"
+            type="kr.tooni.tooni.features.watch.favorites.FavoritesListViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_favorites"
@@ -24,24 +31,40 @@
 
     </androidx.cardview.widget.CardView>
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/iv_favorites_site"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/icon_platform_naver"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/tv_favorites_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:gravity="center_vertical"
         android:lineSpacingExtra="1sp"
         android:text="급식아빠"
+        android:textColor="@color/gray_90"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/gray_90"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toEndOf="@id/cv_favorites"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/cv_favorites"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_favorites_writer"
+        android:id="@+id/tv_favorites_authors"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -50,6 +73,7 @@
         android:textColor="@color/gray_50"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/cv_favorites"
         app:layout_constraintTop_toBottomOf="@id/tv_favorites_title" />
 
@@ -60,12 +84,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cv_favorites"
         android:layout_marginStart="12dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_favorites_writer"
+        app:layout_constraintTop_toBottomOf="@id/tv_favorites_authors"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_favorites_genre"
+            android:id="@+id/tv_favorites_genres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="스토리 | 액션"
@@ -73,7 +97,7 @@
             android:textSize="10sp"/>
 
         <TextView
-            android:id="@+id/tv_favorites_rate"
+            android:id="@+id/tv_favorites_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="9.9"
@@ -82,25 +106,18 @@
             android:textSize="10sp"
             android:layout_marginStart="10dp"/>
 
-        <TextView
-            android:id="@+id/tv_favorites_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(100)"
-            android:textSize="8sp"
-            android:textColor="#333333"
-            android:layout_marginStart="2dp"/>
-
     </LinearLayout>
 
     <ImageButton
+        android:id="@+id/btn_favorites_heart"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:onClick="@{() -> FavoritesList.updateFavorites()}"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_direction"
+        android:src="@drawable/ic_favorites_heart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/ic_favorites_direction" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,11 +3,11 @@ package kr.tooni.tooni.features.watch.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kr.tooni.tooni.core.model.Author
 import kr.tooni.tooni.databinding.ItemFavoritesBinding
-import kr.tooni.tooni.features.watch.favorites.Favorites
-import java.text.DecimalFormat
+import kr.tooni.tooni.features.watch.favorites.db.Favorites
 
-class FavoritesListAdapter : RecyclerView.Adapter<Holder>() {
+class FavoritesListAdapter(private val clickListener: (Favorites) -> Unit) : RecyclerView.Adapter<Holder>() {
 
     var favoritesListData = mutableListOf<Favorites>()
 
@@ -17,28 +17,52 @@ class FavoritesListAdapter : RecyclerView.Adapter<Holder>() {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        val favorite = favoritesListData.get(position)
-        holder.setFavorites(favorite)
+        holder.bind(favoritesListData[position], clickListener)
     }
 
     override fun getItemCount(): Int {
         return favoritesListData.size
     }
 
+    fun setList(favorites: List<Favorites>) {
+        favoritesListData.clear()
+        favoritesListData.addAll(favorites)
+    }
 
 }
 
-class Holder(val binding: ItemFavoritesBinding) : RecyclerView.ViewHolder(binding.root){
+class Holder(val binding: ItemFavoritesBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(favorites: Favorites, clickListener: (Favorites) -> Unit) {
 
-    fun setFavorites(favorite : Favorites){
-        favorite.no = 0
-        favorite.platform = "naver"
-        binding.tvFavoritesTitle.text = favorite.title
-        binding.tvFavoritesWriter.text = favorite.writer
-        binding.tvFavoritesGenre.text = favorite.genre
+        binding.tvFavoritesTitle.text = favorites.title
+        binding.tvFavoritesAuthors.text = getAuthors(favorites.authors)
+        binding.tvFavoritesGenres.text = getGenres(favorites.genres)
+        binding.tvFavoritesScore.text = favorites.score.toString()
+        binding.btnFavoritesHeart.setOnClickListener {
+            clickListener(favorites)
+        }
+    }
 
-        binding.tvFavoritesRate.text = favorite.rate.toString()
+    fun getAuthors(authors: List<Author>): String {
+        var authorsList = ""
 
-        binding.tvFavoritesCount.text = "(${favorite.count})"
+        for(author in authors) {
+            authorsList = authorsList + author.name + " "
+        }
+        return authorsList
+    }
+
+    fun getGenres(genres: List<String>): String {
+        var genresList = ""
+
+        for(genre in genres) {
+            genresList += genre + " | "
+        }
+
+        genresList = genresList.substring(0, genresList.length - 3)
+
+        return genresList
     }
 }
+
+
