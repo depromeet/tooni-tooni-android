@@ -16,7 +16,7 @@ class WebtoonDetailsViewModel constructor(
     private val webtoonDetailsRepository: WebtoonDetailsRepository = WebtoonDetailsRepositoryImpl()
 ) : BaseViewModel() {
     
-    private val _webtoonDetails = MutableLiveData<WebtoonDetails>()
+    private val _webtoonDetails = MutableLiveData(WebtoonDetails.EMPTY)
     val webtoonDetails: LiveData<WebtoonDetails>
         get() = _webtoonDetails
     

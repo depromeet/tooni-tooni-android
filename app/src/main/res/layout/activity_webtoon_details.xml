@@ -28,6 +28,7 @@
             android:id="@+id/app_bar_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/gray_80"
             app:layout_behavior=".utils.widgets.custom.FixAppBarLayoutBehavior"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="@dimen/space_16"
-                    android:layout_marginTop="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_16"
                     android:padding="@dimen/space_4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -73,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/space_8"
                     android:text="@{WeekDayProvider.INSTANCE.getName(context, viewModel.webtoonDetails.weekday)}"
-                    android:textColor="@{BackgroundColorMapper.INSTANCE.getColor(context, viewModel.webtoonDetails.backgroundColor)}"
+                    android:textColor="@{BackgroundColorMapper.INSTANCE.getColor(context, viewModel.webtoonDetails.site)}"
                     android:textSize="@dimen/font_size_12"
                     app:layout_constraintBottom_toBottomOf="@id/iv_site_logo"
                     app:layout_constraintStart_toEndOf="@id/iv_site_logo"
@@ -81,27 +82,39 @@
                     tools:text="월요일"
                     tools:textColor="@color/green_100" />
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="@dimen/space_20"
-                    android:layout_marginTop="@dimen/space_16"
-                    android:layout_marginEnd="@dimen/space_20"
-                    android:layout_marginBottom="@dimen/space_10"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/iv_thumbnail"
-                    app:tabBackground="@color/white"
-                    app:tabGravity="fill"
-                    app:tabIndicatorColor="@color/blue_100"
-                    app:tabIndicatorFullWidth="false"
-                    app:tabIndicatorGravity="bottom"
-                    app:tabIndicatorHeight="@dimen/space_7"
-                    app:tabMode="fixed"
-                    app:tabPaddingBottom="-2dp"
-                    app:tabRippleColor="@null" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="@dimen/space_12"
+                        android:layout_marginTop="@dimen/space_16"
+                        android:layout_marginEnd="@dimen/space_20"
+                        android:layout_marginBottom="@dimen/space_16"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:tabBackground="@color/white"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="@color/blue_100"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabIndicatorGravity="bottom"
+                        app:tabIndicatorHeight="@dimen/space_7"
+                        app:tabMode="scrollable"
+                        app:tabPaddingBottom="-2dp"
+                        app:tabRippleColor="@null"
+                        app:tabSelectedTextColor="@color/gray_90"
+                        app:tabTextAppearance="@style/appearance_tab_text" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -15,6 +15,8 @@
     <string name="common_search">검색</string>
     <string name="common_search_title">무엇을 찾으시나요?</string>
     <string name="common_search_hint">작가, 작품 검색어 입력하기</string>
+    <string name="common_tooni_home">투니 홈</string>
+    <string name="common_tooni_comment">투니 댓글</string>
 
     <string name="ic_favorites_direction">Direction</string>
 

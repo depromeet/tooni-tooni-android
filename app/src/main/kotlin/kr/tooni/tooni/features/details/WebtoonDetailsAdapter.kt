@@ -23,8 +23,9 @@ class WebtoonDetailsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val items = arrayListOf<Bindable>()
     
     fun submitList(details: WebtoonDetails) {
-        // TODO : map to Bindable
         items.clear()
+        items += WebtoonDetailsHomeViewHolder.Data(details)
+        items += WebtoonDetailsCommentViewHolder.Data(details.comments)
         notifyDataSetChanged()
     }
     

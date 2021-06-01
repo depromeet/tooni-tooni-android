@@ -17,7 +17,7 @@ object WeekDayProvider {
     
     fun getName(context: Context, weekDay: List<WeekDay>): String {
         return weekDay.joinToString(String.WHITE_SPACE) { day ->
-            context.resources.getStringArray(R.array.week_day)[day.ordinal]
+            "${context.resources.getStringArray(R.array.week_day)[day.ordinal]}요일"
         }
     }
 }
