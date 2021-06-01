@@ -18,4 +18,7 @@
 
     <string name="ic_favorites_direction">Direction</string>
 
+    <string name="tv_recent_none">최근 본 작품이 없어요 :(</string>
+    <string name="tv_favorites_none">아직 즐겨찾기 한 작품이 없어요 :(</string>
+
 </resources>
