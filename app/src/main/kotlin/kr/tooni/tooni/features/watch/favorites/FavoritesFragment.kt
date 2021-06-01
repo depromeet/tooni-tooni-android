@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.tooni.tooni.databinding.FragmentFavoritesBinding
@@ -37,7 +38,7 @@ class FavoritesFragment : Fragment() {
         val repository = FavoritesRepository(dao)
         val factory = FavoritesListViewModelFactory(repository)
         favoritesListViewModel = ViewModelProvider(this, factory).get(FavoritesListViewModel::class.java)
-//        favoritesListViewModel.updateFavorites()
+//        favoritesListViewModel.updateFavorites() // 임시 데이터 insert
 
         initRecyclerView()
 
@@ -49,17 +50,15 @@ class FavoritesFragment : Fragment() {
         adapter = FavoritesListAdapter { selectedItem: Favorites -> heartBtnClicked(selectedItem) }
         binding.rvFavorites.adapter = adapter
 
-//        if(adapter.itemCount == 0) {
-//            binding.tvFavoritesNone.visibility = View.VISIBLE
-//        } else {
-//            binding.tvFavoritesNone.visibility = View.GONE
-//        }
         displayFavoritesList()
     }
 
     private fun displayFavoritesList() {
-        favoritesListViewModel.getSavedFavorites().observe(viewLifecycleOwner, {
-            adapter.setList(it)
+        favoritesListViewModel.getSavedFavorites().observe(viewLifecycleOwner, { list ->
+            binding.rvFavorites.isVisible = list.isNotEmpty()
+            binding.tvFavoritesNone.isVisible = list.isEmpty()
+
+            adapter.setList(list)
             adapter.notifyDataSetChanged()
         })
     }
