@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kr.tooni.tooni.base.BaseViewModel
 import kr.tooni.tooni.core.model.Author
+import kr.tooni.tooni.features.watch.favorites.db.Favorites
 import kr.tooni.tooni.features.watch.favorites.db.FavoritesRepository
 
 class FavoritesListViewModel(private val repository: FavoritesRepository): BaseViewModel() {

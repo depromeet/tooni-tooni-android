@@ -1,6 +1,5 @@
 package kr.tooni.tooni.features.watch.favorites.db
 
-import kr.tooni.tooni.features.watch.favorites.Favorites
 import kr.tooni.tooni.watch.favorites.db.FavoritesDAO
 
 class FavoritesRepository(private val dao : FavoritesDAO) {

@@ -1,4 +1,4 @@
-package kr.tooni.tooni.features.watch.favorites
+package kr.tooni.tooni.features.watch.favorites.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

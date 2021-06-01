@@ -5,9 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kr.tooni.tooni.core.model.Author
 import kr.tooni.tooni.databinding.ItemFavoritesBinding
-import kr.tooni.tooni.features.watch.favorites.Favorites
-import kr.tooni.tooni.generated.callback.OnClickListener
-import java.util.concurrent.Flow
+import kr.tooni.tooni.features.watch.favorites.db.Favorites
 
 class FavoritesListAdapter(private val clickListener: (Favorites) -> Unit) : RecyclerView.Adapter<Holder>() {
 

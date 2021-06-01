@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.tooni.tooni.databinding.FragmentFavoritesBinding
 import kr.tooni.tooni.features.watch.adapter.FavoritesListAdapter
+import kr.tooni.tooni.features.watch.favorites.db.Favorites
 import kr.tooni.tooni.features.watch.favorites.db.FavoritesDatabase
 import kr.tooni.tooni.features.watch.favorites.db.FavoritesRepository
 

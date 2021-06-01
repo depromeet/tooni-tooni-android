@@ -2,7 +2,7 @@ package kr.tooni.tooni.watch.favorites.db
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import kr.tooni.tooni.features.watch.favorites.Favorites
+import kr.tooni.tooni.features.watch.favorites.db.Favorites
 
 @Dao
 interface FavoritesDAO {
