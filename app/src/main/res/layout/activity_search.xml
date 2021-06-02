@@ -55,10 +55,11 @@
             app:layout_constraintBottom_toTopOf="@id/searchLine"
             app:layout_constraintStart_toEndOf="@id/searchHint"
             app:layout_constraintTop_toTopOf="@id/searchHint"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_search" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/searchView1"
+            android:id="@+id/beforeSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,11 +72,13 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecommend"
-                android:layout_width="327dp"
-                android:layout_height="96dp"
-                android:layout_marginTop="@dimen/space_28"
+                android:layout_width="348dp"
+                android:layout_height="456dp"
+                android:layout_marginTop="@dimen/space_21"
                 android:layout_marginBottom="@dimen/space_10"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginStart="@dimen/space_14"
+                android:layout_marginEnd="@dimen/space_14"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -101,46 +104,19 @@
                 app:layout_constraintTop_toBottomOf="@id/searchRecommend" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/searchView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchLine"
-            app:layout_constraintVertical_bias="0.0"
-            android:paddingStart="@dimen/space_24"
-            android:visibility="gone">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recentKeywordItem"
+            android:layout_width="299dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="@dimen/space_32"
+            app:layout_constraintTop_toBottomOf="@id/searchLine"
+            app:layout_constraintStart_toStartOf="@id/searchLine"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_recent_keyword">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
-            <TextView
-                android:id="@+id/recentKeyword"
-                android:layout_width="299dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="@dimen/space_24"
-                android:layout_marginTop="@dimen/space_28"
-                android:layout_marginBottom="@dimen/space_8"
-                android:text="@string/recent_search"
-                android:textColor="@color/gray_90"
-                app:layout_constraintStart_toStartOf="@id/searchView2"
-                app:layout_constraintTop_toTopOf="@id/searchView2" />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recentKeywordItem"
-                android:layout_width="299dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="@dimen/space_4"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="@id/recentKeyword"
-                app:layout_constraintStart_toStartOf="@id/recentKeyword"
-                app:layout_constraintTop_toBottomOf="@+id/recentKeyword"
-                tools:listitem="@layout/item_recent_keyword">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

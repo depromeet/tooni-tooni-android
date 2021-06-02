@@ -10,9 +10,11 @@ import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivitySearchBinding
 
-class SearchActivity: BaseActivity<ActivitySearchBinding>(R.layout.activity_search) {
+class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search) {
     lateinit var mbinding: ActivitySearchBinding
     var imm: InputMethodManager? = null
+    lateinit var viewModel: RecentViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mbinding = DataBindingUtil.setContentView(this, R.layout.activity_search)
@@ -23,24 +25,26 @@ class SearchActivity: BaseActivity<ActivitySearchBinding>(R.layout.activity_sear
         mbinding.recentKeywordItem.layoutManager = LinearLayoutManager(this)
 
         imm = getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-        
+
+
+
     }
 
 
     fun hideKeyboard(v: View) {
-        imm?.hideSoftInputFromWindow(v.windowToken, 0 )
+        imm?.hideSoftInputFromWindow(v.windowToken, 0)
         showHide(mbinding.searchView2)
         showHide(mbinding.searchView1)
     }
 
-    fun showKeyboard(v: View){
-        imm?.showSoftInput(mbinding.searchHint,0)
+    fun showKeyboard(v: View) {
+        imm?.showSoftInput(mbinding.searchHint, 0)
         showHide(mbinding.searchView2)
         showHide(mbinding.searchView1)
     }
 
     fun showHide(view: View) {
-        view.visibility = if(view.visibility == View.GONE){
+        view.visibility = if (view.visibility == View.GONE) {
             View.VISIBLE
         } else {
             View.GONE
