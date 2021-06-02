@@ -1,42 +1,54 @@
 package kr.tooni.tooni.features.search
 
-import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kr.tooni.tooni.R
-import kr.tooni.tooni.databinding.ItemRecentKeywordBinding
 
-class RecentAdapter : RecyclerView.Adapter<RecentAdapter.ViewHolder>(){
-    private var data = mutableListOf<RecentEntity>()
+class RecentAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemRecentKeywordBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false)
-        return ViewHolder(binding)
+    private val TYPE_HEADER = 0
+    private val TYPE_ITEM = 1
+
+    private var data: ArrayList<RecentEntity> = arrayListOf()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            TYPE_HEADER -> HeaderViewHolder(parent.inflate(R.layout.header_recent))
+                else -> ItemViewHolder(parent.inflate(R.layout.item_recent_keyword))
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is HeaderViewHolder -> {
+                holder.itemView.setOnClickListener{
+
+                }
+            }
+            else -> {
+                val item = data[position -1]
+
+                holder.itemView.apply{
+
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return data.size + 1
     }
 
-
-    class ViewHolder(private val binding: ItemRecentKeywordBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(recentEntity: RecentEntity){
-            binding.recentEntity = recentEntity
-            binding.executePendingBindings()
+    override fun getItemViewType(position: Int): Int {
+        return when(position) {
+            0 -> TYPE_HEADER
+            else -> TYPE_ITEM
         }
-
-
-
     }
+
+    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
 }
