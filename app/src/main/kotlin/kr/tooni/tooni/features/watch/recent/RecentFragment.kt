@@ -5,8 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kr.tooni.tooni.R
-import kr.tooni.tooni.features.watch.favorites.FavoritesFragment
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kr.tooni.tooni.core.model.Webtoon
+import kr.tooni.tooni.databinding.FragmentRecentBinding
+import kr.tooni.tooni.features.watch.recent.db.RecentWebtoon
+import kr.tooni.tooni.features.watch.recent.db.RecentWebtoonDAO
+import kr.tooni.tooni.features.watch.recent.db.RecentWebtoonDatabase
 
 class RecentFragment : Fragment() {
 
@@ -19,9 +26,34 @@ class RecentFragment : Fragment() {
         }
     }
 
+    private lateinit var binding: FragmentRecentBinding
+    private lateinit var recentWebtoonDAO: RecentWebtoonDAO
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recent, container, false)
+        binding = FragmentRecentBinding.inflate(inflater, container, false)
+
+        val db = Room.databaseBuilder(
+            this.requireContext(),
+            RecentWebtoonDatabase::class.java,
+            "recent_webtoon_database"
+        ).build()
+
+        recentWebtoonDAO = db.recentWebtoonDAO()
+        testDB()
+
+        return binding.root
+    }
+
+    private fun testDB() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            // Insert
+            recentWebtoonDAO.insertRecentWebtoon(RecentWebtoon(0, Webtoon.EMPTY))
+            recentWebtoonDAO.insertRecentWebtoon(RecentWebtoon(0, Webtoon.EMPTY))
+            recentWebtoonDAO.insertRecentWebtoon(RecentWebtoon(0, Webtoon.EMPTY))
+
+            // Delete
+            recentWebtoonDAO.deleteRecentWebtoon(RecentWebtoon(1, Webtoon.EMPTY))
+        }
     }
 }
