@@ -39,7 +39,7 @@ class FavoritesFragment : Fragment() {
         val repository = FavoritesRepository(dao)
         val factory = FavoritesListViewModelFactory(repository)
         favoritesListViewModel = ViewModelProvider(this, factory).get(FavoritesListViewModel::class.java)
-//        favoritesListViewModel.updateFavorites() // 임시 데이터 insert
+        favoritesListViewModel.updateFavorites() // 임시 데이터 insert
 
         initRecyclerView()
 
@@ -66,7 +66,7 @@ class FavoritesFragment : Fragment() {
 
     fun heartBtnClicked(favorites: Favorites) {
         Toast.makeText(context, "${favorites.title} 삭제되었습니다.", Toast.LENGTH_SHORT).show()
-        favoritesListViewModel.delete(favorites)
+        favoritesListViewModel.deleteAll()
     }
 
 }
