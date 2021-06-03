@@ -1,6 +1,7 @@
 package kr.tooni.tooni.features.watch.recent.db
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecentWebtoonDAO {
@@ -17,11 +18,11 @@ interface RecentWebtoonDAO {
     @Delete
     suspend fun deleteRecentWebtoon(recentWebtoon: RecentWebtoon): Int
 
-    @Query("SELECT * FROM recent_webtoon_data_table")
-    suspend fun getAllRecentWebtoon(): List<RecentWebtoon>
-
     // Retrun the number of rows that were deleted
     @Query("DELETE FROM recent_webtoon_data_table")
     suspend fun deleteAllRecentWebtoon(): Int
+
+    @Query("SELECT * FROM recent_webtoon_data_table")
+    fun getAllRecentWebtoons(): Flow<List<RecentWebtoon>>
 
 }

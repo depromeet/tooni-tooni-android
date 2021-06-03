@@ -5,15 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
-import androidx.room.Room
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kr.tooni.tooni.core.model.Webtoon
+import androidx.lifecycle.ViewModelProvider
 import kr.tooni.tooni.databinding.FragmentRecentBinding
-import kr.tooni.tooni.features.watch.recent.db.RecentWebtoon
-import kr.tooni.tooni.features.watch.recent.db.RecentWebtoonDAO
 import kr.tooni.tooni.features.watch.recent.db.RecentWebtoonDatabase
+import kr.tooni.tooni.features.watch.recent.db.RecentWebtoonRepository
 
 class RecentFragment : Fragment() {
 
@@ -27,33 +22,18 @@ class RecentFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentRecentBinding
-    private lateinit var recentWebtoonDAO: RecentWebtoonDAO
+    private lateinit var recentWebtoonViewModel: RecentWebtoonViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentRecentBinding.inflate(inflater, container, false)
 
-        val db = Room.databaseBuilder(
-            this.requireContext(),
-            RecentWebtoonDatabase::class.java,
-            "recent_webtoon_database"
-        ).build()
-
-        recentWebtoonDAO = db.recentWebtoonDAO()
-        testDB()
+        val dao = RecentWebtoonDatabase.getInstance(this.requireContext()).recentWebtoonDAO
+        val repository = RecentWebtoonRepository(dao)
+        val factory = RecentWebtoonViewModelFactory(repository)
+        recentWebtoonViewModel = ViewModelProvider(this, factory).get(RecentWebtoonViewModel::class.java)
 
         return binding.root
     }
 
-    private fun testDB() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            // Insert
-            recentWebtoonDAO.insertRecentWebtoon(RecentWebtoon(0, Webtoon.EMPTY))
-            recentWebtoonDAO.insertRecentWebtoon(RecentWebtoon(0, Webtoon.EMPTY))
-            recentWebtoonDAO.insertRecentWebtoon(RecentWebtoon(0, Webtoon.EMPTY))
-
-            // Delete
-            recentWebtoonDAO.deleteRecentWebtoon(RecentWebtoon(1, Webtoon.EMPTY))
-        }
-    }
 }
