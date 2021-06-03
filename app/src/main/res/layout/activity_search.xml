@@ -84,7 +84,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="36dp"
                 tools:layout_editor_absoluteY="276dp"
-                tools:listitem="@layout/item_search_recommend">
+                tools:listitem="@layout/item_search_recommend"
+                >
 
             </androidx.recyclerview.widget.RecyclerView>
 

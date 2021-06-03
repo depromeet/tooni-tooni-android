@@ -26,7 +26,11 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+       if(holder is WebtoonHeaderViewHolder) {
+           //TODO
+       } else if(holder is WebtoonSearchItemViewHolder) {
+           //TODO 
+       }
     }
 
     override fun getItemCount(): Int {
@@ -59,9 +63,9 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         data class Data(val item: List<WebtoonRecentEntity>) : Bindable(ViewType.TYPE_ITEM.index)
 
-        override fun bind(data: Data) {
-            binding.executePendingBindings()
-        }
+           //override fun bind(data: Data) {
+           //     binding.executePendingBindings()
+           //}
 
         companion object {
             fun create(parent: ViewGroup): WebtoonSearchItemViewHolder {

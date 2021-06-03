@@ -4,7 +4,7 @@
     <data>
         <variable
             name="recentEntity"
-            type="kr.tooni.tooni.features.search.RecentEntity" />
+            type="kr.tooni.tooni.features.search.WebtoonRecentEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
