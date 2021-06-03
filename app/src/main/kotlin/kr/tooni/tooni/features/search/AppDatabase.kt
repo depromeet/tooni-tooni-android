@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [RecentEntity::class], version = 1)
+@Database(entities = [WebtoonRecentEntity::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun RecentDAO(): RecentDAO
+    abstract fun RecentDAO(): WebtoonRecentDAO
 
     companion object {
         @Volatile
