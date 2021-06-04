@@ -29,6 +29,7 @@ class RecentWebtoonAdapter(private val clickListner: (RecentWebtoon) -> Unit): R
     fun setList(recentWebtoons: List<RecentWebtoon>) {
         recentWebtoonsList.clear()
         recentWebtoonsList.addAll(recentWebtoons)
+        notifyDataSetChanged()
     }
 
 }
@@ -36,6 +37,8 @@ class RecentWebtoonAdapter(private val clickListner: (RecentWebtoon) -> Unit): R
 class Holder(val binding: ItemRecentWebtoonBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(recentWebtoon: RecentWebtoon, clickListner: (RecentWebtoon) -> Unit) {
+        binding.recentWebtoon = recentWebtoon
+        binding.executePendingBindings()
         binding.tvRecentTitle.text = recentWebtoon.webtoon.title
         binding.tvRecentAuthors.text = recentWebtoon.webtoon.authorFullName
         binding.tvRecentScore.text = String.format("%.1f", recentWebtoon.webtoon.score)

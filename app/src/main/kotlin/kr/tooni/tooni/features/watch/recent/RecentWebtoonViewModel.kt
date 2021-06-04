@@ -15,9 +15,11 @@ import kr.tooni.tooni.features.watch.recent.db.RecentWebtoonRepository
 
 class RecentWebtoonViewModel(private val repository: RecentWebtoonRepository): ViewModel() {
 
+    private lateinit var recentWebtoon: RecentWebtoon
+
     fun updateRecentWebtoons() {
         for(i in 1 until 20) {
-            var recentWebtoon = RecentWebtoon(
+            recentWebtoon = RecentWebtoon(
                 i,
                 Webtoon(
                     i.toLong(),
@@ -37,6 +39,7 @@ class RecentWebtoonViewModel(private val repository: RecentWebtoonRepository): V
 
     private fun insertRecentWebtoon(recentWebtoon: RecentWebtoon) = viewModelScope.launch {
         repository.insert(recentWebtoon)
+
     }
 
     fun deleteRecentWebtoon(recentWebtoon: RecentWebtoon) = viewModelScope.launch {
