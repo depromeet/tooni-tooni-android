@@ -1,9 +1,26 @@
 <resources>
 
-    <string name="common_home">홈</string>
+    <string-array name="week_day">
+        <item name="common_mon">월</item>
+        <item name="common_tue">화</item>
+        <item name="common_wed">수</item>
+        <item name="common_thu">목</item>
+        <item name="common_fri">금</item>
+        <item name="common_sat">토</item>
+        <item name="common_sun">일</item>
+    </string-array>
 
+    <string name="common_home">홈</string>
+    <string name="common_search">검색</string>
     <string name="common_search_title">무엇을 찾으시나요?</string>
     <string name="common_search_hint">작가, 작품 검색어 입력하기</string>
     <string name="common_search_recommend">이런 웹툰 어때요?</string>
     <string name="recent_search">최근 검색어</string>
+    <string name="ic_favorites_direction">Direction</string>
+
+    <!--watch-->
+    <string name="tv_watch_my_toon">마이툰</string>
+    <string name="tv_recent_none">최근 본 작품이 없어요 :(</string>
+    <string name="tv_favorites_none">아직 즐겨찾기 한 작품이 없어요 :(</string>
+
 </resources>

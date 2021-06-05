@@ -1,5 +1,7 @@
 package kr.tooni.tooni.features.search
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -44,6 +46,14 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             View.VISIBLE
         } else {
             View.GONE
+        }
+    }
+    
+    companion object {
+        
+        fun start(context: Context) {
+            val intent = Intent(context, WebtoonSearchActivity::class.java)
+            context.startActivity(intent)
         }
     }
 }

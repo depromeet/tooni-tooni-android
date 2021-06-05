@@ -21,7 +21,6 @@
         </activity>
         <activity android:name=".features.search.WebtoonSearchActivity"
             android:windowSoftInputMode="adjustResize">
-
         </activity>
     </application>
 
