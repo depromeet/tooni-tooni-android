@@ -37,7 +37,7 @@ class RecentFragment : Fragment() {
         val repository = RecentWebtoonRepository(dao)
         val factory = RecentWebtoonViewModelFactory(repository)
         recentWebtoonViewModel = ViewModelProvider(this, factory).get(RecentWebtoonViewModel::class.java)
-//        recentWebtoonViewModel.updateRecentWebtoons() // 임시 데이터
+//        recentWebtoonViewModel.updateRecentWebtoons() // 임시 데이터 insert
 
         initRecyclerView()
 

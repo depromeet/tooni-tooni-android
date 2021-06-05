@@ -40,10 +40,10 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:id="@+id/iv_favorites_site"
+                android:id="@+id/iv_recent_site"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:src="@drawable/icon_platform_naver"/>
+                tools:src="@drawable/icon_platform_naver"/>
 
         </FrameLayout>
 
@@ -94,7 +94,7 @@
                 android:id="@+id/tv_recent_genres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="스토리 | 액션"
+                tools:text="스토리 | 액션"
                 android:textColor="@color/gray_80"
                 android:textSize="10sp"/>
 

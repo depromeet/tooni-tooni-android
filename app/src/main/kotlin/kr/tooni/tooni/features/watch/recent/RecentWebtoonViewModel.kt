@@ -1,6 +1,5 @@
 package kr.tooni.tooni.features.watch.recent
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
@@ -19,16 +18,23 @@ class RecentWebtoonViewModel(private val repository: RecentWebtoonRepository): V
 
     fun updateRecentWebtoons() {
         for(i in 1 until 20) {
+            var site = Site.NAVER
+            if(i % 3 == 1) site = Site.DAUM
+            if(i % 3 == 2) site = Site.KAKAO
+
             recentWebtoon = RecentWebtoon(
                 i,
                 Webtoon(
                     i.toLong(),
-                    Site.NAVER,
+                    site,
                     "급식 아빠 ${i}",
+                    "",
                     listOf(Author(0, "최현정"), Author(1, "김재한")),
                     "",
+                    "",
                     5.25555,
-                    listOf("스토리", "액션"),
+                    listOf("드라마", "순정"),
+                    listOf(),
                     BackgroundColor.NONE,
                     false
                 )
