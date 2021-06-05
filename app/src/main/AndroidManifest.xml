@@ -22,6 +22,10 @@
         <activity android:name=".features.search.WebtoonSearchActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
+
+        <activity
+            android:name=".features.details.WebtoonDetailsActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

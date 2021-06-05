@@ -9,8 +9,14 @@ import androidx.core.content.ContextCompat
 import kr.tooni.tooni.R
 import kr.tooni.tooni.core.model.Site
 import kr.tooni.tooni.core.model.Webtoon
+import kr.tooni.tooni.core.model.WebtoonDetails
 
 object SiteLogoProvider {
+    
+    fun getDrawable(context: Context, details: WebtoonDetails): Drawable? {
+        val resId = convert(details.site).takeIf { it != -1 } ?: return null
+        return ContextCompat.getDrawable(context, resId)
+    }
     
     fun getDrawable(context: Context, webtoon: Webtoon): Drawable? {
         val resId = convert(webtoon.site).takeIf { it != -1 } ?: return null

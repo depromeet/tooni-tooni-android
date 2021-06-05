@@ -19,5 +19,7 @@ object ImageViewBindingAdapter {
 
     @JvmStatic
     @BindingAdapter(value = ["app:setDrawable"], requireAll = true)
-    fun ImageView.setDrawable(drawable: Drawable?) = setImageDrawable(drawable)
+    fun ImageView.setDrawable(drawable: Drawable?) {
+        setImageDrawable(drawable)
+    }
 }

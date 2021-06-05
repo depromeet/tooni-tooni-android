@@ -16,7 +16,9 @@ import kr.tooni.tooni.core.StringKeySet
 import kr.tooni.tooni.core.extensions.observeEvent
 import kr.tooni.tooni.core.extensions.showSnackbar
 import kr.tooni.tooni.databinding.FragmentWebtoonByDayBinding
-import kr.tooni.tooni.utils.ItemGridDecorator
+import kr.tooni.tooni.features.day.WebtoonByDayViewModel.Action.WebtoonClick
+import kr.tooni.tooni.features.details.WebtoonDetailsActivity
+import kr.tooni.tooni.utils.GridItemDecoration
 
 class WebtoonByDayFragment :
     BaseFragment<FragmentWebtoonByDayBinding>(R.layout.fragment_webtoon_by_day) {
@@ -25,7 +27,7 @@ class WebtoonByDayFragment :
         WebtoonByDayViewModelFactory(this, arguments)
     }
     
-    private val adapter by lazy { WebtoonByDayAdapter() }
+    private val adapter by lazy { WebtoonByDayAdapter(viewModel) }
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +45,12 @@ class WebtoonByDayFragment :
         
         viewModel.webtoons.observe(viewLifecycleOwner, adapter::submitList)
         
+        viewModel.action.observeEvent(viewLifecycleOwner) { action ->
+            when (action) {
+                is WebtoonClick -> WebtoonDetailsActivity.start(requireContext(), action.id)
+            }
+        }
+        
         viewModel.snackBarMessage.observeEvent(viewLifecycleOwner) { message ->
             val anchor = requireActivity().findViewById<View>(R.id.anchor)
             showSnackbar(anchor, message)
@@ -50,10 +58,11 @@ class WebtoonByDayFragment :
     }
     
     private fun setupRecyclerView() {
-        val layoutManager = binding.recyclerView.layoutManager as GridLayoutManager
-        val margin = ItemGridDecorator.Margin.Template.DEFAULT
-        
-        binding.recyclerView.addItemDecoration(ItemGridDecorator(layoutManager.spanCount, margin))
+        val itemDecoration = GridItemDecoration(
+            spanCount = 3,
+            spacing = resources.getDimensionPixelSize(R.dimen.space_12)
+        )
+        binding.recyclerView.addItemDecoration(itemDecoration)
         binding.recyclerView.adapter = adapter
     }
     

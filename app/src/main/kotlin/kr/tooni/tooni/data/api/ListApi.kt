@@ -12,12 +12,12 @@ import retrofit2.http.Query
 
 interface ListApi : Api {
 
-    @GET("search")
+    @GET("api/v1/webtoons/search")
     fun search(
         @Query("query") query: String
     ): Single<WebtoonSearchResponse>
     
-    @GET("weekday/{weekday}")
+    @GET("api/v1/webtoons/weekday/{weekday}")
     fun getWebtoonsByDay(
         @Path("weekday") weekday: String
     ): Single<WebtoonWeekDayResponse>

@@ -3,12 +3,28 @@
  */
 package kr.tooni.tooni.core.model
 
+import com.google.gson.annotations.SerializedName
+import kr.tooni.tooni.core.StringKeySet
+
 enum class WeekDay(val value: String) {
+    @SerializedName(StringKeySet.MON)
     MON("mon"),
-    TUE("thu"),
+    
+    @SerializedName(StringKeySet.TUE)
+    TUE("tue"),
+    
+    @SerializedName(StringKeySet.WED)
     WED("wed"),
+    
+    @SerializedName(StringKeySet.THU)
     THU("thu"),
+    
+    @SerializedName(StringKeySet.FRI)
     FRI("fri"),
+    
+    @SerializedName(StringKeySet.SAT)
     SAT("sat"),
+    
+    @SerializedName(StringKeySet.SUN)
     SUN("sun")
 }

@@ -43,9 +43,7 @@ object ApiProvider {
     }
     
     private val gson by lazy {
-        GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create()
+        GsonBuilder().create()
     }
     
     private fun provide(): Retrofit {
