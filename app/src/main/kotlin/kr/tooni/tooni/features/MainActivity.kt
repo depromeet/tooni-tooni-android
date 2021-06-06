@@ -1,5 +1,7 @@
 package kr.tooni.tooni.features
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -89,4 +91,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 .fragments
                 .forEach { fragment -> hide(fragment) }
         }
+    
+    companion object {
+        
+        fun start(context: Context, action: Intent.() -> Unit = {}) {
+            val intent = Intent(context, MainActivity::class.java)
+                .apply(action)
+            context.startActivity(intent)
+        }
+    }
 }

@@ -11,16 +11,15 @@ import kr.tooni.tooni.core.extensions.EMPTY
 
 class PreferenceImpl constructor(private val context: Context) : Preference {
     
-    override fun getInstance(): SharedPreferences {
-        return context.getSharedPreferences(
+    private val instance: SharedPreferences
+        get() = context.getSharedPreferences(
             BuildConfig.APPLICATION_ID + PREFS_NAME, Context.MODE_PRIVATE
         )
-    }
     
     override var uid: String
-        get() = getInstance().getString(USER_ID, String.EMPTY) ?: String.EMPTY
+        get() = instance.getString(USER_ID, String.EMPTY) ?: String.EMPTY
         set(value) {
-            getInstance().edit { putString(USER_ID, value).apply() }
+            instance.edit { putString(USER_ID, value).apply() }
         }
     
     companion object {

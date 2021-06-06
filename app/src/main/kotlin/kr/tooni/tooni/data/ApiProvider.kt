@@ -10,6 +10,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import kr.tooni.tooni.BuildConfig
 import kr.tooni.tooni.TooniApp
+import kr.tooni.tooni.data.api.Api
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -55,7 +56,7 @@ object ApiProvider {
             .build()
     }
     
-    fun <T> create(service: Class<T>): T {
+    fun <T: Api> create(service: Class<T>): T {
         return provide().create(service)
     }
 }

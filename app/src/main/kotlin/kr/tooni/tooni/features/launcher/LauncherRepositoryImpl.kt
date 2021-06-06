@@ -5,11 +5,12 @@ package kr.tooni.tooni.features.launcher
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
+import javax.inject.Inject
 
-class LauncherRepositoryImpl constructor(
+class LauncherRepositoryImpl @Inject constructor(
     private val localDataSource: LauncherLocalDataSource,
     private val remoteDataSource: LauncherRemoteDataSource
-): LauncherRepository {
+) : LauncherRepository {
     
     override fun signInAnonymously(): Single<String> {
         return getUserId().flatMap { uid ->

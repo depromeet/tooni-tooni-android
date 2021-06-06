@@ -5,10 +5,12 @@ package kr.tooni.tooni.features.launcher
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityLauncherBinding
 
+@AndroidEntryPoint
 class LauncherActivity : BaseActivity<ActivityLauncherBinding>(R.layout.activity_launcher) {
     
     private val viewModel by viewModels<LauncherViewModel>()

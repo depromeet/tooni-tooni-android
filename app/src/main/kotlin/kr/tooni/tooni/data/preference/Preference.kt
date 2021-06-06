@@ -3,9 +3,6 @@
  */
 package kr.tooni.tooni.data.preference
 
-import android.content.SharedPreferences
-
 interface Preference {
-    fun getInstance(): SharedPreferences
     var uid: String
 }
