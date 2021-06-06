@@ -9,9 +9,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.tooni.tooni.core.WebtoonByDay
 import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.core.model.WeekDay
+import javax.inject.Inject
 
-class WebtoonByDayRepositoryImpl constructor(
-    private val remoteDataSource: WebtoonByDayRemoteDataSource = WebtoonByDayRemoteDataSource()
+class WebtoonByDayRepositoryImpl @Inject constructor(
+    private val remoteDataSource: WebtoonByDayRemoteDataSource
 ) : WebtoonByDayRepository {
     
     override fun getWebtoonsAllDay(): Single<WebtoonByDay> {

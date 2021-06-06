@@ -1,15 +1,19 @@
 package kr.tooni.tooni.features
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
 import kr.tooni.tooni.features.day.WebtoonWeekDayFragment
 import kr.tooni.tooni.features.watch.WatchFragment
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private val viewModel by viewModels<MainViewModel>()
@@ -89,4 +93,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 .fragments
                 .forEach { fragment -> hide(fragment) }
         }
+    
+    companion object {
+        
+        fun start(context: Context, action: Intent.() -> Unit = {}) {
+            val intent = Intent(context, MainActivity::class.java)
+                .apply(action)
+            context.startActivity(intent)
+        }
+    }
 }

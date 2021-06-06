@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
 }
 
@@ -38,10 +40,10 @@ android {
             applicationIdSuffix ".debug"
             debuggable true
             minifyEnabled false
-            ext.enableCrashlytics = false
             firebaseCrashlytics {
                 mappingFileUploadEnabled false
             }
+            ext.enableCrashlytics = false
         }
         release {
             resValue "string", "app_name", "Tooni Tooni"
@@ -79,10 +81,9 @@ android {
 
 dependencies {
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
-
     implementation deps.kotlin.stdlib
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
 
     implementation deps.jetpack.appCompat
     implementation deps.jetpack.coreKtx
@@ -110,13 +111,26 @@ dependencies {
     implementation deps.rx.kotlin
     implementation deps.rx.relay
 
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    kapt deps.room.compiler
+
+    implementation "com.google.dagger:hilt-android:2.36"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    kapt "com.google.dagger:hilt-android-compiler:2.36"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
     implementation deps.gson
     implementation deps.retrofit.core
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava
     implementation deps.okhttp.logging
 
-    implementation deps.firebase.crashlytics
+    implementation platform(deps.firebase.bom)
+    implementation deps.firebase.crashlyticsKtx
+    implementation deps.firebase.analyticsKtx
+    implementation deps.firebase.authKtx
+
     implementation deps.timber
 
     releaseImplementation deps.chuckNoOp

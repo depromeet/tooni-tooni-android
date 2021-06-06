@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.core.StringKeySet
@@ -20,13 +20,11 @@ import kr.tooni.tooni.features.day.WebtoonByDayViewModel.Action.WebtoonClick
 import kr.tooni.tooni.features.details.WebtoonDetailsActivity
 import kr.tooni.tooni.utils.GridItemDecoration
 
+@AndroidEntryPoint
 class WebtoonByDayFragment :
     BaseFragment<FragmentWebtoonByDayBinding>(R.layout.fragment_webtoon_by_day) {
     
-    private val viewModel by viewModels<WebtoonByDayViewModel> {
-        WebtoonByDayViewModelFactory(this, arguments)
-    }
-    
+    private val viewModel by viewModels<WebtoonByDayViewModel>()
     private val adapter by lazy { WebtoonByDayAdapter(viewModel) }
     
     override fun onCreateView(
