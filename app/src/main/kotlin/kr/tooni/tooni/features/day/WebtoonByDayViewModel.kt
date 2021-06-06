@@ -5,16 +5,22 @@ package kr.tooni.tooni.features.day
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.tooni.tooni.base.BaseViewModel
 import kr.tooni.tooni.base.arch.Event
+import kr.tooni.tooni.core.StringKeySet
+import kr.tooni.tooni.core.extensions.EMPTY
 import kr.tooni.tooni.core.model.Webtoon
 import timber.log.Timber
+import javax.inject.Inject
 
-class WebtoonByDayViewModel constructor(
-    day: String, // inject from savedStateHandle
-    private val webtoonByDayRepository: WebtoonByDayRepository = WebtoonByDayRepositoryImpl()
+@HiltViewModel
+class WebtoonByDayViewModel @Inject constructor(
+    private val webtoonByDayRepository: WebtoonByDayRepository,
+    handle: SavedStateHandle
 ) : BaseViewModel() {
     
     sealed class Action {
@@ -30,6 +36,8 @@ class WebtoonByDayViewModel constructor(
         get() = _action
     
     init {
+        val day: String = handle.get<String>(StringKeySet.DAY) ?: String.EMPTY
+        
         webtoonByDayRepository.getWebtoonsByDay(day)
             .doOnError { throwable -> showSnackBar(throwable.message) }
             .subscribeOn(Schedulers.io())

@@ -6,12 +6,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
 import kr.tooni.tooni.features.day.WebtoonWeekDayFragment
 import kr.tooni.tooni.features.watch.WatchFragment
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     
     private val viewModel by viewModels<MainViewModel>()

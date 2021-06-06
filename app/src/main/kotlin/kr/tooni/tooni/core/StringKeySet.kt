@@ -1,6 +1,10 @@
 package kr.tooni.tooni.core
 
 object StringKeySet {
+    const val AUTHORIZATION = "Authorization"
+    const val BEARER = "Bearer"
+    const val BASE_URL = "base_url"
+    
     const val WEEK_DAY = "week_day"
     const val DAY = "day"
     const val MON = "MON"

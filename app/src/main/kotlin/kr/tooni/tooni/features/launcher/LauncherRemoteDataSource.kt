@@ -20,7 +20,7 @@ class LauncherRemoteDataSource @Inject constructor(
             .map { it.data.nickname }
     }
     
-    fun getUserToken(): Single<String> {
+    fun getUserId(): Single<String> {
         return Single.create { emitter ->
             val exist = auth.currentUser?.uid
             if (!exist.isNullOrBlank()) {

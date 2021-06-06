@@ -19,11 +19,18 @@ class PreferenceImpl constructor(private val context: Context) : Preference {
     override var uid: String
         get() = instance.getString(USER_ID, String.EMPTY) ?: String.EMPTY
         set(value) {
-            instance.edit { putString(USER_ID, value).apply() }
+            instance.edit { putString(USER_ID, value).commit() }
+        }
+    
+    override var nickname: String
+        get() = instance.getString(NICK_NAME, String.EMPTY) ?: String.EMPTY
+        set(value) {
+            instance.edit { putString(NICK_NAME, value).commit() }
         }
     
     companion object {
         private const val PREFS_NAME = ".tooni.pref"
         private const val USER_ID = "USER_ID"
+        private const val NICK_NAME = "NICK_NAME"
     }
 }

@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import kr.tooni.tooni.data.ApiProvider
 import kr.tooni.tooni.data.api.AccountApi
+import retrofit2.Retrofit
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -26,7 +26,7 @@ object LauncherModule {
     }
     
     @Provides
-    fun provideAccountApi(apiProvider: ApiProvider): AccountApi {
-        return apiProvider.create(AccountApi::class.java)
+    fun provideAccountApi(retrofit: Retrofit): AccountApi {
+        return retrofit.create(AccountApi::class.java)
     }
 }

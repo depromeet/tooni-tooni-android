@@ -3,7 +3,6 @@
  */
 package kr.tooni.tooni.features.launcher
 
-import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
@@ -15,6 +14,16 @@ class LauncherRepositoryImpl @Inject constructor(
     override fun signInAnonymously(): Single<String> {
         return getUserId().flatMap { uid ->
             remoteDataSource.signInAnonymously(uid)
+                .doOnSuccess { nickname -> localDataSource.setUserNickname(nickname) }
+        }.flatMap { nickname ->
+            Single.create { emitter ->
+                if (nickname.isBlank()) {
+                    val errorMessage = "nickname is blank in signInAnonymously()"
+                    return@create emitter.onError(Exception(errorMessage))
+                }
+                
+                emitter.onSuccess(nickname)
+            }
         }
     }
     
@@ -22,15 +31,15 @@ class LauncherRepositoryImpl @Inject constructor(
         return localDataSource.getUserId()
             .flatMap { token ->
                 if (token.isBlank()) {
-                    return@flatMap remoteDataSource.getUserToken()
-                        .doOnSuccess { newToken -> setUserId(newToken) }
+                    return@flatMap remoteDataSource.getUserId()
+                        .doOnSuccess { newId -> setUserId(newId) }
                 }
                 
                 Single.just(token)
             }
     }
     
-    override fun setUserId(token: String): Completable {
-        return localDataSource.setUserId(token)
+    override fun setUserId(uid: String) {
+        return localDataSource.setUserId(uid)
     }
 }

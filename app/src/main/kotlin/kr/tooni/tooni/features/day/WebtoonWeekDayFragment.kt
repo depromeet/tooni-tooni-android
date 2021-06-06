@@ -10,11 +10,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWebtoonWeekDayBinding
 import kr.tooni.tooni.features.search.SearchActivity
 
+@AndroidEntryPoint
 class WebtoonWeekDayFragment :
     BaseFragment<FragmentWebtoonWeekDayBinding>(R.layout.fragment_webtoon_week_day) {
     

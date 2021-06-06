@@ -5,4 +5,5 @@ package kr.tooni.tooni.data.preference
 
 interface Preference {
     var uid: String
+    var nickname: String
 }
