@@ -2,7 +2,7 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/green_100</item>
+        <item name="colorAccent">@color/gray_80</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
