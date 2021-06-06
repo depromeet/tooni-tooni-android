@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivitySearchBinding
@@ -24,8 +25,7 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         binding.recentKeywordItem.layoutManager = LinearLayoutManager(this)
 
         val resultAdapter = WebtoonSearchResultAdapter()
-
-
+        
         binding.searchHint.setOnFocusChangeListener { view, focused ->
             if (focused) {
                 showKeyboard()
@@ -34,7 +34,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             } else {
                 hideKeyboard()
             }
-
         }
 
         vm.webtoons.observe(this, {
@@ -44,9 +43,19 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         vm.keywords.observe(this, {
             recentAdapter.submitList(it)
         })
+
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
+            binding.searchImg.visibility = View.GONE
+            binding.deleteImg.visibility = View.VISIBLE
         }
+
+        binding.deleteImg.setOnClickListener {
+            // 검색창이 사라지고 다시 searchHint 창이 떠야함
+            binding.searchImg.visibility = View.VISIBLE
+            binding.deleteImg.visibility = View.GONE
+        }
+
     }
 
 

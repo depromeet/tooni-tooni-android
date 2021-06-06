@@ -1,42 +1,68 @@
 package kr.tooni.tooni.features.search
 
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kr.tooni.tooni.base.BaseViewHolder
 import kr.tooni.tooni.base.arch.Bindable
 import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.databinding.ItemSearchResultBinding
 
-class WebtoonSearchResultAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-   
+class WebtoonSearchResultAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private enum class ViewType(val index: Int) {
+        TYPE_ITEM(0)
+    }
+
     private val item = arrayListOf<Bindable>()
 
     fun submitList(list: List<Webtoon>) {
         item.clear()
-        item += WebtoonSearchResultAdapter.ViewHolder
+        item += list.map { list ->
+            SearchResultViewHolder.Data(list)
+        }
         notifyDataSetChanged()
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val mbinding: ItemSearchResultBinding = ItemSearchResultBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder(mbinding)
+        return SearchResultViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        (holder as BaseViewHolder<Bindable>).bind(item[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return item.size
     }
 
-    class ViewHolder(binding: ItemSearchResultBinding) : RecyclerView.ViewHolder(binding.root) {
-        val binding = binding
+    class SearchResultViewHolder(
+        private val binding: ItemSearchResultBinding
+    ) : BaseViewHolder<SearchResultViewHolder.Data>(binding.root) {
 
-        fun bind(viewModel: WebtoonSearchViewModel) {
+        data class Data(val webtoon: Webtoon) : Bindable(ViewType.TYPE_ITEM.index)
+
+        override fun bind(data: Data) {
+            binding.searchWebtoon = data.webtoon
+            binding.executePendingBindings()
+
 
         }
+
+        companion object {
+            fun create(parent: ViewGroup): SearchResultViewHolder {
+                return SearchResultViewHolder(
+                    binding = ItemSearchResultBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+
     }
+
 
 }
