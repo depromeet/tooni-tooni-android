@@ -4,10 +4,19 @@ import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kr.tooni.tooni.base.arch.Bindable
+import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.databinding.ItemSearchResultBinding
 
-class WebtoonSearchResultAdapter(viewModel: WebtoonSearchViewModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    private val viewModel = viewModel
+class WebtoonSearchResultAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+   
+    private val item = arrayListOf<Bindable>()
+
+    fun submitList(list: List<Webtoon>) {
+        item.clear()
+        item += WebtoonSearchResultAdapter.ViewHolder
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val mbinding: ItemSearchResultBinding = ItemSearchResultBinding.inflate(LayoutInflater.from(parent.context),parent,false)

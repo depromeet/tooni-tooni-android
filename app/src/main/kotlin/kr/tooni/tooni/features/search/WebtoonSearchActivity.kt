@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.databinding.DataBindingUtil
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.tooni.tooni.R
@@ -13,50 +13,53 @@ import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivitySearchBinding
 
 class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search) {
-    lateinit var mbinding: ActivitySearchBinding
-    lateinit var vm: WebtoonSearchViewModel
-    var imm: InputMethodManager? = null
+    private val vm by viewModels<WebtoonSearchViewModel>()
+    private val imm by lazy { getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mbinding = DataBindingUtil.setContentView(this, R.layout.activity_search)
-        vm = ViewModelProvider(this).get(WebtoonSearchViewModel::class.java)
-
-        mbinding.lifecycleOwner = this
 
         val recentAdapter = WebtoonRecentAdapter()
-        mbinding.recentKeywordItem.adapter = recentAdapter
-        mbinding.recentKeywordItem.layoutManager = LinearLayoutManager(this)
+        binding.recentKeywordItem.adapter = recentAdapter
+        binding.recentKeywordItem.layoutManager = LinearLayoutManager(this)
 
-        imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        val resultAdapter = WebtoonSearchResultAdapter()
 
-        binding.searchHint.setOnFocusChangeListener{ view, focused ->
 
-            if(focused) {
-                showKeyboard(view)
+        binding.searchHint.setOnFocusChangeListener { view, focused ->
+            if (focused) {
+                showKeyboard()
+                vm.getAllRecentEntity()
                 binding.recentKeywordItem
-            }else{
-                //
-                hideKeyboard(view)
+            } else {
+                hideKeyboard()
             }
 
         }
 
+        vm.webtoons.observe(this, {
+            resultAdapter.submitList(it)
+        })
+
+        vm.keywords.observe(this, {
+            recentAdapter.submitList(it)
+        })
+        binding.searchImg.setOnClickListener {
+            vm.search(binding.searchHint.text.toString())
+        }
     }
 
 
-    fun hideKeyboard(v: View) {
-        imm?.hideSoftInputFromWindow(v.windowToken, 0)
+    private fun hideKeyboard() {
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
-    fun showKeyboard(v: View) {
-        imm?.showSoftInput(mbinding.searchHint, 0)
-
+    private fun showKeyboard() {
+        imm.showSoftInput(binding.searchHint, 0)
     }
 
-    
+
     companion object {
-        
         fun start(context: Context) {
             val intent = Intent(context, WebtoonSearchActivity::class.java)
             context.startActivity(intent)

@@ -12,7 +12,7 @@ import kr.tooni.tooni.databinding.ItemHeaderRecentBinding
 import kr.tooni.tooni.databinding.ItemRecentKeywordBinding
 import kr.tooni.tooni.features.details.WebtoonDetailsAdapter
 
-class WebtoonRecentAdapter : RecyclerView.Adapter<BaseViewHolder<Bindable>>() {
+class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private enum class ViewType(val index: Int) {
         TYPE_HEADER(0),
@@ -21,25 +21,33 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<BaseViewHolder<Bindable>>() {
 
     private val item = arrayListOf<Bindable>()
 
-    fun submitList(recentEntity: WebtoonRecentEntity) {
+    fun submitList(list: List<WebtoonRecentEntity>) {
         item.clear()
-        item += WebtoonRecentAdapter.WebtoonHeaderViewHolder.Data()
-        item += WebtoonRecentAdapter.WebtoonSearchItemViewHolder.Data()
+        item += WebtoonHeaderViewHolder.Data("최근 검색어")
+        item += list.map { entity ->
+            WebtoonSearchItemViewHolder.Data(entity)
+        }
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Bindable> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (ViewType.values()[viewType]) {
             ViewType.TYPE_HEADER -> WebtoonHeaderViewHolder.create(parent)
             ViewType.TYPE_ITEM -> WebtoonSearchItemViewHolder.create(parent)
         }
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<Bindable>, position: Int) {
-        when () {
-
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val item = item[position]) {
+            is WebtoonHeaderViewHolder.Data -> {
+                (holder as WebtoonHeaderViewHolder).bind(item)
+            }
+            is WebtoonSearchItemViewHolder.Data -> {
+                (holder as WebtoonSearchItemViewHolder).bind(item)
+            }
         }
     }
+
 
     override fun getItemCount(): Int {
         return item.size
