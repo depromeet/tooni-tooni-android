@@ -11,6 +11,9 @@
     </string-array>
 
     <string name="common_home">홈</string>
+    <string name="common_by_day">요일별</string>
+    <string name="common_mytoon">마이툰</string>
+    <string name="common_more">더보기</string>
 
     <string name="common_search">검색</string>
     <string name="common_search_title">무엇을 찾으시나요?</string>
