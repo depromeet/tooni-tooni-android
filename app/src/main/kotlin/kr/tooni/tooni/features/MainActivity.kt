@@ -22,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         initView()
         setInitialTab()
-        setBottomNavigationItemSelectedListener()
+        setBottomNavigation()
     }
     
     private fun initView() {
@@ -33,7 +33,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         showWebtoonWeekDayFragment()
     }
     
-    private fun setBottomNavigationItemSelectedListener() {
+    private fun setBottomNavigation() {
+        binding.bottomNavigationView.itemIconTintList = null
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home_1 -> showWatchFragment()

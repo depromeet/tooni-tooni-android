@@ -23,16 +23,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"/>
+        
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_view"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/gray_10"
+            android:background="@color/white"
             app:menu="@menu/home_tab"
-            app:itemTextColor="@color/gray_50"
-            app:itemIconTint="@color/gray_30"
-            app:itemRippleColor="@color/purple_100"
+            app:itemTextColor="@color/gray_90"
+            app:itemIconTint="@color/gray_90"
+            app:itemIconSize="24dp"
+            app:itemRippleColor="@color/gray_80"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
