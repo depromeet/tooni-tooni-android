@@ -11,7 +11,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ListApi : Api {
-
+    
     @GET("api/v1/webtoons/search")
     fun search(
         @Query("query") query: String

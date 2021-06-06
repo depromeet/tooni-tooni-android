@@ -4,5 +4,17 @@
 package kr.tooni.tooni.core.model
 
 data class User(
-    val nickname: String
-)
+    val accountId: Long,
+    val nickname: String,
+    val profileImage: String
+) {
+    
+    companion object {
+        
+        val EMPTY = User(
+            accountId = 0,
+            nickname = "이오형ㅋ",
+            profileImage = ""
+        )
+    }
+}

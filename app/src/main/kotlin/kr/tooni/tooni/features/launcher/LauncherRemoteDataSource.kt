@@ -5,6 +5,7 @@ package kr.tooni.tooni.features.launcher
 
 import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.rxjava3.core.Single
+import kr.tooni.tooni.core.model.User
 import kr.tooni.tooni.data.api.AccountApi
 import kr.tooni.tooni.data.request.LoginRequest
 import javax.inject.Inject
@@ -14,10 +15,10 @@ class LauncherRemoteDataSource @Inject constructor(
     private val auth: FirebaseAuth
 ) {
     
-    fun signInAnonymously(uid: String): Single<String> {
+    fun signInAnonymously(uid: String): Single<User> {
         val request = LoginRequest(loginToken = uid)
         return accountApi.login(request)
-            .map { it.data.nickname }
+            .map { it.data }
     }
     
     fun getUserId(): Single<String> {

@@ -12,9 +12,15 @@
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
     </style>
 
-    <style name="appearance_tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+    <style name="AppearanceTabLayout" parent="@android:style/TextAppearance.Widget.TabWidget">
         <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/gray_50</item>
+    </style>
+
+    <style name="AppearanceToolbar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray_90</item>
     </style>
 
     <style name="Widget.App.Snackbar" parent="Widget.MaterialComponents.Snackbar">

@@ -20,20 +20,20 @@
             android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:paddingTop="@dimen/space_32"
-            android:paddingBottom="@dimen/space_32"
-            android:paddingStart="@dimen/space_20"
-            android:paddingEnd="@dimen/space_20"
             android:clipToPadding="false"
+            android:paddingStart="@dimen/space_20"
+            android:paddingTop="@dimen/space_32"
+            android:paddingEnd="@dimen/space_20"
+            android:paddingBottom="@dimen/space_32"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="3"
-            tools:visibility="visible"
-            tools:itemCount= "6"
-            tools:listitem="@layout/item_webtoon" />
+            tools:itemCount="6"
+            tools:listitem="@layout/item_webtoon"
+            tools:visibility="visible" />
 
         <ProgressBar
             android:layout_width="wrap_content"

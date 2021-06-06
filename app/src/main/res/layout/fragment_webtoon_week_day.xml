@@ -11,10 +11,19 @@
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_by_day_tooni"
+                android:textColor="@color/gray_90"
+                android:textSize="@dimen/font_size_16"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -34,7 +43,7 @@
             app:tabPaddingBottom="-2dp"
             app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/gray_90"
-            app:tabTextAppearance="@style/appearance_tab_text" />
+            app:tabTextAppearance="@style/AppearanceTabLayout" />
 
         <View
             android:id="@+id/divider"

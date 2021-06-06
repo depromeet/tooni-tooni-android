@@ -34,8 +34,11 @@ object AppModule {
     
     @Provides
     @Singleton
-    fun providePreference(@ApplicationContext context: Context): Preference {
-        return PreferenceImpl(context)
+    fun providePreference(
+        @ApplicationContext context: Context,
+        gson: Gson
+    ): Preference {
+        return PreferenceImpl(context, gson)
     }
     
     @Provides
@@ -43,6 +46,13 @@ object AppModule {
     @Named(StringKeySet.BASE_URL)
     fun provideBaseUrl(): String {
         return BuildConfig.BASE_URL
+    }
+    
+    @Provides
+    @Singleton
+    @Named(StringKeySet.VERSION_NAME)
+    fun provideVersionName(): String {
+        return BuildConfig.VERSION_NAME
     }
     
     @Provides
@@ -61,7 +71,6 @@ object AppModule {
     }
     
     @Provides
-    @Singleton
     fun okHttpClient(
         preference: Preference,
         chuckerInterceptor: ChuckerInterceptor
