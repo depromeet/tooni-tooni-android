@@ -3,19 +3,15 @@ package kr.tooni.tooni.features.watch.favorites.db
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import kr.tooni.tooni.core.model.Author
+import kr.tooni.tooni.core.model.Webtoon
 
 class FavoritesConverters {
-    // Authors converter
+
+    // Webtoon Converter
     @TypeConverter
-    fun authorToList(value: List<Author>) = Gson().toJson(value)
+    fun webtoonToList(value: Webtoon) = Gson().toJson(value)
 
     @TypeConverter
-    fun listToAuthor(value: String) = Gson().fromJson(value, Array<Author>::class.java).toList()
+    fun listToWebtoon(value: String) = Gson().fromJson(value, Webtoon::class.java) as Webtoon
 
-    // Genres converter
-    @TypeConverter
-    fun listToJson(value: List<String>?) = Gson().toJson(value)
-
-    @TypeConverter
-    fun jsonToList(value: String) = Gson().fromJson(value, Array<String>::class.java).toList()
 }

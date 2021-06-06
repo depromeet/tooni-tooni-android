@@ -10,7 +10,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kr.tooni.tooni.databinding.FragmentFavoritesBinding
-import kr.tooni.tooni.features.watch.adapter.FavoritesListAdapter
 import kr.tooni.tooni.features.watch.favorites.db.Favorites
 import kr.tooni.tooni.features.watch.favorites.db.FavoritesDatabase
 import kr.tooni.tooni.features.watch.favorites.db.FavoritesRepository
@@ -65,8 +64,8 @@ class FavoritesFragment : Fragment() {
     }
 
     fun heartBtnClicked(favorites: Favorites) {
-        Toast.makeText(context, "${favorites.title} 삭제되었습니다.", Toast.LENGTH_SHORT).show()
-        favoritesListViewModel.deleteAll()
+        Toast.makeText(context, "${favorites.webtoon.title} 삭제되었습니다.", Toast.LENGTH_SHORT).show()
+        favoritesListViewModel.delete(favorites)
     }
 
 }
