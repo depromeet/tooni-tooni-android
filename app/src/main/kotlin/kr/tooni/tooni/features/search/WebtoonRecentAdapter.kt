@@ -24,7 +24,7 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun submitList(list: List<WebtoonRecentEntity>) {
         item.clear()
         item += WebtoonHeaderViewHolder.Data("최근 검색어")
-        item += list.map { entity ->
+        item += list.map { entity->
             WebtoonSearchItemViewHolder.Data(entity)
         }
         notifyDataSetChanged()

@@ -56,34 +56,45 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_search" />
 
+        <ImageView
+            android:id="@+id/deleteImg"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="11dp"
+            app:layout_constraintBottom_toTopOf="@id/searchLine"
+            app:layout_constraintStart_toEndOf="@id/searchHint"
+            app:layout_constraintTop_toTopOf="@id/searchHint"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_delete" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/beforeSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchLine"
-            app:layout_constraintVertical_bias="0.0"
-            android:visibility="visible">
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecommend"
                 android:layout_width="348dp"
                 android:layout_height="456dp"
-                android:layout_marginTop="@dimen/space_21"
-                android:layout_marginBottom="@dimen/space_10"
                 android:layout_marginStart="@dimen/space_14"
+                android:layout_marginTop="@dimen/space_21"
                 android:layout_marginEnd="@dimen/space_14"
+                android:layout_marginBottom="@dimen/space_10"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="36dp"
                 tools:layout_editor_absoluteY="276dp"
-                tools:listitem="@layout/item_search_recommend"
-                >
+                tools:listitem="@layout/item_search_recommend">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -108,14 +119,25 @@
             android:layout_width="299dp"
             android:layout_height="104dp"
             android:layout_marginTop="@dimen/space_32"
-            app:layout_constraintTop_toBottomOf="@id/searchLine"
-            app:layout_constraintStart_toStartOf="@id/searchLine"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/searchLine"
+            app:layout_constraintTop_toBottomOf="@id/searchLine"
             tools:listitem="@layout/item_recent_keyword">
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchResult"
+            android:layout_width="335dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="@dimen/space_32"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/searchLine"
+            app:layout_constraintTop_toTopOf="@id/searchLine"
+            tools:listitem="@layout/item_search_result">
 
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
