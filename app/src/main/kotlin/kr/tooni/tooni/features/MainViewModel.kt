@@ -3,6 +3,9 @@
  */
 package kr.tooni.tooni.features
 
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.tooni.tooni.base.BaseViewModel
+import javax.inject.Inject
 
-class MainViewModel : BaseViewModel()
+@HiltViewModel
+class MainViewModel @Inject constructor() : BaseViewModel()

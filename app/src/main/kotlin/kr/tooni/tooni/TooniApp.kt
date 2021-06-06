@@ -4,8 +4,10 @@
 package kr.tooni.tooni
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class TooniApp : Application() {
     
     override fun onCreate() {
