@@ -3,7 +3,9 @@
  */
 package kr.tooni.tooni.data.preference
 
+import kr.tooni.tooni.core.model.User
+
 interface Preference {
     var uid: String
-    var nickname: String
+    var user: User
 }

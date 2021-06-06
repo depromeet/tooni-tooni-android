@@ -45,7 +45,7 @@ class WebtoonDetailsActivity :
         
         addTab(homeTab)
         addTab(commentTab)
-    
+        
         addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 tab.view.forEach { childView ->
@@ -54,7 +54,7 @@ class WebtoonDetailsActivity :
                     }
                 }
             }
-        
+            
             override fun onTabUnselected(tab: TabLayout.Tab) {
                 tab.view.forEach { childView ->
                     if (childView is TextView) {
@@ -62,7 +62,7 @@ class WebtoonDetailsActivity :
                     }
                 }
             }
-        
+            
             override fun onTabReselected(tab: TabLayout.Tab) {
                 tab.view.forEach { childView ->
                     if (childView is TextView) {

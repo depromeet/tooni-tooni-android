@@ -4,7 +4,6 @@
 package kr.tooni.tooni.features.details
 
 import io.reactivex.rxjava3.core.Single
-import kr.tooni.tooni.core.model.Score
 import kr.tooni.tooni.core.model.WebtoonDetails
 import kr.tooni.tooni.data.ApiProvider
 import kr.tooni.tooni.data.api.DetailsApi

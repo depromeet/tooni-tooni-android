@@ -52,9 +52,9 @@ class WebtoonDetailsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class WebtoonDetailsHomeViewHolder(
         private val binding: ItemWebtoonDetailsHomeBinding
     ) : BaseViewHolder<WebtoonDetailsHomeViewHolder.Data>(binding.root) {
-    
+        
         data class Data(val details: WebtoonDetails) : Bindable(ViewType.HOME.index)
-    
+        
         override fun bind(data: Data) {
             binding.executePendingBindings()
         }
@@ -77,11 +77,11 @@ class WebtoonDetailsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     ) : BaseViewHolder<WebtoonDetailsCommentViewHolder.Data>(binding.root) {
         
         data class Data(val comments: List<Comment>) : Bindable(ViewType.COMMENT.index)
-    
+        
         override fun bind(data: Data) {
             binding.executePendingBindings()
         }
-    
+        
         companion object {
             fun create(parent: ViewGroup): WebtoonDetailsCommentViewHolder {
                 return WebtoonDetailsCommentViewHolder(

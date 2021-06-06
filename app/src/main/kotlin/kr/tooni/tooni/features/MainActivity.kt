@@ -11,6 +11,7 @@ import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
 import kr.tooni.tooni.features.day.WebtoonWeekDayFragment
+import kr.tooni.tooni.features.more.MoreFragment
 import kr.tooni.tooni.features.watch.WatchFragment
 
 @AndroidEntryPoint
@@ -37,13 +38,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.bottomNavigationView.itemIconTintList = null
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.home_1 -> showWatchFragment()
-                R.id.home_2 -> showWebtoonWeekDayFragment()
-                R.id.home_3 -> showWatchFragment()
-                R.id.home_4 -> showWatchFragment()
+                R.id.tab_home -> showWatchFragment()
+                R.id.tab_day -> showWebtoonWeekDayFragment()
+                R.id.tab_mytoon -> showWatchFragment()
+                R.id.tab_more -> showMoreFragment()
                 else -> throw IllegalArgumentException("${menuItem.itemId} is invalid itemId")
             }
-        
+            
             return@setOnNavigationItemSelectedListener true
         }
     }
@@ -60,16 +61,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 tag = tag
             )
     }
-
+    
     private fun showWatchFragment() {
         val tag = WatchFragment::class.java.name
-
+        
         supportFragmentManager.findFragmentByTag(tag)
             ?.let { fragment ->
                 showFragment(fragment)
             }
             ?: addFragment(
                 fragment = WatchFragment.newInstance(),
+                tag = tag
+            )
+    }
+    
+    private fun showMoreFragment() {
+        val tag = MoreFragment::class.java.name
+        
+        supportFragmentManager.findFragmentByTag(tag)
+            ?.let { fragment ->
+                showFragment(fragment)
+            }
+            ?: addFragment(
+                fragment = MoreFragment.newInstance(),
                 tag = tag
             )
     }

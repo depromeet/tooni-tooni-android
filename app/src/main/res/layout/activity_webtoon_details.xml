@@ -86,9 +86,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    app:layout_constraintTop_toBottomOf="@id/iv_thumbnail"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/iv_thumbnail">
 
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tab_layout"
@@ -98,10 +98,10 @@
                         android:layout_marginTop="@dimen/space_16"
                         android:layout_marginEnd="@dimen/space_20"
                         android:layout_marginBottom="@dimen/space_16"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:tabBackground="@color/white"
                         app:tabGravity="fill"
                         app:tabIndicatorColor="@color/blue_100"
@@ -112,7 +112,7 @@
                         app:tabPaddingBottom="-2dp"
                         app:tabRippleColor="@null"
                         app:tabSelectedTextColor="@color/gray_90"
-                        app:tabTextAppearance="@style/appearance_tab_text" />
+                        app:tabTextAppearance="@style/AppearanceTabLayout" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

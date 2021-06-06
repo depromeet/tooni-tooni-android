@@ -14,16 +14,8 @@ class LauncherRepositoryImpl @Inject constructor(
     override fun signInAnonymously(): Single<String> {
         return getUserId().flatMap { uid ->
             remoteDataSource.signInAnonymously(uid)
-                .doOnSuccess { nickname -> localDataSource.setUserNickname(nickname) }
-        }.flatMap { nickname ->
-            Single.create { emitter ->
-                if (nickname.isBlank()) {
-                    val errorMessage = "nickname is blank in signInAnonymously()"
-                    return@create emitter.onError(Exception(errorMessage))
-                }
-                
-                emitter.onSuccess(nickname)
-            }
+                .doOnSuccess { user -> localDataSource.setUser(user) }
+                .map { it.nickname }
         }
     }
     

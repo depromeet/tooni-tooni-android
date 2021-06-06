@@ -1,5 +1,9 @@
 <resources>
 
+    <!-- format -->
+    <string name="format_profile_nickname">%s님</string>
+    <string name="format_version_info">버전 %s</string>
+
     <string-array name="week_day">
         <item name="common_mon">월</item>
         <item name="common_tue">화</item>
@@ -12,6 +16,7 @@
 
     <string name="common_home">홈</string>
     <string name="common_by_day">요일별</string>
+    <string name="common_by_day_tooni">요일별 투니</string>
     <string name="common_mytoon">마이툰</string>
     <string name="common_more">더보기</string>
 
@@ -29,5 +34,11 @@
     <string name="tv_favorites_none">아직 즐겨찾기 한 작품이 없어요 :(</string>
     <string name="tv_recent_score">%1$f</string>
     <string name="tv_favorites_score">%1$f</string>
+
+    <string name="more_fragment_profile_description">안녕하세요. 투니투니입니다:)</string>
+    <string name="more_fragment_update_description">열심히 업데이트 중이에요!</string>
+    <string name="more_fragment_send_feedback">피드백 보내기</string>
+    <string name="more_fragment_open_source">오픈소스</string>
+    <string name="more_fragment_makers">만든 사람들</string>
 
 </resources>

@@ -3,9 +3,8 @@
  */
 package kr.tooni.tooni.data.response
 
+import kr.tooni.tooni.core.model.User
+
 data class LoginResponse(
-    val data: Spec
-) : BaseResponse() {
-    
-    data class Spec(val nickname: String)
-}
+    val data: User
+) : BaseResponse()

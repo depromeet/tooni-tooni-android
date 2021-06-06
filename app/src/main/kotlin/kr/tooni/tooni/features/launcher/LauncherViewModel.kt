@@ -6,12 +6,9 @@ package kr.tooni.tooni.features.launcher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
 import kr.tooni.tooni.base.BaseViewModel
 import kr.tooni.tooni.core.extensions.applySchedulers
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
