@@ -21,6 +21,9 @@ data class Webtoon(
     val authorFullName: String
         get() = authors.joinToString(" / ") { it.name }
     
+    val roundedScore: String
+        get() = String.format("%.2f", score)
+    
     companion object {
         
         val EMPTY = Webtoon(

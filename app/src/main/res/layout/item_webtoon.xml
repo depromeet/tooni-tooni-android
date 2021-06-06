@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/space_8"
-                android:text="@{String.valueOf(webtoon.score)}"
+                android:text="@{webtoon.roundedScore}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_size_10"
                 android:textStyle="bold"
