@@ -5,8 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="hideKeyboard">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/backBtn"
@@ -30,7 +29,6 @@
             android:layout_marginBottom="8dp"
             android:background="@color/transparent"
             android:hint="@string/common_search_hint"
-            android:onClick="showKeyboard"
             android:textColor="@color/gray_50"
             app:layout_constraintBottom_toTopOf="@+id/searchLine"
             app:layout_constraintStart_toStartOf="@+id/backBtn" />

@@ -4,12 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kr.tooni.tooni.base.BaseViewHolder
 import kr.tooni.tooni.base.BaseViewModel
 import kr.tooni.tooni.base.arch.Bindable
+import kr.tooni.tooni.core.model.WebtoonDetails
 import kr.tooni.tooni.databinding.ItemHeaderRecentBinding
 import kr.tooni.tooni.databinding.ItemRecentKeywordBinding
+import kr.tooni.tooni.features.details.WebtoonDetailsAdapter
 
-class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WebtoonRecentAdapter : RecyclerView.Adapter<BaseViewHolder<Bindable>>() {
 
     private enum class ViewType(val index: Int) {
         TYPE_HEADER(0),
@@ -18,19 +21,24 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val item = arrayListOf<Bindable>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    fun submitList(recentEntity: WebtoonRecentEntity) {
+        item.clear()
+        item += WebtoonRecentAdapter.WebtoonHeaderViewHolder.Data()
+        item += WebtoonRecentAdapter.WebtoonSearchItemViewHolder.Data()
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Bindable> {
         return when (ViewType.values()[viewType]) {
             ViewType.TYPE_HEADER -> WebtoonHeaderViewHolder.create(parent)
             ViewType.TYPE_ITEM -> WebtoonSearchItemViewHolder.create(parent)
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-       if(holder is WebtoonHeaderViewHolder) {
-           //TODO
-       } else if(holder is WebtoonSearchItemViewHolder) {
-           //TODO 
-       }
+    override fun onBindViewHolder(holder: BaseViewHolder<Bindable>, position: Int) {
+        when () {
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -42,7 +50,14 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     class WebtoonHeaderViewHolder(private val binding: ItemHeaderRecentBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+        BaseViewHolder<WebtoonHeaderViewHolder.Data>(binding.root) {
+
+        data class Data(val title: String) : Bindable(ViewType.TYPE_HEADER.index)
+
+        override fun bind(data: WebtoonHeaderViewHolder.Data) {
+            binding.recentHeaderText.text = data.title
+            binding.executePendingBindings()
+        }
 
         companion object {
             fun create(parent: ViewGroup): WebtoonHeaderViewHolder {
@@ -60,12 +75,13 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     class WebtoonSearchItemViewHolder(private val binding: ItemRecentKeywordBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        data class Data(val item: List<WebtoonRecentEntity>) : Bindable(ViewType.TYPE_ITEM.index)
+        BaseViewHolder<WebtoonSearchItemViewHolder.Data>(binding.root) {
+        data class Data(val item: WebtoonRecentEntity) : Bindable(ViewType.TYPE_ITEM.index)
 
-           //override fun bind(data: Data) {
-           //     binding.executePendingBindings()
-           //}
+        override fun bind(data: Data) {
+            binding.recentEntity = data.item
+            binding.executePendingBindings()
+        }
 
         companion object {
             fun create(parent: ViewGroup): WebtoonSearchItemViewHolder {
@@ -80,4 +96,6 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 
     }
+
+
 }
