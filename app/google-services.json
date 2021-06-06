@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "998949905111",
+    "project_id": "toonitooni-c82b8",
+    "storage_bucket": "toonitooni-c82b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998949905111:android:b660312c4f582376588692",
+        "android_client_info": {
+          "package_name": "kr.tooni.tooni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998949905111-q68tk2pdlo57njhpr0sqcbbnmjikfisd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.tooni.tooni",
+            "certificate_hash": "f91475d4e5c37b9c3a7e646a2e616ec1940e818d"
+          }
+        },
+        {
+          "client_id": "998949905111-58fvrkmg0unulr3i2r4vundggmde1c04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCKmLTGkfCMscFUAcMZiaOnEGByYyzdLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998949905111-58fvrkmg0unulr3i2r4vundggmde1c04.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "998949905111-2u9evsji5jn99egd9svkkafj476o8i91.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jinshine.toonitooni"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998949905111:android:ddb7e4ecbc960e3d588692",
+        "android_client_info": {
+          "package_name": "kr.tooni.tooni.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998949905111-jdigj1dn3qbhfh0ks1lg0stltigngv9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.tooni.tooni.debug",
+            "certificate_hash": "f91475d4e5c37b9c3a7e646a2e616ec1940e818d"
+          }
+        },
+        {
+          "client_id": "998949905111-58fvrkmg0unulr3i2r4vundggmde1c04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCKmLTGkfCMscFUAcMZiaOnEGByYyzdLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998949905111-58fvrkmg0unulr3i2r4vundggmde1c04.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "998949905111-2u9evsji5jn99egd9svkkafj476o8i91.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jinshine.toonitooni"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
