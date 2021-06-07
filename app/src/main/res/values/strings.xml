@@ -30,8 +30,8 @@
 
     <!--watch-->
     <string name="tv_watch_my_toon">마이툰</string>
-    <string name="tv_recent_none">최근 본 작품이 없어요 :(</string>
-    <string name="tv_favorites_none">아직 즐겨찾기 한 작품이 없어요 :(</string>
+    <string name="tv_recent_none">최근 본 작품이 없어요:(</string>
+    <string name="tv_favorites_none">즐겨찾는 작품이 없어요:(</string>
     <string name="tv_recent_score">%1$f</string>
     <string name="tv_favorites_score">%1$f</string>
 

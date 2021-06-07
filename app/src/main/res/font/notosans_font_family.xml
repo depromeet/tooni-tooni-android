@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--regular-->
+    <font
+        android:font="@font/notosanskrregular"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/notosanskrregular"
+        app:fontStyle="normal"
+        app:fontWeight="500" />
+
+    <!--bold-->
+    <font
+        android:font="@font/notosanskrbold"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/notosanskrbold"
+        app:fontStyle="normal"
+        app:fontWeight="1000" />
+
+
+</font-family>

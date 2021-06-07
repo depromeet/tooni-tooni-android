@@ -57,6 +57,7 @@ class RecentFragment : Fragment() {
             viewLifecycleOwner, { list ->
                 binding.rvRecent.isVisible = list.isNotEmpty()
                 binding.tvRecentNone.isVisible = list.isEmpty()
+                binding.ivRecentNone.isVisible = list.isEmpty()
 
                 adapter.setList(list)
                 adapter.notifyDataSetChanged()
