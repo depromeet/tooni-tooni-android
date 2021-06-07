@@ -17,6 +17,20 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_favorites" />
 
+    <ImageView
+        android:id="@+id/iv_recent_none"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_empty_lastseen"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_recent_none"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginBottom="16dp"/>
+
+
     <TextView
         android:id="@+id/tv_recent_none"
         android:layout_width="wrap_content"
@@ -24,10 +38,11 @@
         android:gravity="center"
         android:text="@string/tv_recent_none"
         android:textSize="14sp"
+        android:textColor="#333333"
         android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/iv_recent_none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
