@@ -7,7 +7,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWatchBinding
-import kr.tooni.tooni.features.search.SearchActivity
+import kr.tooni.tooni.features.search.WebtoonSearchActivity
 import kr.tooni.tooni.features.watch.adapter.WatchFragmentAdapter
 import kr.tooni.tooni.features.watch.favorites.FavoritesFragment
 import kr.tooni.tooni.features.watch.recent.RecentFragment
@@ -63,7 +63,7 @@ class WatchFragment : BaseFragment<FragmentWatchBinding>(R.layout.fragment_watch
     // SearchActivity로 이동
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_search -> SearchActivity.start(requireContext())
+            R.id.action_search -> WebtoonSearchActivity.start(requireContext())
         }
         return super.onOptionsItemSelected(item)
     }

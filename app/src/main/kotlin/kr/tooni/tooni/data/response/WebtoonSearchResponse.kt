@@ -6,7 +6,7 @@ package kr.tooni.tooni.data.response
 import kr.tooni.tooni.core.model.Webtoon
 
 data class WebtoonSearchResponse(
-    val data: WebtoonSearch?
+    val data: WebtoonSearch
 ) : BaseResponse() {
     
     data class WebtoonSearch(
