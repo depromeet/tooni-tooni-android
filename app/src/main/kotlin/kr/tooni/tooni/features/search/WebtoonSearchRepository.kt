@@ -10,8 +10,13 @@ class WebtoonSearchRepository @Inject constructor(
 ) {
     
     fun search(keyword: String): Single<List<Webtoon>> {
-        return listApi.search(keyword).map {
-            it.data.webtoons
-        }
+        return listApi.search(keyword)
+            .map { it.data.webtoons }
+    }
+    
+    fun random(): Single<List<Webtoon>> {
+        // seed : 20
+        return listApi.getRandomWebtoons()
+            .map { it.data.webtoons }
     }
 }

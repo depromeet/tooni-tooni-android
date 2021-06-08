@@ -4,6 +4,7 @@
 package kr.tooni.tooni.data.api
 
 import io.reactivex.rxjava3.core.Single
+import kr.tooni.tooni.data.response.RandomWebtoonsResponse
 import kr.tooni.tooni.data.response.WebtoonSearchResponse
 import kr.tooni.tooni.data.response.WebtoonWeekDayResponse
 import retrofit2.http.GET
@@ -21,4 +22,7 @@ interface ListApi : Api {
     fun getWebtoonsByDay(
         @Path("weekday") weekday: String
     ): Single<WebtoonWeekDayResponse>
+    
+    @GET("api/v1/webtoons/random")
+    fun getRandomWebtoons(): Single<RandomWebtoonsResponse>
 }

@@ -15,5 +15,4 @@ class WebtoonSearchBeforeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
     }
-    
 }

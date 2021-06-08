@@ -46,6 +46,10 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             recentAdapter.submitList(it)
         })
         
+        vm.randomWebtoons.observe(this) { webtoons ->
+            // TODO : WebtoonSearchBeforeAdapter 에 submitList 만들고 데이터 설정 하면 됩니다.
+        }
+        
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
             binding.searchImg.visibility = View.GONE
