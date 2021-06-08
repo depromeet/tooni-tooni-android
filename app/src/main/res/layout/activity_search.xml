@@ -85,15 +85,15 @@
                 android:layout_width="348dp"
                 android:layout_height="456dp"
                 android:layout_marginStart="@dimen/space_14"
-                android:layout_marginTop="@dimen/space_21"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/space_14"
-                android:layout_marginBottom="@dimen/space_10"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.485"
                 app:layout_constraintStart_toStartOf="parent"
+                app:spanCount="3"
+                tools:itemCount="9"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="36dp"
-                tools:layout_editor_absoluteY="276dp"
                 tools:listitem="@layout/item_search_recommend">
 
             </androidx.recyclerview.widget.RecyclerView>
