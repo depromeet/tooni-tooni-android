@@ -64,4 +64,10 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="TabLayoutTextStyle" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray_50</item>
+    </style>
+
 </resources>
