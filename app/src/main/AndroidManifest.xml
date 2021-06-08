@@ -30,9 +30,11 @@
         <activity android:name=".features.MainActivity"
             android:configChanges="orientation|screenSize" />
 
-        <activity
-            android:name=".features.details.WebtoonDetailsActivity"
+        <activity android:name=".features.details.WebtoonDetailsActivity"
             android:configChanges="orientation|screenSize" />
+
+        <activity android:name=".features.recommend.RecommendActivity"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>
