@@ -1,6 +1,10 @@
 package kr.tooni.tooni.features.search
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import io.reactivex.rxjava3.core.Completable
 
 @Dao
