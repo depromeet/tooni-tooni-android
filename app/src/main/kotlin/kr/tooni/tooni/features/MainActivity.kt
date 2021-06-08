@@ -38,7 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.bottomNavigationView.itemIconTintList = null
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.tab_home -> showWatchFragment()
+                R.id.tab_home -> showWebtoonWeekDayFragment()
                 R.id.tab_day -> showWebtoonWeekDayFragment()
                 R.id.tab_mytoon -> showWatchFragment()
                 R.id.tab_more -> showMoreFragment()

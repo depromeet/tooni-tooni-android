@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentMoreBinding
-import kr.tooni.tooni.features.search.SearchActivity
+import kr.tooni.tooni.features.search.WebtoonSearchActivity
 
 @AndroidEntryPoint
 class MoreFragment : BaseFragment<FragmentMoreBinding>(R.layout.fragment_more) {
@@ -45,7 +45,7 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>(R.layout.fragment_more) {
     
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_search -> SearchActivity.start(requireContext())
+            R.id.action_search -> WebtoonSearchActivity.start(requireContext())
         }
         return super.onOptionsItemSelected(item)
     }
