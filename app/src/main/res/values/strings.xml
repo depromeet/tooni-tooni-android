@@ -47,4 +47,8 @@
 
     <!--result-->
     <string name="tv_search_score">%1$f</string>
+
+    <!--recommend-->
+    <string name="tv_recommend_toolbar">장르별 추천 투니</string>
+
 </resources>
