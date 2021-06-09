@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
@@ -27,7 +28,13 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         binding.recentKeywordItem.layoutManager = LinearLayoutManager(this)
         
         val resultAdapter = WebtoonSearchResultAdapter()
-        
+        binding.searchResult.adapter = resultAdapter
+        binding.searchResult.layoutManager = LinearLayoutManager(this)
+
+        val beforeAdapter = WebtoonSearchBeforeAdapter()
+        binding.searchRecommend.adapter = beforeAdapter
+        binding.searchRecommend.layoutManager = GridLayoutManager(this,3)
+
         binding.searchHint.setOnFocusChangeListener { view, focused ->
             if (focused) {
                 showKeyboard()
@@ -46,8 +53,8 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             recentAdapter.submitList(it)
         })
         
-        vm.randomWebtoons.observe(this) { webtoons ->
-            // TODO : WebtoonSearchBeforeAdapter 에 submitList 만들고 데이터 설정 하면 됩니다.
+        vm.randomWebtoons.observe(this) {
+            beforeAdapter.submitList(it)
         }
         
         binding.searchImg.setOnClickListener {
@@ -58,8 +65,10 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         
         binding.deleteImg.setOnClickListener {
             // 검색창이 사라지고 다시 searchHint 창이 떠야함
+            hideKeyboard()
             binding.searchImg.visibility = View.VISIBLE
             binding.deleteImg.visibility = View.GONE
+            binding.searchResult.visibility = View.GONE
         }
         
         binding.backBtn.setOnClickListener {
