@@ -8,6 +8,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+@Deprecated("사용하지 않음")
 interface RecommendService {
 
     @GET("/api/v1/webtoons/{genre}")

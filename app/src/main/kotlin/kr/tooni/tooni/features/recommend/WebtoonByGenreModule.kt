@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 @Module
 @InstallIn(ViewModelComponent::class)
 object WebtoonByGenreModule {
+    
     @Provides
     fun provideWebtoonByGenreRepository(
         remoteDataSource: WebtoonByGenreRemoteDataSource
