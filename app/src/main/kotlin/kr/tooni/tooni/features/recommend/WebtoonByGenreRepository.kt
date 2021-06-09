@@ -5,6 +5,5 @@ import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.data.response.WebtoonByGenreResponse
 
 interface WebtoonByGenreRepository {
-    //fun getWebtoonsAllGenre(): Single<List<Webtoon>>
     fun getWebtoonsByGenre(genre: String): Single<List<Webtoon>>
 }
