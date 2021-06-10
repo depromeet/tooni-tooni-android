@@ -16,8 +16,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_recommend"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
             android:layout_marginStart="@dimen/space_6"
             android:layout_marginEnd="@dimen/space_6"
             app:cardCornerRadius="@dimen/space_5"
