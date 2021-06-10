@@ -2,8 +2,9 @@
 <layout>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="335dp"
+    android:layout_height="22dp"
+    android:layout_marginBottom="@dimen/space_8">
 
     <TextView
         android:id="@+id/recentHeaderText"
@@ -11,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/recent_search"
         android:textSize="@dimen/font_size_14"
-        android:textColor="@color/gray_80"/>
+        android:textColor="@color/gray_80"
+       />
 </LinearLayout>
 </layout>
