@@ -33,7 +33,15 @@ class WebtoonSearchViewModel @Inject constructor(
             .subscribe(keywords::setValue, Timber::e)
             .addDisposable()
     }
-    
+
+    fun insert(keyword: String){
+        recentRepository.insertKeyword(keyword)
+            .doOnError { throwable -> showSnackBar(throwable.message) }
+            .applySchedulers()
+            .subscribe()
+            .addDisposable()
+    }
+
     // TODO : 요 함수를 검색전 화면에서 호출하고,
     // TODO : randomWebtoons 를 Activity 에서 observe하고 있다가, adapter.submitList에 넣으면 됩니다!!
     fun random() {
