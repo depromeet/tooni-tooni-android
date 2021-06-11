@@ -10,6 +10,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.tooni.tooni.BuildConfig
 import kr.tooni.tooni.core.StringKeySet
 import kr.tooni.tooni.data.preference.Preference
@@ -109,5 +112,27 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideSchedulerProvider(): SchedulerProvider {
+        return object : SchedulerProvider {
+            override fun newThread(): Scheduler {
+                return Schedulers.newThread()
+            }
+    
+            override fun io(): Scheduler {
+                return Schedulers.io()
+            }
+    
+            override fun computation(): Scheduler {
+                return Schedulers.computation()
+            }
+    
+            override fun main(): Scheduler {
+                return AndroidSchedulers.mainThread()
+            }
+        }
     }
 }

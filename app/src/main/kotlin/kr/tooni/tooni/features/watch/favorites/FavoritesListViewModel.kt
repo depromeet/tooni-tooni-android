@@ -29,7 +29,7 @@ class FavoritesListViewModel(private val repository: FavoritesRepository): ViewM
                     site,
                     "급식 아빠 ${i}",
                     "",
-                    listOf(Author(0, "최현정")),
+                    listOf(Author(0, "최현정", "")),
                     "",
                     "",
                     7.18888888,

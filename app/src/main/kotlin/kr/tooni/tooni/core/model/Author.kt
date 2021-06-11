@@ -6,13 +6,15 @@ package kr.tooni.tooni.core.model
 data class Author(
     val id: Long,
     val name: String,
+    val authorImage: String
 ) {
     
     companion object {
         
         val EMPTY = Author(
             id = 0,
-            name = ""
+            name = "",
+            authorImage = ""
         )
     }
 }

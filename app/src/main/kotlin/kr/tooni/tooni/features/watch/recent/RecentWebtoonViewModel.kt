@@ -29,7 +29,7 @@ class RecentWebtoonViewModel(private val repository: RecentWebtoonRepository): V
                     site,
                     "급식 아빠 ${i}",
                     "",
-                    listOf(Author(0, "최현정"), Author(1, "김재한")),
+                    listOf(Author(0, "최현정", ""), Author(1, "김재한", "")),
                     "",
                     "",
                     5.25555,

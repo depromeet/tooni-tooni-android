@@ -12,7 +12,7 @@ data class Webtoon(
     val thumbnail: String,
     val url: String,
     val score: Double, // 플랫폼 평점
-    val genres: List<String>,
+    val genres: List<String>, // list ( "스토리", "액션" )
     val weekday: List<WeekDay>,
     val backgroundColor: BackgroundColor, // 웹툰 배경화면
     val isComplete: Boolean // 웹툰 연재중 여부
@@ -20,6 +20,9 @@ data class Webtoon(
     
     val authorFullName: String
         get() = authors.joinToString(" / ") { it.name }
+    
+    val genresConcat: String
+        get() = genres.joinToString(" | ")
     
     val roundedScore: String
         get() = String.format("%.2f", score)
