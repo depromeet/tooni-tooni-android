@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import kr.tooni.tooni.R
 import kr.tooni.tooni.core.extensions.context
+import kr.tooni.tooni.core.model.Site
 import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.databinding.ItemRecommendWebtoonBinding
 
@@ -58,6 +60,16 @@ class RecommendWebtoonAdapter(
             binding.recommend = recommendWebtoon
             binding.viewModel = viewModel
             binding.executePendingBindings()
+
+            if(recommendWebtoon.site.equals(Site.NAVER)) {
+                binding.ivRecommendSite.setImageResource(R.drawable.icon_platform_naver)
+            }
+            if(recommendWebtoon.site.equals(Site.DAUM)) {
+                binding.ivRecommendSite.setImageResource(R.drawable.icon_platform_daum)
+            }
+            if(recommendWebtoon.site.equals(Site.KAKAO)) {
+                binding.ivRecommendSite.setImageResource(R.drawable.icon_platform_kakao)
+            }
 
             binding.tvRecommendTitle.text = recommendWebtoon.title
             binding.tvRecommendAuthors.text = recommendWebtoon.authorFullName
