@@ -8,16 +8,17 @@ import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Single
 import kr.tooni.tooni.base.BaseViewModel
-import kr.tooni.tooni.core.extensions.applySchedulers
 import kr.tooni.tooni.core.model.Author
 import kr.tooni.tooni.core.model.Banner
 import kr.tooni.tooni.core.model.Webtoon
+import kr.tooni.tooni.di.SchedulersProvider
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val homeRepository: HomeRepository
+    private val homeRepository: HomeRepository,
+    private val schedulersProvider: SchedulersProvider
 ) : BaseViewModel() {
     
     data class State(
@@ -44,7 +45,7 @@ class HomeViewModel @Inject constructor(
             ::State
         )
             .doOnError { throwable -> showSnackBar(throwable.message) }
-            .applySchedulers()
+            .observeOn(schedulersProvider.main())
             .subscribe(_state::setValue, Timber::e)
             .addDisposable()
     }

@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
     
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            //homeAdapter.submitList(state)
+            homeAdapter.submitList(state)
         }
     
         viewModel.snackBarMessage.observeEvent(viewLifecycleOwner) { message ->

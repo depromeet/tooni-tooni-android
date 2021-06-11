@@ -22,7 +22,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -116,9 +115,9 @@ object AppModule {
     
     @Provides
     @Singleton
-    fun provideSchedulerProvider(): SchedulerProvider {
-        return object : SchedulerProvider {
-            override fun newThread(): Scheduler {
+    fun provideSchedulerProvider(): SchedulersProvider {
+        return object : SchedulersProvider {
+            override fun new(): Scheduler {
                 return Schedulers.newThread()
             }
     
