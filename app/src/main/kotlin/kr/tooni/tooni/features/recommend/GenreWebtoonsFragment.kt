@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWebtoonGenreBinding
 
+@AndroidEntryPoint
 class GenreWebtoonsFragment :
     BaseFragment<FragmentWebtoonGenreBinding>(R.layout.fragment_webtoon_genre) {
     
