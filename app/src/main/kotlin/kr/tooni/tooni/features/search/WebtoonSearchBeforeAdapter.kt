@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.tooni.tooni.base.BaseViewHolder
 import kr.tooni.tooni.base.arch.Bindable
 import kr.tooni.tooni.core.model.Webtoon
+import kr.tooni.tooni.core.model.Webtoons
 import kr.tooni.tooni.databinding.ItemBeforeSearchBinding
 import kr.tooni.tooni.databinding.ItemSearchRecommendBinding
 import kr.tooni.tooni.databinding.ItemSearchResultBinding

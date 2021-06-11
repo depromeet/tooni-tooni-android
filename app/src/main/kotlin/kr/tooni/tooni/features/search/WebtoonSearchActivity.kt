@@ -3,6 +3,8 @@ package kr.tooni.tooni.features.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
@@ -27,21 +29,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
-
-
-
-
-        binding.searchHint.setOnFocusChangeListener { view, focused ->
-            if (focused) {
-                showKeyboard()
-                vm.getAllRecentEntity()
-                binding.recentKeywordItem
-            } else {
-                hideKeyboard()
-            }
-        }
         vm.randomWebtoons.observe(this) {
             binding.searchRecommend.adapter = beforeAdapter
             binding.searchRecommend.layoutManager = GridLayoutManager(this, 3)
@@ -55,36 +42,62 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         })
 
         vm.webtoons.observe(this, {
+
             binding.searchResult.adapter = resultAdapter
             binding.searchResult.layoutManager = LinearLayoutManager(this)
             resultAdapter.submitList(it)
         })
 
+        binding.searchHint.setOnFocusChangeListener { view, focused ->
+            if (focused) {
+                showKeyboard()
+                vm.getAllRecentEntity()
+                binding.recentKeywordItem.visibility = View.VISIBLE
+            } else {
+                hideKeyboard()
+                binding.recentKeywordItem.visibility = View.GONE
+            }
+        }
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
+            binding.searchResult.visibility = View.VISIBLE
             // 키보드 내려가고 검색 결과 뜸
             hideKeyboard()
             // searchImg는 deleteImg로 바뀜
             binding.searchImg.visibility = View.GONE
             binding.deleteImg.visibility = View.VISIBLE
             // 검색결과에서 forward btn 누르면 이동
+            // 검색 전 화면 GONE
+            binding.beforeSearch.visibility = View.GONE
         }
 
         binding.deleteImg.setOnClickListener {
             // 검색하던 editText 사라지고 다시 searchHint 창이 떠야함
             binding.searchHint.setText("")
-            // 키보드 올라옴
-            showKeyboard()
             // deleteImg -> searchImg로 바뀜
             binding.deleteImg.visibility = View.GONE
             binding.searchImg.visibility = View.VISIBLE
+            // 최근검색어 view gone
+            binding.recentKeywordItem.visibility = View.GONE
+            // 결과 view gone
             binding.searchResult.visibility = View.GONE
-
+            // 추천 view visible
+            binding.beforeSearch.visibility = View.VISIBLE
+            vm.random()
         }
 
         binding.backBtn.setOnClickListener {
             MainActivity.start(this)
         }
+
+        binding.searchHint.setOnKeyListener { v, keyCode, event ->
+            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+                vm.search(binding.searchHint.text.toString())
+            }
+            true
+        }
+
+
     }
 
 
