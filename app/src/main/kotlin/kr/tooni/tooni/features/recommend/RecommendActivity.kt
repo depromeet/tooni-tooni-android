@@ -8,11 +8,13 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityRecommendBinding
 import kr.tooni.tooni.features.search.WebtoonSearchActivity
 
+@AndroidEntryPoint
 class RecommendActivity : BaseActivity<ActivityRecommendBinding>(R.layout.activity_recommend) {
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,7 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding>(R.layout.activi
         val adapter = RecommendFragmentAdapter(this)
         adapter.fragmentList = fragmentList
         binding.vpRecommend.adapter = adapter
+        binding.vpRecommend.offscreenPageLimit = 1
         
         val tabTitles = listOf(" 일상 ", " 판타지 ", " 액션 ", " 드라마 ", " 순정 ")
         TabLayoutMediator(binding.tabRecommend, binding.vpRecommend) { tab, position ->

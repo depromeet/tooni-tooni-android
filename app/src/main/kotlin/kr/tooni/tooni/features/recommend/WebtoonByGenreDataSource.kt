@@ -14,6 +14,6 @@ class WebtoonByGenreRemoteDataSource @Inject constructor(
     // api call
     fun getWebtoons(genre: String): Single<List<Webtoon>> {
         return retrofit.create(ListApi::class.java).findGenreTop20Webtoons(genre)
-            .map { it.webtoons.webtoons }
+            .map { it.data.top20Webtoons }
     }
 }
