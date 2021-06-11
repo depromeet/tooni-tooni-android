@@ -40,6 +40,10 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding>(R.layout.activi
         TabLayoutMediator(binding.tabRecommend, binding.vpRecommend) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
+
+        binding.btnRecommendBack.setOnClickListener {
+            finish()
+        }
     }
     
     override fun setSupportActionBar(toolbar: Toolbar?) {
