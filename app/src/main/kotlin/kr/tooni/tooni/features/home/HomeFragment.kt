@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
@@ -35,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
     
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            homeAdapter.submitList(state)
+            //homeAdapter.submitList(state)
         }
     
         viewModel.snackBarMessage.observeEvent(viewLifecycleOwner) { message ->
@@ -46,5 +47,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     
     private fun initRecyclerView() {
         binding.recyclerView.adapter = homeAdapter
+    }
+    
+    companion object {
+        fun newInstance(): HomeFragment {
+            return HomeFragment().apply {
+                arguments = bundleOf()
+            }
+        }
     }
 }

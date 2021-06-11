@@ -11,6 +11,7 @@ import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
 import kr.tooni.tooni.databinding.ActivityMainBinding
 import kr.tooni.tooni.features.day.WebtoonWeekDayFragment
+import kr.tooni.tooni.features.home.HomeFragment
 import kr.tooni.tooni.features.more.MoreFragment
 import kr.tooni.tooni.features.watch.WatchFragment
 
@@ -22,23 +23,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
-        setInitialTab()
         setBottomNavigation()
     }
     
     private fun initView() {
         binding.viewModel = viewModel
-    }
-    
-    private fun setInitialTab() {
-        showWebtoonWeekDayFragment()
+        showHomeFragment()
     }
     
     private fun setBottomNavigation() {
         binding.bottomNavigationView.itemIconTintList = null
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.tab_home -> showWebtoonWeekDayFragment()
+                R.id.tab_home -> showHomeFragment()
                 R.id.tab_day -> showWebtoonWeekDayFragment()
                 R.id.tab_mytoon -> showWatchFragment()
                 R.id.tab_more -> showMoreFragment()
@@ -47,6 +44,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             
             return@setOnNavigationItemSelectedListener true
         }
+    }
+    
+    private fun showHomeFragment() {
+        val tag = HomeFragment::class.java.name
+        
+        supportFragmentManager.findFragmentByTag(tag)
+            ?.let { fragment ->
+                showFragment(fragment)
+            }
+            ?: addFragment(
+                fragment = HomeFragment.newInstance(),
+                tag = tag
+            )
     }
     
     private fun showWebtoonWeekDayFragment() {
