@@ -16,8 +16,8 @@ object WebtoonByGenreModule {
         remoteDataSource: WebtoonByGenreRemoteDataSource
     ): WebtoonByGenreRepository = WebtoonByGenreRepositoryImpl(remoteDataSource)
 
-    @Provides
-    fun provideListApi(retrofit: Retrofit): ListApi {
-        return retrofit.create(ListApi::class.java)
-    }
+//    @Provides
+//    fun provideListApi(retrofit: Retrofit): ListApi {
+//        return retrofit.create(ListApi::class.java)
+//    }
 }
