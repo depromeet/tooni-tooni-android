@@ -42,7 +42,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         })
 
         vm.webtoons.observe(this, {
-
             binding.searchResult.adapter = resultAdapter
             binding.searchResult.layoutManager = LinearLayoutManager(this)
             resultAdapter.submitList(it)
@@ -53,9 +52,11 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
                 showKeyboard()
                 vm.getAllRecentEntity()
                 binding.recentKeywordItem.visibility = View.VISIBLE
+                binding.beforeSearch.visibility = View.GONE
             } else {
                 hideKeyboard()
                 binding.recentKeywordItem.visibility = View.GONE
+                binding.beforeSearch.visibility = View.VISIBLE
             }
         }
         binding.searchImg.setOnClickListener {
@@ -95,6 +96,10 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
                 vm.search(binding.searchHint.text.toString())
             }
             true
+        }
+
+        binding.searchRefresh.setOnClickListener {
+            vm.random()
         }
 
 

@@ -17,7 +17,10 @@ class WebtoonSearchViewModel @Inject constructor(
     val randomWebtoons = MutableLiveData<List<Webtoon>>()
     val webtoons = MutableLiveData<List<Webtoon>>()
     val keywords = MutableLiveData<List<WebtoonRecentEntity>>()
-    
+
+    init{
+        random()
+    }
     fun search(keyword: String) {
         webtoonSearchRepository.search(keyword)
             .doOnError { throwable -> showSnackBar(throwable.message) }
