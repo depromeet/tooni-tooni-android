@@ -16,11 +16,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_recommend"
-            android:layout_width="104dp"
-            android:layout_height="104dp"
-            android:layout_marginStart="@dimen/space_6"
-            android:layout_marginEnd="@dimen/space_6"
-            app:cardCornerRadius="@dimen/space_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_marginEnd="@dimen/space_10"
+            app:cardCornerRadius="@dimen/space_10"
             app:cardElevation="@dimen/space_0"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,10 @@
                 android:id="@+id/ic_clover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_img_thumbnail_clover" />
+                android:src="@drawable/ic_img_thumbnail_clover"
+                />
+
+
         </androidx.cardview.widget.CardView>
 
         <TextView

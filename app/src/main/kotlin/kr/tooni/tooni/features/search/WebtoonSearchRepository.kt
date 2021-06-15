@@ -15,7 +15,7 @@ class WebtoonSearchRepository @Inject constructor(
     }
     
     fun random(): Single<List<Webtoon>> {
-        // seed : 20
+        // seed : 9
         return listApi.getRandomWebtoons()
             .map { it.data.webtoons.take(9) }
     }

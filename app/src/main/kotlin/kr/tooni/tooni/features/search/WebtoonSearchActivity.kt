@@ -47,21 +47,23 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             resultAdapter.submitList(it)
         })
 
-        binding.searchHint.setOnFocusChangeListener { view, focused ->
-            if (focused) {
-                showKeyboard()
-                vm.getAllRecentEntity()
-                binding.recentKeywordItem.visibility = View.VISIBLE
-                binding.beforeSearch.visibility = View.GONE
-            } else {
-                hideKeyboard()
-                binding.recentKeywordItem.visibility = View.GONE
-                binding.beforeSearch.visibility = View.VISIBLE
-            }
+        binding.searchHint.setOnClickListener {
+            showKeyboard()
+            vm.getAllRecentEntity()
+            binding.beforeSearch.visibility = View.GONE
+            binding.recentKeywordItem.visibility = View.VISIBLE
+
         }
+
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
             binding.searchResult.visibility = View.VISIBLE
+//            // 검색 결과가 없다면 ?
+//            if(???) {
+//                binding.searchResult.visibility = View.VISIBLE
+//            } else {
+//                binding.searchNoResult.visibility = View.VISIBLE
+//            }
             // 키보드 내려가고 검색 결과 뜸
             hideKeyboard()
             // searchImg는 deleteImg로 바뀜
@@ -70,6 +72,10 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             // 검색결과에서 forward btn 누르면 이동
             // 검색 전 화면 GONE
             binding.beforeSearch.visibility = View.GONE
+
+
+
+
         }
 
         binding.deleteImg.setOnClickListener {
@@ -91,12 +97,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             MainActivity.start(this)
         }
 
-        binding.searchHint.setOnKeyListener { v, keyCode, event ->
-            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
-                vm.search(binding.searchHint.text.toString())
-            }
-            true
-        }
 
         binding.searchRefresh.setOnClickListener {
             vm.random()
