@@ -3,10 +3,13 @@
  */
 package kr.tooni.tooni.data.response
 
-import com.google.gson.annotations.SerializedName
-import kr.tooni.tooni.core.model.Webtoons
+import kr.tooni.tooni.core.model.Webtoon
 
 data class WebtoonByGenreResponse(
-    @SerializedName("top20Webtoons")
-    val webtoons: Webtoons
-) : BaseResponse()
+    val data: Spec
+) : BaseResponse() {
+    
+    data class Spec(
+        val top20Webtoons: List<Webtoon>
+    )
+}

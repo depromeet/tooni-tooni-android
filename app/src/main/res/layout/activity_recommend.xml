@@ -46,6 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/space_12"
+            android:layout_marginBottom="@dimen/space_12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_recommend"
             app:tabGravity="start"
@@ -58,9 +60,7 @@
             app:tabPaddingStart="8dp"
             app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/gray_90"
-            app:tabTextAppearance="@style/AppearanceTabLayout"
-            android:layout_marginTop="@dimen/space_12"
-            android:layout_marginBottom="@dimen/space_12"/>
+            app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
         <View
             android:id="@+id/divider_recommend"
