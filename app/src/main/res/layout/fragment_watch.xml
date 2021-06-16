@@ -41,7 +41,7 @@
             app:tabMode="auto"
             app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/gray_90"
-            app:tabTextAppearance="@style/AppearanceTabLayout" />
+            app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
 
         <View
