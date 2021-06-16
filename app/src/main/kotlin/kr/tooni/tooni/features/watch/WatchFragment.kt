@@ -64,7 +64,7 @@ class WatchFragment : BaseFragment<FragmentWatchBinding>(R.layout.fragment_watch
     // SearchActivity로 이동
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_search -> RecommendActivity.start(requireContext())
+            R.id.action_search -> WebtoonSearchActivity.start(requireContext())
         }
         return super.onOptionsItemSelected(item)
     }
