@@ -62,30 +62,67 @@
             app:srcCompat="@drawable/ic_delete"
             android:visibility="gone"/>
 
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/recentKeywordItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/searchLine"
+            app:layout_constraintTop_toBottomOf="@id/searchLine"
+            tools:listitem="@layout/item_recent_keyword">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/searchResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/searchLine"
+            app:layout_constraintTop_toTopOf="@id/searchLine"
+            tools:listitem="@layout/item_search_result">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/searchNoResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchLine"
+            tools:listitem="@layout/item_empty_search">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/beforeSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_20"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:isScrollContainer="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchLine"
-            android:visibility="visible">
+            android:visibility="visible"
+            >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecommend"
-                android:layout_width="348dp"
+                android:layout_width="370dp"
                 android:layout_height="456dp"
-                android:layout_marginStart="@dimen/space_14"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="@dimen/space_14"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:spanCount="3"
                 tools:itemCount="9"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/item_search_recommend"
-               >
+                >
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -110,35 +147,6 @@
                 app:drawableEndCompat="@drawable/ic_refresh" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:visibility="gone"
-            android:id="@+id/recentKeywordItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_32"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="@id/searchLine"
-            app:layout_constraintTop_toBottomOf="@id/searchLine"
-            tools:listitem="@layout/item_recent_keyword">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:visibility="gone"
-            android:id="@+id/searchResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_32"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="@id/searchLine"
-            app:layout_constraintTop_toTopOf="@id/searchLine"
-            tools:listitem="@layout/item_search_result">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

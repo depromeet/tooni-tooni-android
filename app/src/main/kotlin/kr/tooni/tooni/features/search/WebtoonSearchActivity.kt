@@ -3,8 +3,6 @@ package kr.tooni.tooni.features.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
@@ -13,8 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
+import kr.tooni.tooni.core.extensions.observeEvent
 import kr.tooni.tooni.databinding.ActivitySearchBinding
 import kr.tooni.tooni.features.MainActivity
+import kr.tooni.tooni.features.details.WebtoonDetailsActivity
+
 
 @AndroidEntryPoint
 class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search) {
@@ -47,18 +48,20 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             resultAdapter.submitList(it)
         })
 
-        binding.searchHint.setOnFocusChangeListener { view, focused ->
-            if (focused) {
-                showKeyboard()
-                vm.getAllRecentEntity()
-                binding.recentKeywordItem.visibility = View.VISIBLE
-                binding.beforeSearch.visibility = View.GONE
-            } else {
-                hideKeyboard()
-                binding.recentKeywordItem.visibility = View.GONE
-                binding.beforeSearch.visibility = View.VISIBLE
+        vm.action.observeEvent(this) { action ->
+            when (action) {
+                is WebtoonSearchViewModel.Action.OnClick -> WebtoonDetailsActivity.start(this, action.id)
             }
+
         }
+
+        binding.searchHint.setOnClickListener {
+            showKeyboard()
+            vm.getAllRecentEntity()
+            binding.beforeSearch.visibility = View.GONE
+            binding.recentKeywordItem.visibility = View.VISIBLE
+        }
+
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
             binding.searchResult.visibility = View.VISIBLE
@@ -67,7 +70,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             // searchImg는 deleteImg로 바뀜
             binding.searchImg.visibility = View.GONE
             binding.deleteImg.visibility = View.VISIBLE
-            // 검색결과에서 forward btn 누르면 이동
             // 검색 전 화면 GONE
             binding.beforeSearch.visibility = View.GONE
         }
@@ -91,17 +93,10 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             MainActivity.start(this)
         }
 
-        binding.searchHint.setOnKeyListener { v, keyCode, event ->
-            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
-                vm.search(binding.searchHint.text.toString())
-            }
-            true
-        }
 
         binding.searchRefresh.setOnClickListener {
             vm.random()
         }
-
 
     }
 
