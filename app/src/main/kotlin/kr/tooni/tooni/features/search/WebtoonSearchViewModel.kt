@@ -21,8 +21,8 @@ class WebtoonSearchViewModel @Inject constructor(
     val webtoons = MutableLiveData<List<Webtoon>>()
     val keywords = MutableLiveData<List<WebtoonRecentEntity>>()
 
-    private val _action = MutableLiveData<Event<WebtoonByDayViewModel.Action>>()
-    val action: LiveData<Event<WebtoonByDayViewModel.Action>>
+    private val _action = MutableLiveData<Event<WebtoonSearchViewModel.Action>>()
+    val action: LiveData<Event<WebtoonSearchViewModel.Action>>
         get() = _action
 
     init {
@@ -30,7 +30,7 @@ class WebtoonSearchViewModel @Inject constructor(
     }
 
     sealed class Action {
-        data class WebtoonClick(val id: Long) : Action()
+        data class OnClick(val id: Long) : Action()
     }
 
     fun search(keyword: String) {
@@ -66,7 +66,7 @@ class WebtoonSearchViewModel @Inject constructor(
     }
 
     fun onWebtoonClicked(id: Long) {
-        _action.value = Event(WebtoonByDayViewModel.Action.WebtoonClick(id))
+        _action.value = Event(WebtoonSearchViewModel.Action.OnClick(id))
     }
 }
 

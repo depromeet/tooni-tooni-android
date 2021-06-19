@@ -3,8 +3,6 @@ package kr.tooni.tooni.features.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
@@ -50,12 +48,12 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             resultAdapter.submitList(it)
         })
 
-//        vm.action.observeEvent(this) { action ->
-//            when (action) {
-//                is WebtoonSearchViewModel.Action.WebtoonClick -> WebtoonDetailsActivity.start(this, action.id)
-//            }
-//
-//        }
+        vm.action.observeEvent(this) { action ->
+            when (action) {
+                is WebtoonSearchViewModel.Action.OnClick -> WebtoonDetailsActivity.start(this, action.id)
+            }
+
+        }
 
         binding.searchHint.setOnClickListener {
             showKeyboard()
