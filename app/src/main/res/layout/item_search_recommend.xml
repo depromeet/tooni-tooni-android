@@ -6,6 +6,10 @@
             name="randomWebtoon"
             type="kr.tooni.tooni.core.model.Webtoon" />
 
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.search.WebtoonSearchViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +29,8 @@
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
             <ImageView
                 android:id="@+id/recommendGridImg"

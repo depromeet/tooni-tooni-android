@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
+import kr.tooni.tooni.core.extensions.observeEvent
 import kr.tooni.tooni.databinding.ActivitySearchBinding
 import kr.tooni.tooni.features.MainActivity
+import kr.tooni.tooni.features.details.WebtoonDetailsActivity
+
 
 @AndroidEntryPoint
 class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search) {
@@ -47,35 +50,30 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             resultAdapter.submitList(it)
         })
 
+//        vm.action.observeEvent(this) { action ->
+//            when (action) {
+//                is WebtoonSearchViewModel.Action.WebtoonClick -> WebtoonDetailsActivity.start(this, action.id)
+//            }
+//
+//        }
+
         binding.searchHint.setOnClickListener {
             showKeyboard()
             vm.getAllRecentEntity()
             binding.beforeSearch.visibility = View.GONE
             binding.recentKeywordItem.visibility = View.VISIBLE
-
         }
 
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
             binding.searchResult.visibility = View.VISIBLE
-//            // 검색 결과가 없다면 ?
-//            if(???) {
-//                binding.searchResult.visibility = View.VISIBLE
-//            } else {
-//                binding.searchNoResult.visibility = View.VISIBLE
-//            }
             // 키보드 내려가고 검색 결과 뜸
             hideKeyboard()
             // searchImg는 deleteImg로 바뀜
             binding.searchImg.visibility = View.GONE
             binding.deleteImg.visibility = View.VISIBLE
-            // 검색결과에서 forward btn 누르면 이동
             // 검색 전 화면 GONE
             binding.beforeSearch.visibility = View.GONE
-
-
-
-
         }
 
         binding.deleteImg.setOnClickListener {
@@ -101,7 +99,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         binding.searchRefresh.setOnClickListener {
             vm.random()
         }
-
 
     }
 
