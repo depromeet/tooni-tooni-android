@@ -11,13 +11,17 @@
             name="searchWebtoon"
             type="kr.tooni.tooni.core.model.Webtoon" />
 
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.search.WebtoonSearchViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_search"
         android:layout_width="335dp"
-        android:layout_height="64dp">
+        android:layout_height="64dp"
+        android:onClick="@{() -> viewModel.onWebtoonClicked(searchWebtoon.id)}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_thumbnailImg"
