@@ -94,12 +94,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_10"
+            android:text="@{searchWebtoon.genresConcat}"
             android:textColor="@color/gray_80"
             android:textSize="@dimen/font_size_10"
             app:layout_constraintStart_toStartOf="@+id/tv_search_title"
             app:layout_constraintTop_toBottomOf="@id/tv_search_authors"
-            tools:text="스토리 | 액션"
-            android:text="@{searchWebtoon.genresConcat}"/>
+            tools:text="스토리 | 액션" />
 
 
         <TextView
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{@string/tv_search_score(searchWebtoon.score)}"
+            android:text="@{searchWebtoon.roundedScore}"
             android:textColor="@color/gray_90"
             android:textSize="@dimen/font_size_10"
             android:textStyle="bold"

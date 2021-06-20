@@ -45,10 +45,6 @@
     <string name="more_fragment_open_source">오픈소스</string>
     <string name="more_fragment_makers">만든 사람들</string>
 
-
-    <!--result-->
-    <string name="tv_search_score">%1$f</string>
-
     <!--recommend-->
     <string name="tv_recommend_toolbar">장르별 추천 투니</string>
 
