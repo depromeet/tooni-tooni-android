@@ -11,7 +11,7 @@ import kr.tooni.tooni.databinding.ItemBeforeSearchBinding
 import kr.tooni.tooni.databinding.ItemSearchRecommendBinding
 import kr.tooni.tooni.databinding.ItemSearchResultBinding
 
-class WebtoonSearchBeforeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WebtoonSearchBeforeAdapter(private val viewModel: WebtoonSearchViewModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private enum class ViewType(val index: Int) {
         TYPE_ITEM(0)
@@ -27,7 +27,7 @@ class WebtoonSearchBeforeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return SearchBeforeViewHolder.create(parent)
+        return SearchBeforeViewHolder.create(parent, viewModel)
     }
     
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -39,9 +39,14 @@ class WebtoonSearchBeforeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     class SearchBeforeViewHolder(
-        private val binding: ItemSearchRecommendBinding
+        private val binding: ItemSearchRecommendBinding,
+        viewModel: WebtoonSearchViewModel
     ) : BaseViewHolder<SearchBeforeViewHolder.Data>(binding.root) {
         data class Data(val webtoon: Webtoon) : Bindable(ViewType.TYPE_ITEM.index)
+
+        init {
+            binding.viewModel = viewModel
+        }
 
         override fun bind(data: SearchBeforeViewHolder.Data) {
             binding.randomWebtoon = data.webtoon
@@ -49,13 +54,17 @@ class WebtoonSearchBeforeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
 
         companion object {
-            fun create(parent: ViewGroup): WebtoonSearchBeforeAdapter.SearchBeforeViewHolder {
+            fun create(
+                parent: ViewGroup,
+                viewModel: WebtoonSearchViewModel
+            ): WebtoonSearchBeforeAdapter.SearchBeforeViewHolder {
                 return WebtoonSearchBeforeAdapter.SearchBeforeViewHolder(
                     binding = ItemSearchRecommendBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ),
+                    viewModel = viewModel
                 )
             }
         }
