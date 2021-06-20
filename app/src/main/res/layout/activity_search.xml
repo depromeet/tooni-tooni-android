@@ -11,36 +11,31 @@
             android:id="@+id/backBtn"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="54dp"
-            android:layout_marginEnd="319dp"
-            android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/searchHint"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_marginTop="@dimen/space_10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_back_btn" />
 
-
         <EditText
             android:id="@+id/searchHint"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="22dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="28dp"
             android:background="@color/transparent"
             android:hint="@string/common_search_hint"
             android:textColor="@color/gray_50"
-            app:layout_constraintBottom_toTopOf="@+id/searchLine"
+            app:layout_constraintTop_toBottomOf="@id/backBtn"
             app:layout_constraintStart_toStartOf="@+id/backBtn" />
 
         <View
             android:id="@+id/searchLine"
-            android:layout_width="335dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_marginEnd="@dimen/space_20"
             android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/searchImg"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/backBtn"
             app:layout_constraintTop_toBottomOf="@+id/searchHint" />
 
@@ -48,98 +43,110 @@
             android:id="@+id/searchImg"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="11dp"
-            app:layout_constraintBottom_toTopOf="@id/searchLine"
-            app:layout_constraintStart_toEndOf="@id/searchHint"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_20"
+            app:layout_constraintEnd_toEndOf="@id/searchLine"
             app:layout_constraintTop_toTopOf="@id/searchHint"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_search" />
 
         <ImageView
             android:id="@+id/deleteImg"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="11dp"
-            app:layout_constraintBottom_toTopOf="@id/searchLine"
-            app:layout_constraintStart_toEndOf="@id/searchHint"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_20"
+            app:layout_constraintEnd_toEndOf="@id/searchLine"
             app:layout_constraintTop_toTopOf="@id/searchHint"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_delete" />
+            app:srcCompat="@drawable/ic_delete"
+            android:visibility="gone"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/beforeSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchLine"
-            app:layout_constraintVertical_bias="0.0">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/searchRecommend"
-                android:layout_width="348dp"
-                android:layout_height="456dp"
-                android:layout_marginStart="@dimen/space_14"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="@dimen/space_14"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.485"
-                app:layout_constraintStart_toStartOf="parent"
-                app:spanCount="3"
-                tools:itemCount="9"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/item_search_recommend">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <Button
-                android:id="@+id/searchRefresh"
-                android:layout_width="193dp"
-                android:layout_height="43dp"
-                android:layout_marginTop="@dimen/space_93"
-                android:background="@drawable/ic_search_design"
-                android:drawableEnd="@drawable/ic_refresh"
-                android:paddingEnd="18dp"
-                android:text="@string/common_search_recommend"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_size_16"
-                app:layout_constraintEnd_toEndOf="@id/searchRecommend"
-                app:layout_constraintStart_toStartOf="@id/searchRecommend"
-                app:layout_constraintTop_toBottomOf="@id/searchRecommend" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
             android:id="@+id/recentKeywordItem"
-            android:layout_width="299dp"
-            android:layout_height="104dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_32"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="@id/searchLine"
             app:layout_constraintTop_toBottomOf="@id/searchLine"
             tools:listitem="@layout/item_recent_keyword">
-
         </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
             android:id="@+id/searchResult"
-            android:layout_width="335dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_32"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="@id/searchLine"
             app:layout_constraintTop_toTopOf="@id/searchLine"
             tools:listitem="@layout/item_search_result">
+        </androidx.recyclerview.widget.RecyclerView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/searchNoResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchLine"
+            tools:listitem="@layout/item_empty_search">
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/beforeSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_20"
+            android:isScrollContainer="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchLine"
+            android:visibility="visible"
+            >
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchRecommend"
+                android:layout_width="370dp"
+                android:layout_height="456dp"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:spanCount="3"
+                tools:itemCount="9"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_search_recommend"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/searchRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_56"
+                android:background="@drawable/ic_search_design"
+                android:drawablePadding="@dimen/space_10"
+                android:gravity="center"
+                android:paddingStart="@dimen/space_24"
+                android:paddingEnd="@dimen/space_24"
+                android:paddingTop="@dimen/space_12"
+                android:paddingBottom="@dimen/space_12"
+                android:text="@string/common_search_recommend"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16"
+                app:layout_constraintEnd_toEndOf="@id/searchRecommend"
+                app:layout_constraintStart_toStartOf="@id/searchRecommend"
+                app:layout_constraintTop_toBottomOf="@id/searchRecommend"
+                app:drawableEndCompat="@drawable/ic_refresh" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

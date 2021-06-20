@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="335dp"
+        android:layout_height="22dp">
 
         <TextView
             android:layout_width="match_parent"

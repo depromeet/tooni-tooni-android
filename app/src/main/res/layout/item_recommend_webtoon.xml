@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recommend"
+            type="kr.tooni.tooni.core.model.Webtoon" />
+
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.recommend.GenreWebtoonsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/space_16">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_recommend"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_recommend_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image_url="@{recommend.thumbnail}"
+                tools:src="@drawable/favorites_thumbnail" />
+
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_recommend_site"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                tools:src="@drawable/icon_platform_naver" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_recommend_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="1sp"
+            android:text="@{recommend.title}"
+            android:textColor="@color/gray_90"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/cv_recommend"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="급식 아빠" />
+
+        <TextView
+            android:id="@+id/tv_recommend_authors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:text="@{recommend.authorFullName}"
+            android:textColor="@color/gray_50"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/cv_recommend"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_title"
+            tools:text="최현정" />
+
+        <LinearLayout
+            android:id="@+id/ll_recommend_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cv_recommend"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_authors">
+
+            <TextView
+                android:id="@+id/tv_recommend_genres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_80"
+                android:textSize="10sp"
+                tools:text="스토리 | 액션" />
+
+            <TextView
+                android:id="@+id/tv_recommend_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{recommend.roundedScore}"
+                android:textColor="@color/gray_90"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:text="9.9" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_recommend_arrow"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_ellipse_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

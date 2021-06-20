@@ -26,6 +26,9 @@ data class Webtoon(
     
     val roundedScore: String
         get() = String.format("%.2f", score)
+
+    val genresConcat: String
+        get() = genres.joinToString(" | ")
     
     companion object {
         

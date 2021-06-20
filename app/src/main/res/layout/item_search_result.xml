@@ -11,13 +11,17 @@
             name="searchWebtoon"
             type="kr.tooni.tooni.core.model.Webtoon" />
 
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.search.WebtoonSearchViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="335dp"
+        android:layout_height="64dp"
+        android:onClick="@{() -> viewModel.onWebtoonClicked(searchWebtoon.id)}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_thumbnailImg"
@@ -95,8 +99,9 @@
             android:textSize="@dimen/font_size_10"
             app:layout_constraintStart_toStartOf="@+id/tv_search_title"
             app:layout_constraintTop_toBottomOf="@id/tv_search_authors"
-            tools:text="스토리 | 액션" />
-            <!-- android:text="@{searchWebtoon.genres}" -->
+            tools:text="스토리 | 액션"
+            android:text="@{searchWebtoon.genresConcat}"/>
+
 
         <TextView
             android:id="@+id/tv_search_score"

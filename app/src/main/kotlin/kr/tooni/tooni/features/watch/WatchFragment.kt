@@ -7,6 +7,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseFragment
 import kr.tooni.tooni.databinding.FragmentWatchBinding
+import kr.tooni.tooni.features.recommend.RecommendActivity
 import kr.tooni.tooni.features.search.WebtoonSearchActivity
 import kr.tooni.tooni.features.watch.adapter.WatchFragmentAdapter
 import kr.tooni.tooni.features.watch.favorites.FavoritesFragment

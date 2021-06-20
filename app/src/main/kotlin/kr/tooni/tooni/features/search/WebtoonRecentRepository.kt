@@ -1,6 +1,7 @@
 package kr.tooni.tooni.features.search
 
 import android.content.Context
+import android.content.Entity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
@@ -14,8 +15,9 @@ class WebtoonRecentRepository @Inject constructor(context: Context) {
     }
     
     
-    fun insertKeyword(webtoonRecentEntity: WebtoonRecentEntity): Completable {
-        return webtoonRecentDAO.insertAll(webtoonRecentEntity)
+    fun insertKeyword(keyword: String): Completable {
+        val entity = WebtoonRecentEntity(recentSearch = keyword)
+        return webtoonRecentDAO.insertAll(entity)
     }
     
     fun updateKeyword(webtoonRecentEntity: WebtoonRecentEntity): Completable {

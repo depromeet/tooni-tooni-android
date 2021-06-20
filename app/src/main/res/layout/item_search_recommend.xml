@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="randomWebtoon"
+            type="kr.tooni.tooni.core.model.Webtoon" />
 
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.search.WebtoonSearchViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,25 +22,31 @@
             android:id="@+id/cv_recommend"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/space_6"
-            android:layout_marginEnd="@dimen/space_6"
-            app:cardCornerRadius="@dimen/space_5"
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_marginEnd="@dimen/space_10"
+            app:cardCornerRadius="@dimen/space_10"
             app:cardElevation="@dimen/space_0"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
             <ImageView
                 android:id="@+id/recommendGridImg"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:setImage="@{randomWebtoon.thumbnail}"
+                />
 
             <ImageView
                 android:id="@+id/ic_clover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_img_thumbnail_clover" />
+                android:src="@drawable/ic_img_thumbnail_clover"
+                />
+
+
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -42,17 +55,20 @@
             android:layout_height="17dp"
             android:layout_marginTop="@dimen/space_4"
             android:layout_marginBottom="@dimen/space_4"
-            android:text="트리니티 원더"
+            android:text="@{randomWebtoon.title}"
             android:textColor="@color/gray_90"
             android:textSize="@dimen/font_size_14"
+            tools:text="트리니티 윈터"
             app:layout_constraintStart_toStartOf="@id/cv_recommend"
-            app:layout_constraintTop_toBottomOf="@id/cv_recommend" />
+            app:layout_constraintTop_toBottomOf="@id/cv_recommend"
+            />
 
         <TextView
             android:id="@+id/recommendWebtoonWriter"
             android:layout_width="wrap_content"
             android:layout_height="12dp"
-            android:text="전국진 /박진환"
+            tools:text="전국진 /박진환"
+            android:text="@{randomWebtoon.authorFullName}"
             android:textSize="@dimen/font_size_10"
             app:layout_constraintStart_toStartOf="@id/recommendWebtoonTitle"
             app:layout_constraintTop_toBottomOf="@id/recommendWebtoonTitle" />
