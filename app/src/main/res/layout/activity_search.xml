@@ -26,7 +26,9 @@
             android:hint="@string/common_search_hint"
             android:textColor="@color/gray_50"
             app:layout_constraintTop_toBottomOf="@id/backBtn"
-            app:layout_constraintStart_toStartOf="@+id/backBtn" />
+            app:layout_constraintStart_toStartOf="@+id/backBtn"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
 
         <View
             android:id="@+id/searchLine"

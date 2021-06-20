@@ -15,7 +15,7 @@
         android:layout_marginTop="200dp"
         />
     <TextView
-        android:layout_width="170dp"
+        android:layout_width="175dp"
         android:layout_height="21dp"
         android:textSize="@dimen/font_size_14"
         android:textColor="@color/gray_90"

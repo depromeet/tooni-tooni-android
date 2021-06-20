@@ -3,8 +3,11 @@ package kr.tooni.tooni.features.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,8 +25,8 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
 
     private val vm by viewModels<WebtoonSearchViewModel>()
     private val imm by lazy { getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager }
-    private val beforeAdapter by lazy { WebtoonSearchBeforeAdapter() }
-    private val resultAdapter by lazy { WebtoonSearchResultAdapter() }
+    private val beforeAdapter by lazy { WebtoonSearchBeforeAdapter(vm) }
+    private val resultAdapter by lazy { WebtoonSearchResultAdapter(vm) }
     private val recentAdapter by lazy { WebtoonRecentAdapter() }
 
 
@@ -98,6 +101,15 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             vm.random()
         }
 
+        binding.searchHint.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if(actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    vm.search(binding.searchHint.text.toString())
+                    return true
+                }
+                return false
+            }
+        })
     }
 
 
