@@ -116,7 +116,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecommend"
                 android:layout_width="370dp"
-                android:layout_height="456dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"

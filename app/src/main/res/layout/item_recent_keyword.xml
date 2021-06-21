@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -18,5 +19,14 @@
             android:text="@{recentEntity.recentSearch}"
             android:textColor="@color/gray_50"
             android:textSize="@dimen/font_size_18" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="@id/searchView2"
+            app:layout_constraintTop_toTopOf="@id/searchView2"
+            app:layout_constraintBottom_toBottomOf="@+id/searchView2"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

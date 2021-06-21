@@ -2,6 +2,8 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="kr.tooni.tooni.utils.SiteLogoProvider" />
+
         <variable
             name="randomWebtoon"
             type="kr.tooni.tooni.core.model.Webtoon" />
@@ -17,6 +19,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_12"
         android:onClick="@{() -> viewModel.onWebtoonClicked(randomWebtoon.id)}">
 
         <androidx.cardview.widget.CardView
@@ -37,6 +40,7 @@
                 android:id="@+id/recommendGridImg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 app:setImage="@{randomWebtoon.thumbnail}"
                 />
 
@@ -44,10 +48,34 @@
                 android:id="@+id/ic_clover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_img_thumbnail_clover"
                 />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_gravity="bottom"
+                android:background="@color/gray_90_opacity30" />
 
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="@dimen/space_6"
+                app:setDrawable="@{SiteLogoProvider.INSTANCE.getDrawable(context, randomWebtoon)}"
+                tools:src="@drawable/icon_platform_naver" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/space_8"
+                android:text="@{randomWebtoon.roundedScore}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_10"
+                android:textStyle="bold"
+                tools:text="4.5" />
         </androidx.cardview.widget.CardView>
 
         <TextView
