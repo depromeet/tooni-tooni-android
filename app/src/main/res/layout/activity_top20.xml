@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".features.top20.Top20Activity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_top20"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_top20_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_arrow_left_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_top20_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/tv_top20_toolbar"
+            android:textColor="@color/gray_90"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_top20"
+            app:layout_constraintStart_toEndOf="@id/btn_top20_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_top20"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/space_12"
+            android:layout_marginBottom="@dimen/space_12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_top20"
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/blue_100"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="@dimen/space_7"
+            app:tabMode="fixed"
+            app:tabPaddingEnd="8dp"
+            app:tabPaddingStart="8dp"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/gray_90"
+            app:tabTextAppearance="@style/TabLayoutTextStyle" />
+
+        <TextView
+            android:id="@+id/tv_top20_top20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_top20_top20"
+            android:textColor="@color/gray_90"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_marginTop="@dimen/space_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_top20_toolbar"/>
+
+        <View
+            android:id="@+id/divider_top20"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/space_12"
+            android:background="@color/black_opacity10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_top20" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
