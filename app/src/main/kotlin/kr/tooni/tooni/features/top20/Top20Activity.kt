@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +16,9 @@ import kr.tooni.tooni.features.search.WebtoonSearchActivity
 
 @AndroidEntryPoint
 class Top20Activity : BaseActivity<ActivityTop20Binding>(R.layout.activity_top20) {
+
+    private val viewModel by viewModels<Top20ViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_top20)
@@ -25,7 +29,6 @@ class Top20Activity : BaseActivity<ActivityTop20Binding>(R.layout.activity_top20
             finish()
         }
     }
-
     override fun setSupportActionBar(toolbar: Toolbar?) {
         super.setSupportActionBar(toolbar)
         val supportActionBar = supportActionBar
