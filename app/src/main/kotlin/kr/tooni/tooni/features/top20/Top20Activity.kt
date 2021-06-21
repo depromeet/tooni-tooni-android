@@ -19,6 +19,11 @@ class Top20Activity : BaseActivity<ActivityTop20Binding>(R.layout.activity_top20
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_top20)
         setSupportActionBar(binding.toolbarTop20)
+
+        // 뒤로가기 버튼
+        binding.btnTop20Back.setOnClickListener {
+            finish()
+        }
     }
 
     override fun setSupportActionBar(toolbar: Toolbar?) {
