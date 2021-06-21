@@ -51,13 +51,6 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             resultAdapter.submitList(it)
         })
 
-        vm.action.observeEvent(this) { action ->
-            when (action) {
-                is WebtoonSearchViewModel.Action.OnClick -> WebtoonDetailsActivity.start(this, action.id)
-            }
-
-        }
-
         binding.searchHint.setOnClickListener {
             showKeyboard()
             vm.getAllRecentEntity()
@@ -67,14 +60,15 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
 
         binding.searchImg.setOnClickListener {
             vm.search(binding.searchHint.text.toString())
+            // 검색 전 화면 GONE
+            binding.beforeSearch.visibility = View.GONE
             binding.searchResult.visibility = View.VISIBLE
             // 키보드 내려가고 검색 결과 뜸
             hideKeyboard()
             // searchImg는 deleteImg로 바뀜
             binding.searchImg.visibility = View.GONE
             binding.deleteImg.visibility = View.VISIBLE
-            // 검색 전 화면 GONE
-            binding.beforeSearch.visibility = View.GONE
+
         }
 
         binding.deleteImg.setOnClickListener {
@@ -105,11 +99,24 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
                 if(actionId == EditorInfo.IME_ACTION_SEARCH) {
                     vm.search(binding.searchHint.text.toString())
+                    binding.beforeSearch.visibility = View.GONE
+                    binding.searchResult.visibility = View.VISIBLE
+                    hideKeyboard()
+                    binding.searchImg.visibility = View.GONE
+                    binding.deleteImg.visibility = View.VISIBLE
                     return true
                 }
                 return false
             }
         })
+
+        vm.action.observeEvent(this) { action ->
+            when (action) {
+                is WebtoonSearchViewModel.Action.OnClick -> WebtoonDetailsActivity.start(this, action.id)
+            }
+
+        }
+
     }
 
 
