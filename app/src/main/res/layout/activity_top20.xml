@@ -41,27 +41,6 @@
             app:layout_constraintStart_toEndOf="@id/btn_top20_back"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_top20"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="@dimen/space_12"
-            android:layout_marginBottom="@dimen/space_12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_top20"
-            app:tabGravity="start"
-            app:tabIndicatorColor="@color/blue_100"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorGravity="bottom"
-            app:tabIndicatorHeight="@dimen/space_7"
-            app:tabMode="fixed"
-            app:tabPaddingEnd="8dp"
-            app:tabPaddingStart="8dp"
-            app:tabRippleColor="@null"
-            app:tabSelectedTextColor="@color/gray_90"
-            app:tabTextAppearance="@style/TabLayoutTextStyle" />
-
         <TextView
             android:id="@+id/tv_top20_top20"
             android:layout_width="wrap_content"
@@ -83,8 +62,34 @@
             android:background="@color/black_opacity10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tab_top20" />
+            app:layout_constraintTop_toBottomOf="@id/tv_top20_top20" />
 
+        <ImageView
+            android:id="@+id/iv_top20_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_top20_error"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_top20_error"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_top20_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_top20_error"
+            app:layout_constraintTop_toBottomOf="@id/iv_top20_error"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/font_size_14"
+            android:textColor="#333333"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
