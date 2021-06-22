@@ -18,9 +18,10 @@
             android:layout_height="match_parent"
             android:text="@{recentEntity.recentSearch}"
             android:textColor="@color/gray_50"
-            android:textSize="@dimen/font_size_18" />
+            android:textSize="@dimen/font_size_16" />
 
         <ImageView
+            android:id="@+id/delRecentKeyword"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_delete"
