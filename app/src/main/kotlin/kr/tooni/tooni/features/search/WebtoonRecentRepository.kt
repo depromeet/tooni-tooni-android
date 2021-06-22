@@ -24,11 +24,12 @@ class WebtoonRecentRepository @Inject constructor(context: Context) {
         return webtoonRecentDAO.update(webtoonRecentEntity)
     }
     
-    fun deleteKeyword(webtoonRecentEntity: WebtoonRecentEntity): Completable {
-        return webtoonRecentDAO.delete(webtoonRecentEntity)
+    fun deleteKeyword(keyword: String): Completable {
+        val entity = WebtoonRecentEntity(recentSearch = keyword)
+        return webtoonRecentDAO.delete(entity)
     }
     
     fun getAll(): Single<List<WebtoonRecentEntity>> {
-        return Single.fromCallable { webtoonRecentDAO.getAll() }
+        return webtoonRecentDAO.getAll()
     }
 }

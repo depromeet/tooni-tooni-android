@@ -37,6 +37,7 @@ class WebtoonSearchViewModel @Inject constructor(
         webtoonSearchRepository.search(keyword)
             .doOnError { throwable -> showSnackBar(throwable.message) }
             .applySchedulers()
+            .doOnSuccess { insert(keyword) }
             .subscribe(webtoons::setValue, Timber::e)
             .addDisposable()
     }
@@ -51,6 +52,14 @@ class WebtoonSearchViewModel @Inject constructor(
 
     fun insert(keyword: String) {
         recentRepository.insertKeyword(keyword)
+            .doOnError { throwable -> showSnackBar(throwable.message) }
+            .applySchedulers()
+            .subscribe()
+            .addDisposable()
+    }
+
+    fun delete(keyword: String) {
+        recentRepository.deleteKeyword(keyword)
             .doOnError { throwable -> showSnackBar(throwable.message) }
             .applySchedulers()
             .subscribe()
