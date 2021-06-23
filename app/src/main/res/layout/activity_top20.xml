@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.top20.Top20ViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,6 +71,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_top20_top20" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_top20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/space_20"
+            android:paddingStart="@dimen/space_20"
+            android:paddingEnd="@dimen/space_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_top20"
+            tools:listitem="@layout/item_top20"/>
 
         <ImageView
             android:id="@+id/iv_top20_error"
