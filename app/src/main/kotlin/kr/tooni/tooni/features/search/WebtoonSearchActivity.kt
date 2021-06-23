@@ -36,6 +36,9 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         binding.recentKeywordItem.adapter = recentAdapter
         binding.recentKeywordItem.layoutManager = LinearLayoutManager(this)
 
+        binding.searchResult.adapter = resultAdapter
+        binding.searchResult.layoutManager = LinearLayoutManager(this)
+
         vm.randomWebtoons.observe(this) {
             binding.searchRecommend.adapter = beforeAdapter
             binding.searchRecommend.layoutManager = GridLayoutManager(this, 3)
@@ -47,17 +50,16 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         })
 
         vm.webtoons.observe(this, {
-            if(!it.isNullOrEmpty()) {
-                binding.searchResult.adapter = resultAdapter
-                binding.searchResult.layoutManager = LinearLayoutManager(this)
+            if (it.isNotEmpty()) {
                 resultAdapter.submitList(it)
             } else {
-               binding.searchNoResult.visibility = View.VISIBLE
+                binding.searchResult.visibility = View.GONE
+                binding.searchNoResult.visibility = View.VISIBLE
             }
 
         })
 
-        binding.searchHint.setOnClickListener {
+        binding.searchHint.setOnFocusChangeListener { v, hasFocus ->
             showKeyboard()
             vm.getAllRecentEntity()
             binding.beforeSearch.visibility = View.GONE
@@ -80,11 +82,11 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         binding.searchRefresh.setOnClickListener {
             vm.random()
         }
-        
+
 
         binding.searchHint.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
-                if(actionId == EditorInfo.IME_ACTION_SEARCH) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     searchEvent()
                     return true
                 }
@@ -94,13 +96,14 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
 
         vm.action.observeEvent(this) { action ->
             when (action) {
-                is WebtoonSearchViewModel.Action.OnClick -> WebtoonDetailsActivity.start(this, action.id)
+                is WebtoonSearchViewModel.Action.OnClick -> WebtoonDetailsActivity.start(
+                    this,
+                    action.id
+                )
             }
 
         }
-
     }
-
 
     private fun hideKeyboard() {
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
