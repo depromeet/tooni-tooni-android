@@ -7,9 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import kr.tooni.tooni.R
 import kr.tooni.tooni.base.BaseActivity
@@ -30,7 +30,10 @@ class Top20Activity : BaseActivity<ActivityTop20Binding>(R.layout.activity_top20
         binding.viewModel = viewModel
 
         viewModel.webtoons.observe(this) { webtoons ->
+            binding.rvTop20.isVisible = webtoons.isNotEmpty()
+            binding.pbTop20.isVisible = webtoons.isEmpty()
             adapter.submitList(webtoons)
+            adapter.notifyDataSetChanged()
         }
 
         // 뒤로가기 버튼

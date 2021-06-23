@@ -16,7 +16,8 @@ class Top20ViewModel @Inject constructor(
     private val sevedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
     private val _webtoons = MutableLiveData<List<Webtoon>>()
-    val webtoons: LiveData<List<Webtoon>> get() = _webtoons
+    val webtoons: LiveData<List<Webtoon>>
+        get() = _webtoons
 
     init {
         top20Repository.getTop20()
