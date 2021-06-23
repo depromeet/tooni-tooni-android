@@ -48,4 +48,9 @@
     <!--recommend-->
     <string name="tv_recommend_toolbar">장르별 추천 투니</string>
 
+    <!--TOP 20 인기 급상승 투니-->
+    <string name="tv_top20_toolbar">인기 급상승 투니</string>
+    <string name="tv_top20_top20">👑TOP 20👑</string>
+    <string name="tv_top20_error">불러오지 못했어요:(</string>
+
 </resources>

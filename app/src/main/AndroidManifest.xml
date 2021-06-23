@@ -11,10 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
-        <activity android:name=".features.launcher.LauncherActivity"
+        <activity
+            android:name=".features.launcher.LauncherActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,18 +24,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.search.WebtoonSearchActivity"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
-
-        <activity android:name=".features.MainActivity"
+        <activity
+            android:name=".features.search.WebtoonSearchActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".features.MainActivity"
             android:configChanges="orientation|screenSize" />
-
-        <activity android:name=".features.details.WebtoonDetailsActivity"
+        <activity
+            android:name=".features.details.WebtoonDetailsActivity"
             android:configChanges="orientation|screenSize" />
-
-        <activity android:name=".features.recommend.RecommendActivity"
-            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".features.recommend.RecommendActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".features.top20.Top20Activity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
