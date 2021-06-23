@@ -72,16 +72,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_top20_top20" />
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_top20"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding = "@dimen/space_20"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_32"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider_top20"
-            tools:listitem="@layout/item_top20"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_top20"
+            android:clipToPadding="false"
+            app:layout_constrainedHeight="true"/>
 
         <ImageView
             android:id="@+id/iv_top20_error"
