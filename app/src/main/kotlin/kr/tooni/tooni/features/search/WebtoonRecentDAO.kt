@@ -10,12 +10,18 @@ import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface WebtoonRecentDAO {
-    @Query("SELECT * FROM tb_recentKeyword")
+    @Query("SELECT * FROM tb_recentKeyword order by id desc limit 10")
     fun getAll(): Single<List<WebtoonRecentEntity>>
     
-    @Query("SELECT * FROM tb_recentKeyword WHERE id=:id")
+    @Query("SELECT * FROM tb_recentKeyword WHERE id=:id ")
     fun getKeyword(id: Long): List<WebtoonRecentEntity>
-    
+
+    @Query("DELETE FROM tb_recentKeyword")
+    fun deleteALLItem(): Completable
+
+    @Query("DELETE FROM tb_recentKeyword WHERE recent_search =:keyword")
+    fun deleteALLItem(keyword: String): Completable
+
     @Insert
     fun insertAll(vararg webtoonRecentEntity: WebtoonRecentEntity): Completable
     
