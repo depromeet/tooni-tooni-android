@@ -80,6 +80,8 @@ class WebtoonRecentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     
     class WebtoonSearchItemViewHolder(private val binding: ItemRecentKeywordBinding) :
         BaseViewHolder<WebtoonSearchItemViewHolder.Data>(binding.root) {
+
+
         data class Data(val item: WebtoonRecentEntity) : Bindable(ViewType.TYPE_ITEM.index)
         
         override fun bind(data: Data) {

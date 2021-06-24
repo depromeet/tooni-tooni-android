@@ -48,7 +48,8 @@
             android:layout_marginStart="4dp"
             android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+           >
 
             <ImageView
                 android:id="@+id/iv_recent_site"
@@ -122,7 +123,7 @@
             app:layout_constraintBottom_toBottomOf="@id/item_search"
             app:layout_constraintEnd_toEndOf="@id/item_search"
             app:layout_constraintTop_toTopOf="@id/item_search"
-
+            android:onClick="@{() -> viewModel.onWebtoonClicked(searchWebtoon.id)}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
