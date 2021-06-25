@@ -18,10 +18,10 @@ import kr.tooni.tooni.features.launcher.LauncherViewModel.State.Success
 
 @AndroidEntryPoint
 class LauncherActivity : BaseActivity<ActivityLauncherBinding>(R.layout.activity_launcher) {
-    
+
     private val viewModel by viewModels<LauncherViewModel>()
     lateinit var ani: Animation
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
@@ -31,17 +31,29 @@ class LauncherActivity : BaseActivity<ActivityLauncherBinding>(R.layout.activity
 
         observe()
     }
-    
+
     private fun observe() {
         viewModel.state.observe(this) { state ->
             when (state) {
                 is Error -> showSnackbar(binding.root, state.errorMessage)
-                Success -> handleSuccessState()
+                Success -> {
+                    if(ani.hasEnded()) {
+                        handleSuccessState()
+                    } else {
+                        aniListener()
+                    }
+                }
             }
         }
     }
-    
+
     private fun handleSuccessState() {
+        MainActivity.start(this) {
+            finish()
+        }
+    }
+
+    private fun aniListener() {
         ani.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {}
 
