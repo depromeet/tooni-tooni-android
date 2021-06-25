@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="webtoon"
+            type="kr.tooni.tooni.core.model.Webtoon" />
+
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.top20.Top20ViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/space_22"
+        android:paddingStart="@dimen/space_18"
+        android:paddingBottom="@dimen/space_16">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_author"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_author_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image_url="@{webtoon.thumbnail}"
+                tools:src="@drawable/favorites_thumbnail" />
+
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_4"
+            android:layout_marginBottom="@dimen/space_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cv_author">
+
+            <ImageView
+                android:id="@+id/iv_author_site"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                tools:src="@drawable/icon_platform_naver" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_author_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="1sp"
+            android:maxLines="1"
+            android:text="@{webtoon.title}"
+            android:textColor="@color/gray_90"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_author_authors"
+            app:layout_constraintStart_toEndOf="@id/cv_author"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="급식 아빠" />
+
+        <TextView
+            android:id="@+id/tv_author_authors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{webtoon.authorFullName}"
+            android:textColor="@color/gray_50"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_author_detail"
+            app:layout_constraintStart_toEndOf="@id/cv_author"
+            app:layout_constraintTop_toBottomOf="@id/tv_author_title"
+            tools:text="최현정" />
+
+        <LinearLayout
+            android:id="@+id/ll_author_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/tv_author_authors"
+            app:layout_constraintStart_toEndOf="@id/cv_author"
+            app:layout_constraintTop_toBottomOf="@id/tv_author_authors">
+
+            <TextView
+                android:id="@+id/tv_author_genres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_80"
+                android:textSize="10sp"
+                tools:text="스토리 | 액션" />
+
+            <TextView
+                android:id="@+id/tv_author_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{webtoon.roundedScore}"
+                android:textColor="@color/gray_90"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:text="9.9" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_author_detail"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_forward_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

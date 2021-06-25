@@ -53,4 +53,12 @@
     <string name="tv_top20_top20">👑TOP 20👑</string>
     <string name="tv_top20_error">불러오지 못했어요:(</string>
 
+    <!-- 작가상세 -->
+    <string name="author_detail_toolbar">추천 작가 투니</string>
+    <string name="author_detail_name">작가 이름</string>
+    <string name="author_detail_tag">#코미디</string>
+    <string name="author_detail_toonilist">투니 리스트</string>
+
+
+
 </resources>

@@ -23,10 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".features.search.WebtoonSearchActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".features.MainActivity"
             android:configChanges="orientation|screenSize" />
@@ -36,7 +35,11 @@
         <activity
             android:name=".features.recommend.RecommendActivity"
             android:configChanges="orientation|screenSize" />
-        <activity android:name=".features.top20.Top20Activity"
+        <activity
+            android:name=".features.top20.Top20Activity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".features.author.AuthorDetailActivity"
             android:configChanges="orientation|screenSize" />
     </application>
 

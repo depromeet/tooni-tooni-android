@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="kr.tooni.tooni.features.author.AuthorDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".features.top20.Top20Activity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_author_detail"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_author_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_arrow_left_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/author_detail_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/author_detail_toolbar"
+            android:textColor="@color/gray_90"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_author_detail"
+            app:layout_constraintStart_toEndOf="@id/btn_author_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/author_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/author_detail_name"
+            android:textColor="@color/gray_90"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_marginTop="@dimen/space_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author_detail_toolbar"/>
+
+        <TextView
+            android:id="@+id/author_detail_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/author_detail_tag"
+            android:textColor="@color/gray_50"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/space_10"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/space_5"
+            android:background="@drawable/ic_rectangle_116"
+            app:layout_constraintStart_toStartOf="@+id/author_detail_name"
+            app:layout_constraintTop_toBottomOf="@id/author_detail_name"
+            />
+
+        <TextView
+            android:id="@+id/author_detail_tag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/author_detail_tag"
+            android:textColor="@color/gray_50"
+            android:textSize="10sp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_10"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/space_5"
+            android:background="@drawable/ic_rectangle_116"
+            app:layout_constraintStart_toEndOf="@+id/author_detail_tag"
+            app:layout_constraintTop_toBottomOf="@id/author_detail_name"
+            />
+
+        <View
+            android:id="@+id/divider_author"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/space_12"
+            android:background="@color/black_opacity10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author_detail_tag" />
+
+        <TextView
+            android:id="@+id/string_tooniList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/author_detail_toonilist"
+            android:textSize="@dimen/font_size_20"
+            android:textColor="@color/gray_90"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@+id/divider_author"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/space_28"
+            android:layout_marginStart="@dimen/space_18"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_author_detail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/string_tooniList"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_author_detail"
+            android:clipToPadding="false"
+            app:layout_constrainedHeight="true"/>
+
+        <ProgressBar
+            android:id="@+id/pb_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/divider_author"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
