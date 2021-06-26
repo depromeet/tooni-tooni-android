@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="webtoon"
+            type="kr.tooni.tooni.core.model.Webtoon" />
 
         <variable
             name="viewModel"
@@ -23,7 +28,7 @@
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
 
         <ImageButton
             android:id="@+id/btn_author_back"
@@ -48,49 +53,24 @@
             app:layout_constraintBottom_toBottomOf="@id/toolbar_author_detail"
             app:layout_constraintStart_toEndOf="@id/btn_author_back"
             app:layout_constraintTop_toTopOf="parent" />
+        </androidx.appcompat.widget.Toolbar>
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/author_detail_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/author_detail_name"
-            android:textColor="@color/gray_90"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="@dimen/space_20"
-            android:layout_marginTop="@dimen/space_24"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_author_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/author_detail_toolbar"/>
-
-        <TextView
-            android:id="@+id/author_detail_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/author_detail_tag"
-            android:textColor="@color/gray_50"
-            android:textSize="10sp"
-            android:layout_marginTop="@dimen/space_10"
-            android:textAlignment="center"
-            android:paddingTop="@dimen/space_5"
-            android:background="@drawable/ic_rectangle_116"
-            app:layout_constraintStart_toStartOf="@+id/author_detail_name"
-            app:layout_constraintTop_toBottomOf="@id/author_detail_name"
+            tools:listitem="@layout/item_author_name"
             />
 
-        <TextView
-            android:id="@+id/author_detail_tag2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/author_detail_tag"
-            android:textColor="@color/gray_50"
-            android:textSize="10sp"
-            android:layout_marginStart="@dimen/space_8"
-            android:layout_marginTop="@dimen/space_10"
-            android:textAlignment="center"
-            android:paddingTop="@dimen/space_5"
-            android:background="@drawable/ic_rectangle_116"
-            app:layout_constraintStart_toEndOf="@+id/author_detail_tag"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/author_detail_tag"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/author_detail_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_author_genre"
             />
 
         <View
@@ -101,42 +81,42 @@
             android:background="@color/black_opacity10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/author_detail_tag" />
+            app:layout_constraintTop_toBottomOf="@+id/author_detail_tag"/>
 
         <TextView
             android:id="@+id/string_tooniList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/author_detail_toonilist"
-            android:textSize="@dimen/font_size_20"
-            android:textColor="@color/gray_90"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/divider_author"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/space_28"
             android:layout_marginStart="@dimen/space_18"
-            />
+            android:layout_marginTop="@dimen/space_28"
+            android:text="@string/author_detail_toonilist"
+            android:textColor="@color/gray_90"
+            android:textSize="@dimen/font_size_20"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider_author" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_author_detail"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/space_16"
+            android:clipToPadding="false"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/string_tooniList"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/item_author_detail"
-            android:clipToPadding="false"
-            app:layout_constrainedHeight="true"/>
+            tools:listitem="@layout/item_author_detail" />
 
         <ProgressBar
             android:id="@+id/pb_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/divider_author"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_author" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

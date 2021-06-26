@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/author_detail_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_rectangle_116"
+        android:paddingTop="@dimen/space_5"
+        android:textAlignment="center"
+        android:textColor="@color/gray_50"
+        android:textSize="10sp"
+        tools:text="#코미디"
+        />
+
+    <TextView
+        android:id="@+id/author_detail_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_rectangle_116"
+        android:paddingTop="@dimen/space_5"
+        android:textAlignment="center"
+        android:textColor="@color/gray_50"
+        android:textSize="10sp"
+        android:layout_marginStart="@dimen/space_8"
+        app:layout_constraintStart_toEndOf="@+id/author_detail_tag"
+        app:layout_constraintTop_toTopOf="@+id/author_detail_tag"
+        tools:text="#코미디"
+
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,15 +20,16 @@ data class Webtoon(
     
     val authorFullName: String
         get() = authors.joinToString(" / ") { it.name }
-    
+
     val roundedScore: String
         get() = String.format("%.2f", score)
 
     val genresConcat: String
         get() = genres.joinToString(" | ")
-    
+
+
     companion object {
-        
+
         val EMPTY = Webtoon(
             id = 0,
             authors = listOf(),

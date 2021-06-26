@@ -3,6 +3,7 @@
  */
 package kr.tooni.tooni.data.response
 
+import kr.tooni.tooni.core.model.Webtoon
 import kr.tooni.tooni.core.model.Webtoons
 
 data class WebtoonByAuthorResponse(
@@ -12,6 +13,8 @@ data class WebtoonByAuthorResponse(
     data class Spec(
         val authorName: String,
         val totalWebtoon: Int,
-        val webtoons: Webtoons
-    )
+        val webtoons: List<Webtoon>
+        )
+
+
 }
