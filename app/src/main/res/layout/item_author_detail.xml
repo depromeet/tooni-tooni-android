@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="kr.tooni.tooni.utils.SiteLogoProvider" />
+
         <variable
             name="webtoon"
             type="kr.tooni.tooni.core.model.Webtoon" />
@@ -52,6 +54,7 @@
                 android:id="@+id/iv_author_site"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
+                app:setDrawable="@{SiteLogoProvider.INSTANCE.getDrawable(context, webtoon)}"
                 tools:src="@drawable/icon_platform_naver" />
 
         </FrameLayout>
@@ -85,7 +88,7 @@
             android:text="@{webtoon.authorFullName}"
             android:textColor="@color/gray_50"
             android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_author_detail"
+            app:layout_constraintEnd_toStartOf="@+id/DetailForwardBtn"
             app:layout_constraintStart_toEndOf="@id/cv_author"
             app:layout_constraintTop_toBottomOf="@id/tv_author_title"
             tools:text="최현정" />
@@ -106,6 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/gray_80"
+                android:text="@{webtoon.genresConcat}"
                 android:textSize="10sp"
                 tools:text="스토리 | 액션" />
 
@@ -123,7 +127,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/btn_author_detail"
+            android:id="@+id/DetailForwardBtn"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_forward_btn"
