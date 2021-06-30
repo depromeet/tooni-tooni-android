@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,13 +51,10 @@ class WebtoonSearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activ
         })
 
         vm.webtoons.observe(this, {
-            if (it.isNotEmpty()) {
-                resultAdapter.submitList(it)
-            } else {
-                binding.searchResult.visibility = View.GONE
-                binding.searchNoResult.visibility = View.VISIBLE
-            }
-
+            binding.searchResult.isVisible = it.isNotEmpty()
+            binding.searchNoResult.isVisible = it.isEmpty()
+            resultAdapter.submitList(it)
+            resultAdapter.notifyDataSetChanged()
         })
 
         binding.searchHint.setOnFocusChangeListener { v, hasFocus ->
